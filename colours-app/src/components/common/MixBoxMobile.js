@@ -71,12 +71,12 @@ export default function MixBoxMobile(props) {
             <Grid item xs={12}
             container
             direction="row"
-            justify="center"
-            alignItems="center"
+            justify="leftAlign"
+            alignItems="leftAlign"
             >
             {props.links.map(link =>(
                 <Grid item xs={4} key={link}>
-                    <Link href={link.url} target="_blank" className={classes.subtitle}>{link.name}</Link>
+                    <Link href={link.url} target="_blank" className={classes.subtitle} style={{ 'padding-left': '10px'}}>{link.name}</Link>
                 </Grid>
             ))}
             </Grid>
