@@ -1,9 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
+import {Link} from 'react-router-dom';
 import Box from '@material-ui/core/Link';
-import Hidden from '@material-ui/core/Hidden';
 var tinycolor = require("tinycolor2");
 
 const colour1 = '#06b19d';
@@ -29,15 +28,19 @@ function getTextShade(colourObj){
     }
 }
 
-export default function MixNavBar() {
+export default function MixNavBar(props) {
     const classes = useStyles();
 
     //get text shades for navigation buttons
-    var colour1Obj = tinycolor(colour1);
-    var colour2Obj = tinycolor(colour2);
-    var colour1Shade = getTextShade(colour1Obj);
-    var colour2Shade = getTextShade(colour1Obj);
-
+    if(props.back){
+        var colour1Obj = tinycolor(props.back.colourHex);
+        var colour1TextShade = getTextShade(colour1Obj);
+    }
+    if(props.forward){
+        var colour2Obj = tinycolor(props.forward.colourHex);
+        var colour2TextShade = getTextShade(colour2Obj);
+    }
+       
     return ( 
         <Grid
             container
@@ -45,22 +48,39 @@ export default function MixNavBar() {
             justify="center"
             alignItems="center"
         >
-           <Grid item xs={4} style={{ background: colour1}}>
-                <Link to={{pathname: `/Mix/Akash-Cobalt`}} style={{ textDecoration: 'none'}}>
-                    <Box component="span" style={{ color: colour1Shade}}>
-                        <div>Colour</div>
-                        <div>Akash</div>
-                    </Box>
-                </Link>
+            <Grid item xs={4}>
+                {
+                    props.back?(
+                        <div style={{background: props.back.colourHex}}>
+                            <Link to={{pathname: `/Mix/${props.back.id}`}} style={{ textDecoration: 'none'}}>
+                                <Box component="span" style={{ color: colour1TextShade}}>
+                                    <div>{props.back.artist}</div>
+                                    <div>{props.back.colourName}</div>
+                                </Box>
+                            </Link>
+                        </div>
+                         
+                    ):(
+                        <Box component="span"/>
+                    )
+                }
            </Grid>
            <Grid item xs={4}/>
-           <Grid item xs={4} style={{ background: colour2}}>
-                <Link to={{pathname: `/Mix/Akash-Cerulean`}} style={{ textDecoration: 'none'}}>
-                    <Box component="span" style={{ color: colour2Shade}}>
-                        <div>Colour</div>
-                        <div>Akash</div>
-                    </Box> 
-                </Link>
+           <Grid item xs={4}>
+                {
+                    props.forward?(
+                        <div style={{background: props.forward.colourHex}}>
+                            <Link to={{pathname: `/Mix/${props.forward.id}`}} style={{ textDecoration: 'none'}}>
+                                <Box component="span" style={{ color: colour2TextShade}}>
+                                    <div>{props.forward.artist}</div>
+                                    <div>{props.forward.colourName}</div>
+                                </Box>
+                            </Link> 
+                        </div>
+                    ):(
+                        <Box component="span"/>
+                    )
+                }
            </Grid>
         </Grid>
     );

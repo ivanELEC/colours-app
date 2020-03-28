@@ -15,12 +15,74 @@
             ]
         },
         {
-            "id":"Akash-Cobalt",
+            "id":"Akash-Indigo",
             "artist":"Akash",
             "date":"01/02/2020",
+            "colourName":"Indigo",
+            "colourHex":"#4b0082",
+            "link":"https://soundcloud.com/axet90/indigo",
+            "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "imageUrl":"https://image.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg",
+            "links":[
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"}
+            ]
+        },
+        {
+            "id":"Akash-Cobalt",
+            "artist":"Akash",
+            "date":"01/03/2020",
             "colourName":"Cobalt",
-            "colourHex":"#000000",
+            "colourHex":"#0047ab",
             "link":"https://soundcloud.com/axet90/cobalt",
+            "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "imageUrl":"https://image.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg",
+            "links":[
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"}
+            ]
+        },
+        {
+            "id":"Akash-Cyan",
+            "artist":"Akash",
+            "date":"01/04/2020",
+            "colourName":"Cyan",
+            "colourHex":"#00FFFF",
+            "link":"https://soundcloud.com/axet90/cyan",
+            "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "imageUrl":"https://image.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg",
+            "links":[
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"}
+            ]
+        },
+        {
+            "id":"Akash-Cloud",
+            "artist":"Akash",
+            "date":"01/05/2020",
+            "colourName":"Cloud",
+            "colourHex":"#7ff5ef",
+            "link":"https://soundcloud.com/axet90/cloud",
+            "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "imageUrl":"https://image.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg",
+            "links":[
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"}
+            ]
+        },
+        {
+            "id":"Akash-Opal",
+            "artist":"Akash",
+            "date":"01/06/2020",
+            "colourName":"Opal",
+            "colourHex":"#6a6971",
+            "link":"https://soundcloud.com/axet90/opal",
             "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
             "imageUrl":"https://image.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg",
             "links":[

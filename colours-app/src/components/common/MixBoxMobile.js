@@ -81,7 +81,7 @@ export default function MixBoxMobile(props) {
             ))}
             </Grid>
             <Grid item xs={12}>
-                <div className={classes.subtitle}>
+                <div className={classes.subtitle} style={{ 'margin': '10px'}}>
                     {props.description}
                 </div>
             </Grid> 

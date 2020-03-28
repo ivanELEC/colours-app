@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import Mix from './components/pages/Mix';
@@ -12,10 +12,8 @@ import './fonts/HelveticaNeueCyr-Light.ttf';
 
 const routing = (
   <Router>
-    <div>
-      <Route exact path="/" component={App} />
-      <Route exact path="/Mix/:id" component={Mix} />
-    </div>
+      <Switch><Route exact path="/" component={App} /></Switch>
+      <Switch><Route exact path="/Mix/:id" component={Mix} /></Switch>
   </Router>
 )
 

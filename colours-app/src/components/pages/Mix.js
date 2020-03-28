@@ -6,8 +6,8 @@ import Hidden from '@material-ui/core/Hidden';
 import MixBoxMobile from '../common/MixBoxMobile';
 import MixNavBar from '../navigation/MixNavBar';
 import mixData from '../../data/mixData.json';
-var sortJsonArray = require('sort-json-array');
 
+var sortJsonArray = require('sort-json-array');
 var jsonQuery = require('json-query');
 
 const useStyles = makeStyles({
@@ -25,11 +25,38 @@ export default function Mix() {
     {
         data: mixData
     });
-    
+
+    //sort mixes by date and extract previous and next mix
+    const sortedMixData = sortJsonArray(mixData.data,'date');
+    //find index of current mix
+    var currentMixIndex=0;
+    for(let i = 0; i < sortedMixData.length; i++) {
+        if(sortedMixData[i].id==id.id){
+            currentMixIndex=i;
+        }
+    }
+     /*function which returns contents of array element if it exists and null if it doesn't
+      function returns null for negative array index numbers also  
+    */
+    function retrieveElementMix(index,data){
+        if(index<0){
+            return null;
+        }
+        else if(data[index]){
+            return data[index];
+        }
+        else{
+            return null;
+        }
+    }
+    //use retrieveElementMix to return variables for previous and next mix (null if they don't exist)
+    var previousMixData = retrieveElementMix(currentMixIndex-1,sortedMixData)
+    var nextMixData = retrieveElementMix(currentMixIndex+1,sortedMixData)
     return ( 
         <div>
             <MixNavBar
-                
+                back={previousMixData}
+                forward={nextMixData}
             />
             <Grid
                 container
