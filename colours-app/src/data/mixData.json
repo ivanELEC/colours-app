@@ -1,0 +1,34 @@
+{
+    "data":[
+        {
+            "id":"Akash-Cerulean",
+            "artist":"Akash",
+            "date":"01/01/2020",
+            "colourName":"Cerulean",
+            "colourHex":"#2a52be",
+            "link":"https://soundcloud.com/axet90/cerulean",
+            "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "imageUrl":"https://image.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg",
+            "links":[
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"}
+            ]
+        },
+        {
+            "id":"Akash-Cobalt",
+            "artist":"Akash",
+            "date":"01/02/2020",
+            "colourName":"Cobalt",
+            "colourHex":"#000000",
+            "link":"https://soundcloud.com/axet90/cobalt",
+            "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "imageUrl":"https://image.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg",
+            "links":[
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
+                {"name":"Soundcloud","url":"https://soundcloud.com/axet90"}
+            ]
+        }
+    ]
+}

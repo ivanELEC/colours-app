@@ -1,0 +1,92 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
+import ReactPlayer from "react-player";
+
+const useStyles = makeStyles({
+  title: {
+    fontFamily:'HelveticaBold',
+    'font-size':20,
+    margin:3
+  },
+  subtitle:{
+    fontFamily:'HelveticaLight',
+    'font-size':16,
+    margin:3
+  },
+  content:{
+    background:'#ffffff', 
+    margin:3,
+    padding:3
+  },
+  root: {
+    minWidth: 250,
+    minHeight:480,
+    padding:0, 
+    margin:25
+  }
+});
+
+export default function MixBoxMobile(props) {
+  const classes = useStyles();
+  return (
+    <Card className={classes.root}>
+      <CardContent className={classes.content}>
+      <Grid
+            container
+            direction="column"
+            justify="flex-start"
+            alignItems="flex-start"
+        > 
+            <Grid item xs={6} md={3}>
+                <div className={classes.title}>
+                    <p>{props.artistName}</p>
+                </div>
+                <div className={classes.subtitle}>
+                    {props.colourName}
+                </div>
+                <div className={classes.subtitle}>
+                    {props.colourHex}
+                </div>
+                <div className={classes.subtitle}>
+                    {props.date}
+                </div>
+            </Grid>
+            <Grid item xs={6} md={9}>
+            </Grid>
+        </Grid>
+         <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+         > 
+            <Grid item xs={12}>
+                <ReactPlayer url={props.mixUrl}/>
+            </Grid>
+            <p></p>
+            <Grid item xs={12}
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+            >
+            {props.links.map(link =>(
+                <Grid item xs={4} key={link}>
+                    <Link href={link.url} target="_blank" className={classes.subtitle}>{link.name}</Link>
+                </Grid>
+            ))}
+            </Grid>
+            <Grid item xs={12}>
+                <div className={classes.subtitle}>
+                    {props.description}
+                </div>
+            </Grid> 
+        </Grid>
+      </CardContent>
+    </Card>
+  );
+}
