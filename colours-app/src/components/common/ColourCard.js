@@ -16,7 +16,7 @@ date: date of mix in light
 const useStyles = makeStyles({
   title: {
     fontFamily:'HelveticaBold',
-    'font-size':20,
+    'font-size':25,
     margin:3
   },
   subtitle:{

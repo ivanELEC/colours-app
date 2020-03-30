@@ -1,5 +1,5 @@
 import React from 'react';
-import {useParams} from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import MixBoxMobile from '../common/MixBoxMobile';
@@ -76,6 +76,20 @@ export default function Mix() {
                     embedId={mixMetadata.value.embedId}
                     />
                 </Grid>
+            </Grid>
+            <Grid
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+            >
+                <Grid item xs={5}/>
+                <Grid item xs={2}>
+                    <Link to={{pathname: `/`}}>
+                        <img src="../../../public/media/images/Home-Icon-Rainbow.png"/> 
+                    </Link>
+                </Grid>
+                <Grid item xs={5}/>
             </Grid>
         </div>
     );
