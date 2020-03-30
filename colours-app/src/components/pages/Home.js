@@ -23,9 +23,10 @@ export default function Home() {
         direction="row"
         justify="center"
         alignItems="center"
+        spacing={2}
     >
         {sortedMixData.map(mix => (
-            <Grid key={mix} item xs={12} sm={6} md={3}>
+            <Grid key={mix} item xs={12} sm={6} md={4} lg={3}>
              <Link to={{pathname: `/Mix/${mix.id}`}} style={{ textDecoration: 'none'}}>
                 <ColourCard
                     artistName={mix.artist} 

@@ -2,7 +2,6 @@ import React from 'react';
 import {useParams} from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
 import MixBoxMobile from '../common/MixBoxMobile';
 import MixNavBar from '../navigation/MixNavBar';
 import mixData from '../../data/mixData.json';
@@ -52,6 +51,7 @@ export default function Mix() {
     //use retrieveElementMix to return variables for previous and next mix (null if they don't exist)
     var previousMixData = retrieveElementMix(currentMixIndex-1,sortedMixData)
     var nextMixData = retrieveElementMix(currentMixIndex+1,sortedMixData)
+
     return ( 
         <div>
             <MixNavBar
@@ -73,6 +73,7 @@ export default function Mix() {
                     description={mixMetadata.value.description}
                     mixUrl={mixMetadata.value.link}
                     links={mixMetadata.value.links}
+                    embedId={mixMetadata.value.embedId}
                     />
                 </Grid>
             </Grid>

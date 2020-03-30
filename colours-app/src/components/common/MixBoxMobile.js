@@ -4,7 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-import ReactPlayer from "react-player";
+import SoundcloudPlayer from './SoundcloudPlayer';
 
 const useStyles = makeStyles({
   title: {
@@ -19,8 +19,7 @@ const useStyles = makeStyles({
   },
   content:{
     background:'#ffffff', 
-    margin:3,
-    padding:3
+    margin:3
   },
   root: {
     minWidth: 250,
@@ -64,27 +63,37 @@ export default function MixBoxMobile(props) {
             justify="center"
             alignItems="center"
          > 
-            <Grid item xs={12}>
-                <ReactPlayer url={props.mixUrl}/>
+            <Grid item  xs={12}
+              container
+              direction="row"
+              justify="center"
+              alignItems="center"
+            >
+              <Grid item xs={12}>
+                <SoundcloudPlayer
+                    embedId={props.embedId}
+                    colourHex={props.colourHex}
+                  />
+              </Grid>
             </Grid>
             <p></p>
-            <Grid item xs={12}
-            container
-            direction="row"
-            justify="leftAlign"
-            alignItems="leftAlign"
-            >
-            {props.links.map(link =>(
-                <Grid item xs={4} key={link}>
-                    <Link href={link.url} target="_blank" className={classes.subtitle} style={{ 'padding-left': '10px'}}>{link.name}</Link>
-                </Grid>
-            ))}
-            </Grid>
             <Grid item xs={12}>
-                <div className={classes.subtitle} style={{ 'margin': '10px'}}>
+                <div className={classes.subtitle}>
                     {props.description}
                 </div>
             </Grid> 
+            <Grid item xs={12}
+              container
+              direction="row"
+              justify="leftAlign"
+              alignItems="leftAlign"
+            >
+            {props.links.map(link =>(
+                <Grid item xs={4} key={link}>
+                    <Link href={link.url} target="_blank" className={classes.subtitle}>{link.name}</Link>
+                </Grid>
+            ))}
+            </Grid>
         </Grid>
       </CardContent>
     </Card>

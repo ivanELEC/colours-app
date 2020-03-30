@@ -2,6 +2,7 @@
     "data":[
         {
             "id":"Akash-Cerulean",
+            "embedId":"666755858",
             "artist":"Akash",
             "date":"01/01/2020",
             "colourName":"Cerulean",
@@ -16,6 +17,7 @@
         },
         {
             "id":"Akash-Indigo",
+            "embedId":"664742063",
             "artist":"Akash",
             "date":"01/02/2020",
             "colourName":"Indigo",
@@ -30,6 +32,7 @@
         },
         {
             "id":"Akash-Cobalt",
+            "embedId":"680182955",
             "artist":"Akash",
             "date":"01/03/2020",
             "colourName":"Cobalt",
@@ -46,6 +49,7 @@
         },
         {
             "id":"Akash-Cyan",
+            "embedId":"680841041",
             "artist":"Akash",
             "date":"01/04/2020",
             "colourName":"Cyan",
@@ -62,6 +66,7 @@
         },
         {
             "id":"Akash-Cloud",
+            "embedId":"756937315",
             "artist":"Akash",
             "date":"01/05/2020",
             "colourName":"Cloud",
@@ -78,6 +83,7 @@
         },
         {
             "id":"Akash-Opal",
+            "embedId":"669397100",
             "artist":"Akash",
             "date":"01/06/2020",
             "colourName":"Opal",
