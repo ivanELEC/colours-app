@@ -101,7 +101,7 @@ export default function Mix() {
                     alignItems="center"
                     spacing={0}
                 >
-                    <Grid item xs={5}/>
+                    <Grid item xs={4}/>
                     <Grid item xs={2}>
                         <Link to={{pathname: `/`}}>
                             <Image src={HomeLogo} className={classes.icon} style={{left:"30%"}}/> 
