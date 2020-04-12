@@ -6,6 +6,7 @@ import App from './App';
 import Mix from './components/pages/Mix';
 import * as serviceWorker from './serviceWorker';
 
+
 //load fonts
 import './fonts/HelveticaNeueCyr-Bold.ttf';
 import './fonts/HelveticaNeueCyr-Light.ttf';

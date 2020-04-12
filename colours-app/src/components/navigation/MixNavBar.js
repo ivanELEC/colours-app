@@ -3,14 +3,22 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
 import Box from '@material-ui/core/Link';
+import {Card, CardContent} from '@material-ui/core';
 var tinycolor = require("tinycolor2");
-
-const colour1 = '#06b19d';
-const colour2 = '#5306b1';
 
 const useStyles = makeStyles({
   root: {
    
+  }, 
+  paper:{
+      padding:"0px",
+      margin:"0px"
+  },
+  title: {
+    fontFamily:'HelveticaBold'
+  },
+  subtitle:{
+    fontFamily:'HelveticaLight'
   }
 }); 
 
@@ -48,35 +56,68 @@ export default function MixNavBar(props) {
             justify="center"
             alignItems="center"
         >
-            <Grid item xs={4}>
+            <Grid item xs={3}>
                 {
                     props.back?(
-                        <div style={{background: props.back.colourHex}}>
-                            <Link to={{pathname: `/Mix/${props.back.id}`}} style={{ textDecoration: 'none'}}>
-                                <Box component="span" style={{ color: colour1TextShade}}>
-                                    <div>{props.back.artist}</div>
-                                    <div>{props.back.colourName}</div>
-                                </Box>
-                            </Link>
-                        </div>
-                         
+                        <Card className={classes.root}>
+                            <CardContent className={classes.paper} height="100%" style={{paddingBottom:"0px"}}>
+                                <Grid item xs={12} 
+                                container
+                                direction="row"
+                                justify="flex-start"
+                                alignItems="center"
+                                spacing={0}
+                                >
+                                    <Grid item xs={8}>
+                                        <div style={{ background:props.back.colourHex}}>
+                                            <Link to={{pathname: `/Mix/${props.back.id}`}} style={{ textDecoration: 'none'}}>
+                                                <Box component="span" style={{color: colour1TextShade}}>
+                                                    <div className={classes.title}>      {props.back.artist}</div>
+                                                    <div className={classes.subtitle}>      {props.back.colourName}</div>
+                                                </Box>
+                                            </Link>
+                                        </div>
+                                    </Grid>
+                                    <Grid item xs={4}>
+
+                                    </Grid>
+                                </Grid>
+                            </CardContent>   
+                        </Card>
                     ):(
                         <Box component="span"/>
                     )
                 }
            </Grid>
-           <Grid item xs={4}/>
-           <Grid item xs={4}>
+           <Grid item xs={6}/>
+           <Grid item xs={3}>
                 {
                     props.forward?(
-                        <div style={{background: props.forward.colourHex}}>
-                            <Link to={{pathname: `/Mix/${props.forward.id}`}} style={{ textDecoration: 'none'}}>
-                                <Box component="span" style={{ color: colour2TextShade}}>
-                                    <div>{props.forward.artist}</div>
-                                    <div>{props.forward.colourName}</div>
-                                </Box>
-                            </Link> 
-                        </div>
+                        <Card className={classes.root}>
+                            <CardContent className={classes.paper} height="100%" style={{paddingBottom:"0px"}}>
+                                <Grid item xs={12} 
+                                container
+                                direction="row"
+                                justify="flex-start"
+                                alignItems="center"
+                                spacing={0}
+                                >
+                                    <Grid item xs={8}>
+                                        <div style={{ background:props.forward.colourHex}}>
+                                            <Link to={{pathname: `/Mix/${props.forward.id}`}} style={{ textDecoration: 'none'}}>
+                                                <Box component="span" style={{color: colour2TextShade}}>
+                                                    <div className={classes.title}>      {props.forward.artist}</div>
+                                                    <div className={classes.subtitle}>   {props.forward.colourName}</div>
+                                                </Box>
+                                            </Link>
+                                        </div>
+                                    </Grid>
+                                    <Grid item xs={4}>
+
+                                    </Grid>
+                                </Grid>
+                            </CardContent>   
+                        </Card>
                     ):(
                         <Box component="span"/>
                     )

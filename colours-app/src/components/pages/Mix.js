@@ -5,13 +5,29 @@ import Grid from '@material-ui/core/Grid';
 import MixBoxMobile from '../common/MixBoxMobile';
 import MixNavBar from '../navigation/MixNavBar';
 import mixData from '../../data/mixData.json';
+import Image from 'material-ui-image';
+import { fadeInDown } from 'react-animations';
+import Radium, {StyleRoot} from 'radium';
+
+import HomeLogo from '../../media/images/backicon.png';
 
 var sortJsonArray = require('sort-json-array');
 var jsonQuery = require('json-query');
 
+const styles = {
+    fadeInDown: {
+      animation: 'x 1s',
+      animationName: Radium.keyframes(fadeInDown, 'fadeInDown')
+    }
+};
+
 const useStyles = makeStyles({
   root: {
    
+  }, 
+  icon:{
+      maxHeight:75, 
+      maxWidth:75
   }
 }); 
 
@@ -53,44 +69,47 @@ export default function Mix() {
     var nextMixData = retrieveElementMix(currentMixIndex+1,sortedMixData)
 
     return ( 
-        <div>
-            <MixNavBar
-                back={previousMixData}
-                forward={nextMixData}
-            />
-            <Grid
-                container
-                direction="row"
-                justify="center"
-                alignItems="center"
-            >
-                <Grid item md={6} xs={12}>
-                    <MixBoxMobile
-                    artistName={mixMetadata.value.artist}
-                    colourName={mixMetadata.value.colourName}
-                    colourHex={mixMetadata.value.colourHex}
-                    date={mixMetadata.value.date}
-                    description={mixMetadata.value.description}
-                    mixUrl={mixMetadata.value.link}
-                    links={mixMetadata.value.links}
-                    embedId={mixMetadata.value.embedId}
-                    />
+        <StyleRoot>
+            <div style={styles.fadeInDown}>
+                <MixNavBar
+                    back={previousMixData}
+                    forward={nextMixData}
+                />
+                <Grid 
+                    container
+                    direction="row"
+                    justify="center"
+                    alignItems="center"
+                >
+                    <Grid item md={6} xs={12}>
+                        <MixBoxMobile
+                        artistName={mixMetadata.value.artist}
+                        colourName={mixMetadata.value.colourName}
+                        colourHex={mixMetadata.value.colourHex}
+                        date={mixMetadata.value.date}
+                        description={mixMetadata.value.description}
+                        mixUrl={mixMetadata.value.link}
+                        links={mixMetadata.value.links}
+                        embedId={mixMetadata.value.embedId}
+                        />
+                    </Grid>
                 </Grid>
-            </Grid>
-            <Grid
-                container
-                direction="row"
-                justify="center"
-                alignItems="center"
-            >
-                <Grid item xs={5}/>
-                <Grid item xs={2}>
-                    <Link to={{pathname: `/`}}>
-                        <img src="../../../public/media/images/Home-Icon-Rainbow.png"/> 
-                    </Link>
+                <Grid 
+                    container
+                    direction="row"
+                    justify="center"
+                    alignItems="center"
+                    spacing={0}
+                >
+                    <Grid item xs={5}/>
+                    <Grid item xs={2}>
+                        <Link to={{pathname: `/`}}>
+                            <Image src={HomeLogo} className={classes.icon} style={{left:"30%"}}/> 
+                        </Link>
+                    </Grid>
+                    <Grid item xs={5}/>
                 </Grid>
-                <Grid item xs={5}/>
-            </Grid>
-        </div>
+            </div>
+        </StyleRoot>
     );
 }
