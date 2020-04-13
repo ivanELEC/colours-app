@@ -9,7 +9,7 @@
             "colourHex":"#2a52be",
             "link":"https://soundcloud.com/axet90/cerulean",
             "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "imageUrl":"https://image.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg",
+            "imageUrl":"cerulean.jpg",
             "links":[
                 {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
                 {"name":"Soundcloud","url":"https://soundcloud.com/axet90"}
@@ -24,7 +24,7 @@
             "colourHex":"#4b0082",
             "link":"https://soundcloud.com/axet90/indigo",
             "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "imageUrl":"https://image.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg",
+            "imageUrl":"indigo.jpg",
             "links":[
                 {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
                 {"name":"Soundcloud","url":"https://soundcloud.com/axet90"}
@@ -39,7 +39,7 @@
             "colourHex":"#0047ab",
             "link":"https://soundcloud.com/axet90/cobalt",
             "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "imageUrl":"https://image.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg",
+            "imageUrl":"cobalt.jpg",
             "links":[
                 {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
                 {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
@@ -56,7 +56,7 @@
             "colourHex":"#00FFFF",
             "link":"https://soundcloud.com/axet90/cyan",
             "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "imageUrl":"https://image.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg",
+            "imageUrl":"cyan.jpg",
             "links":[
                 {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
                 {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
@@ -73,7 +73,7 @@
             "colourHex":"#7ff5ef",
             "link":"https://soundcloud.com/axet90/cloud",
             "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "imageUrl":"https://image.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg",
+            "imageUrl":"cloud.jpg",
             "links":[
                 {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
                 {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
@@ -90,7 +90,7 @@
             "colourHex":"#6a6971",
             "link":"https://soundcloud.com/axet90/opal",
             "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "imageUrl":"https://image.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg",
+            "imageUrl":"opal.jpg",
             "links":[
                 {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},
                 {"name":"Soundcloud","url":"https://soundcloud.com/axet90"},

@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Card, CardContent, CardHeader} from '@material-ui/core';
-
+import {Card, CardContent, CardHeader, CardMedia} from '@material-ui/core';
 
 /*
 This colour card component is used for the homepage of the application
@@ -42,9 +41,18 @@ const useStyles = makeStyles({
 
 export default function ColourCard(props) {
   const classes = useStyles();
+
   return (
     <Card className={classes.root}>
-      <CardHeader className={classes.header}  style={{ background: props.backgroundColour}}/>
+      {props.image?
+      (
+        <CardMedia 
+         className={classes.header}
+         image={process.env.PUBLIC_URL + `/images/mixImages/${props.image}`}
+        />
+      ):(
+        <CardHeader className={classes.header} style={{background:props.colourHex}}/>
+      )}
       <CardContent className={classes.content}>
         <div className={classes.title}>
           <p>{props.artistName}</p>

@@ -48,6 +48,7 @@ export default function Home() {
                           colourHex={mix.colourHex} 
                           date={mix.date}
                           backgroundColour={mix.colourHex}
+                          image={mix.imageUrl}
                       />
                     </Link>
                   </Grid> 
