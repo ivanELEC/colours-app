@@ -59,9 +59,9 @@ embedId: this is the unique ID for the mix that Soundcloud allocates it for embe
 
 **Note: remember to add images to this part of the documentation
 
-e.g the bolded part in the code below:
+e.g the bolded part below:
 
-<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/**852529567**&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/chromamixes" title="Chroma" target="_blank" style="color: #cccccc; text-decoration: none;">Chroma</a> · <a href="https://soundcloud.com/chromamixes/paola-laf-south-east" title="Paola Laf - South-East" target="_blank" style="color: #cccccc; text-decoration: none;">Paola Laf - South-East</a></div>
+src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/**852529567**&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true
 
 artistName: name of the artist as agreed upon by the artist in their communications to us
 
