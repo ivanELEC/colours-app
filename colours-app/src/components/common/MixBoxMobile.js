@@ -4,23 +4,24 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-import ReactPlayer from "react-player";
+import SoundcloudPlayer from './SoundcloudPlayer';
 
 const useStyles = makeStyles({
   title: {
     fontFamily:'HelveticaBold',
-    'font-size':20,
-    margin:3
+    'font-size':25,
+    margin:3,
+    maxWidth:'100%'
   },
   subtitle:{
     fontFamily:'HelveticaLight',
     'font-size':16,
-    margin:3
+    margin:3,
+    maxWidth:'100%'
   },
   content:{
     background:'#ffffff', 
-    margin:3,
-    padding:3
+    margin:3
   },
   root: {
     minWidth: 250,
@@ -41,7 +42,7 @@ export default function MixBoxMobile(props) {
             justify="flex-start"
             alignItems="flex-start"
         > 
-            <Grid item xs={6} md={3}>
+            <Grid item xs={6}>
                 <div className={classes.title}>
                     <p>{props.artistName}</p>
                 </div>
@@ -55,7 +56,7 @@ export default function MixBoxMobile(props) {
                     {props.date}
                 </div>
             </Grid>
-            <Grid item xs={6} md={9}>
+            <Grid item xs={6}>
             </Grid>
         </Grid>
          <Grid
@@ -64,27 +65,37 @@ export default function MixBoxMobile(props) {
             justify="center"
             alignItems="center"
          > 
-            <Grid item xs={12}>
-                <ReactPlayer url={props.mixUrl}/>
+            <Grid item  xs={12}
+              container
+              direction="row"
+              justify="center"
+              alignItems="center"
+            >
+              <Grid item xs={12}>
+                <SoundcloudPlayer
+                    embedId={props.embedId}
+                    colourHex={props.colourHex}
+                  />
+              </Grid>
             </Grid>
             <p></p>
-            <Grid item xs={12}
-            container
-            direction="row"
-            justify="leftAlign"
-            alignItems="leftAlign"
-            >
-            {props.links.map(link =>(
-                <Grid item xs={4} key={link}>
-                    <Link href={link.url} target="_blank" className={classes.subtitle} style={{ 'padding-left': '10px'}}>{link.name}</Link>
-                </Grid>
-            ))}
-            </Grid>
             <Grid item xs={12}>
                 <div className={classes.subtitle}>
                     {props.description}
                 </div>
             </Grid> 
+            <Grid item xs={12}
+              container
+              direction="row"
+              justify="leftAlign"
+              alignItems="leftAlign"
+            >
+            {props.links.map(link =>(
+                <Grid item xs={4} key={link}>
+                    <Link href={link.url} target="_blank" className={classes.subtitle}>{link.name}</Link>
+                </Grid>
+            ))}
+            </Grid>
         </Grid>
       </CardContent>
     </Card>

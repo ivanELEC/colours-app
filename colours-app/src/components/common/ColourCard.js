@@ -1,8 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
+import {Card, CardContent, CardHeader, CardMedia} from '@material-ui/core';
 
 /*
 This colour card component is used for the homepage of the application
@@ -16,7 +14,7 @@ date: date of mix in light
 const useStyles = makeStyles({
   title: {
     fontFamily:'HelveticaBold',
-    'font-size':20,
+    'font-size':25,
     margin:3
   },
   subtitle:{
@@ -43,9 +41,18 @@ const useStyles = makeStyles({
 
 export default function ColourCard(props) {
   const classes = useStyles();
+
   return (
     <Card className={classes.root}>
-      <CardHeader className={classes.header}  style={{ background: props.backgroundColour}}/>
+      {props.image?
+      (
+        <CardMedia 
+         className={classes.header}
+         image={props.image}
+        />
+      ):(
+        <CardHeader className={classes.header} style={{background:props.colourHex}}/>
+      )}
       <CardContent className={classes.content}>
         <div className={classes.title}>
           <p>{props.artistName}</p>

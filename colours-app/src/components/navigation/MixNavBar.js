@@ -1,43 +1,55 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Link';
-import Hidden from '@material-ui/core/Hidden';
+import {Link} from 'react-router-dom';
+import Box from '@material-ui/core/Box';
+import {Card, CardContent} from '@material-ui/core';
 var tinycolor = require("tinycolor2");
-
-const colour1 = '#06b19d';
-const colour2 = '#5306b1';
 
 const useStyles = makeStyles({
   root: {
    
+  }, 
+  paper:{
+      padding:"0px",
+      margin:"0px"
+  },
+  title: {
+    fontFamily:'HelveticaBold'
+  },
+  subtitle:{
+    fontFamily:'HelveticaLight'
   }
 }); 
 
 /*function that uses the tiny-colour library to determine whether text should be white or black
 depending on the brightness of the input colour (brightness range from 0 to 255)
-anything under 125 returns hex for white, anything 125 or over returns hex for black 
+anything under the brightness threshold returns hex for white, anything brightness threshold or over returns hex for black 
 */
 function getTextShade(colourObj){
     var colourBrightness = colourObj.getBrightness();
-    if(parseInt(colourBrightness)>124){
-        return '#000000'
+    var brightnessThreshold=165;
+    if(parseInt(colourBrightness)>brightnessThreshold){
+        return '#38383b'
     }
-    else if(parseInt(colourBrightness)<=124){
+    else if(parseInt(colourBrightness)<=brightnessThreshold){
         return '#ffffff'
     }
 }
 
-export default function MixNavBar() {
+export default function MixNavBar(props) {
     const classes = useStyles();
 
     //get text shades for navigation buttons
-    var colour1Obj = tinycolor(colour1);
-    var colour2Obj = tinycolor(colour2);
-    var colour1Shade = getTextShade(colour1Obj);
-    var colour2Shade = getTextShade(colour1Obj);
-
+    if(props.back){
+        var colour1Obj = tinycolor(props.back.colourHex);
+        var colour1TextShade = getTextShade(colour1Obj);
+    }
+    if(props.forward){
+        var colour2Obj = tinycolor(props.forward.colourHex);
+        var colour2TextShade = getTextShade(colour2Obj);
+    }
+       
     return ( 
         <Grid
             container
@@ -45,22 +57,72 @@ export default function MixNavBar() {
             justify="center"
             alignItems="center"
         >
-           <Grid item xs={4} style={{ background: colour1}}>
-                <Link to={{pathname: `/Mix/Akash-Cobalt`}} style={{ textDecoration: 'none'}}>
-                    <Box component="span" style={{ color: colour1Shade}}>
-                        <div>Colour</div>
-                        <div>Akash</div>
-                    </Box>
-                </Link>
+            <Grid item xs={5} md={3}>
+                {
+                    props.back?(
+                        <Card className={classes.root}>
+                            <CardContent className={classes.paper} height="100%" style={{paddingBottom:"0px", minHeight:"45px"}}>
+                                <Link to={{pathname: `/Mix/${props.back.id}`}} style={{ textDecoration: 'none'}}> 
+                                    <Grid item xs={12} 
+                                    container
+                                    direction="row"
+                                    justify="flex-start"
+                                    alignItems="center"
+                                    spacing={0}
+                                    >
+                                        <Grid item xs={8}>  
+                                            <div height="100%" style={{ background:props.back.colourHex, minHeight:"45px"}}>
+                                                <Box component="span" style={{color: colour1TextShade}}>
+                                                    <div style={{padding:"5px"}}>
+                                                        <div className={classes.title}>{props.back.artist}</div>
+                                                        <div className={classes.subtitle}>{props.back.colourName}</div>
+                                                    </div>
+                                                </Box>
+                                            </div>
+                                        </Grid>
+                                        <Grid item xs={4}/>
+                                    </Grid>
+                                </Link>
+                            </CardContent>   
+                        </Card>
+                    ):(
+                        <Box component="span"/>
+                    )
+                }
            </Grid>
-           <Grid item xs={4}/>
-           <Grid item xs={4} style={{ background: colour2}}>
-                <Link to={{pathname: `/Mix/Akash-Cerulean`}} style={{ textDecoration: 'none'}}>
-                    <Box component="span" style={{ color: colour2Shade}}>
-                        <div>Colour</div>
-                        <div>Akash</div>
-                    </Box> 
-                </Link>
+           <Grid item xs={2} md={6}/>
+           <Grid item xs={5} md={3}>
+                {
+                    props.forward?(
+                        <Card className={classes.root}>
+                            <CardContent className={classes.paper} height="100%" style={{paddingBottom:"0px",minHeight:"45px"}}>
+                                <Link to={{pathname: `/Mix/${props.forward.id}`}} style={{ textDecoration: 'none'}}>  
+                                    <Grid item xs={12} 
+                                    container
+                                    direction="row"
+                                    justify="flex-start"
+                                    alignItems="center"
+                                    spacing={0}
+                                    >
+                                        <Grid item xs={8}>   
+                                            <div height="100%" style={{ background:props.forward.colourHex, minHeight:"45px"}}>
+                                                <Box component="span" style={{color: colour2TextShade}}>
+                                                    <div style={{padding:"5px"}}>
+                                                        <div className={classes.title}>{props.forward.artist}</div>
+                                                        <div className={classes.subtitle}>{props.forward.colourName}</div>
+                                                    </div>
+                                                </Box> 
+                                            </div>
+                                        </Grid>
+                                        <Grid item xs={4}/>
+                                    </Grid>
+                                </Link>
+                            </CardContent>   
+                        </Card>
+                    ):(
+                        <Box component="span"/>
+                    )
+                }
            </Grid>
         </Grid>
     );
