@@ -6,7 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import mixData from '../../data/mixData.json';
 import { fadeInDown } from 'react-animations';
 import Radium, {StyleRoot} from 'radium';
-var sortJsonArray = require('sort-json-array');
+const sortJsonArray = require('sort-json-array');
+
 
 const styles = {
   fadeInDown: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
 
 
 //sort mix data by descending date
-var sortedMixData = sortJsonArray(mixData.data,'date','des');
+var sortedMixData = sortJsonArray(mixData .data,'datecode','des');
 
 
 export default function Home() {

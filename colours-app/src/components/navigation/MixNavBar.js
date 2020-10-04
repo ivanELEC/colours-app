@@ -57,7 +57,7 @@ export default function MixNavBar(props) {
             justify="center"
             alignItems="center"
         >
-            <Grid item xs={3}>
+            <Grid item xs={5} md={3}>
                 {
                     props.back?(
                         <Card className={classes.root}>
@@ -90,8 +90,8 @@ export default function MixNavBar(props) {
                     )
                 }
            </Grid>
-           <Grid item xs={6}/>
-           <Grid item xs={3}>
+           <Grid item xs={2} md={6}/>
+           <Grid item xs={5} md={3}>
                 {
                     props.forward?(
                         <Card className={classes.root}>

@@ -8,7 +8,6 @@ import mixData from '../../data/mixData.json';
 import Image from 'material-ui-image';
 import { fadeInDown } from 'react-animations';
 import Radium, {StyleRoot} from 'radium';
-
 import HomeLogo from '../../media/images/backicon.png';
 
 var sortJsonArray = require('sort-json-array');
@@ -104,7 +103,7 @@ export default function Mix() {
                     <Grid item xs={4} md={5}/>
                     <Grid item xs={2}>
                         <Link to={{pathname: `/`}}>
-                            <Image src={process.env.PUBLIC_URL + `/images/backicon.png`} className={classes.icon} style={{left:"30%"}}/> 
+                            <Image src="https://firebasestorage.googleapis.com/v0/b/colours-project.appspot.com/o/images%2Fbackicon.png?alt=media&token=ccf1bdfd-e667-4891-af5e-707a1304ae78" className={classes.icon} style={{left:"30%"}}/> 
                         </Link>
                     </Grid>
                     <Grid item xs={5}/>

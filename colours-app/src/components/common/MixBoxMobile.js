@@ -10,12 +10,14 @@ const useStyles = makeStyles({
   title: {
     fontFamily:'HelveticaBold',
     'font-size':25,
-    margin:3
+    margin:3,
+    maxWidth:'100%'
   },
   subtitle:{
     fontFamily:'HelveticaLight',
     'font-size':16,
-    margin:3
+    margin:3,
+    maxWidth:'100%'
   },
   content:{
     background:'#ffffff', 
@@ -40,7 +42,7 @@ export default function MixBoxMobile(props) {
             justify="flex-start"
             alignItems="flex-start"
         > 
-            <Grid item xs={6} md={3}>
+            <Grid item xs={6}>
                 <div className={classes.title}>
                     <p>{props.artistName}</p>
                 </div>
@@ -54,7 +56,7 @@ export default function MixBoxMobile(props) {
                     {props.date}
                 </div>
             </Grid>
-            <Grid item xs={6} md={9}>
+            <Grid item xs={6}>
             </Grid>
         </Grid>
          <Grid

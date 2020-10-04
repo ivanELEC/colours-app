@@ -48,7 +48,7 @@ export default function ColourCard(props) {
       (
         <CardMedia 
          className={classes.header}
-         image={process.env.PUBLIC_URL + `/images/mixImages/${props.image}`}
+         image={props.image}
         />
       ):(
         <CardHeader className={classes.header} style={{background:props.colourHex}}/>
