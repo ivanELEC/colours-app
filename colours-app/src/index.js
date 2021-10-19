@@ -4,7 +4,6 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import Mix from './components/pages/Mix';
-import Match from './components/pages/Match';
 import * as serviceWorker from './serviceWorker';
 import Footer from './components/navigation/Footer';
 //load fonts
@@ -16,7 +15,6 @@ const routing = (
     <Router>
       <Switch><Route exact path="/" component={App} /></Switch>
       <Switch><Route exact path="/Mix/:id" component={Mix} /></Switch>
-      <Switch><Route exact path="/Match" component={Match} /></Switch>
       <Footer/>
     </Router>
 </div>

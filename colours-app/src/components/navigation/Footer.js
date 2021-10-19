@@ -25,17 +25,6 @@ const useStyles = makeStyles({
     }
 });
 
-const MatchButton = withStyles((theme) => ({
-    root: {
-      color: "#ffffff",
-      backgroundColor: "#000000",
-      '&:hover': {
-        backgroundColor: "#676767",
-      },
-    },
-  }))(Button);
-
-
   export default function Footer(props){
     const classes = useStyles();
     return (
