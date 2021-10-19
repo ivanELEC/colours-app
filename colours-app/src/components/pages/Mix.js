@@ -8,7 +8,6 @@ import mixData from '../../data/mixData.json';
 import Image from 'material-ui-image';
 import { fadeInDown } from 'react-animations';
 import Radium, {StyleRoot} from 'radium';
-import HomeLogo from '../../media/images/backicon.png';
 
 var sortJsonArray = require('sort-json-array');
 var jsonQuery = require('json-query');
