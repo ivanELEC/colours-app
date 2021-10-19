@@ -111,9 +111,27 @@ Now go to the Chroma Mixes site and check that the site has correctly updated. I
 ## 4. In Depth Look Into Site
 Note: In Progress
 
+## 5. Admin and Development Upkeep
 
+### Branches 
+Branches are codified by <type of branch><incremental branch no>-<short description>
+The codes are as follows: 
+SC - Security/Vulnerability fix
+BG - Usability Bug Fix
+FT - Added feature
+AD - Updates related to admin and DevOps such as adding extra CI/CD tooling or updating/creating documentation
 
-## 5. Create React App Documentation
+Some examples of this would be: 
+SC01-DependencyCheck-20211020
+SC02-DependencyCheck-20211201
+FT01-Gliding-Page-Transitions
+    
+SC01 and SC02 increment because we have multiple branches of the same type - they also have dates specifically because dependency checking is a regular occurance
+
+### Dependency Vulnerabilities 
+I am currently using Dependabot to check and verify vulnerabilities, however I do not review vulnerabilities from dev dependencies, the process for auditing is to use a tool such as [NPM Graph](https://npmgraph.js.org/) to identify what packages the vulnerabilities are linked to, verify whether the packages are even needed in the project, if yes - verify whether there's a change needed or just code updating. In each case, use judgement to determine whether the effort needed to fix is worth the risk reduction
+
+## 6. Create React App Documentation
 
 ### Available Scripts
 
