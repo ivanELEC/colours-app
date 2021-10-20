@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 
 // const useStyles = makeStyles({
 
@@ -16,7 +15,7 @@ export default function SoundcloudPlayer(props) {
   console.log(srcString);
   return (
         <div>
-        <iframe id={`scplayer-${props.embedId}`}
+        <iframe title={`scplayer-${props.embedId}`} id={`scplayer-${props.embedId}`}
             width="100%" 
             height="166" 
             scrolling="no" 

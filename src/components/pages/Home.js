@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+//import { makeStyles } from '@material-ui/core/styles';
 import ColourCard from '../common/ColourCard';
 import Grid from '@material-ui/core/Grid';
 import mixData from '../../data/mixData.json';
@@ -16,11 +16,11 @@ const styles = {
   }
 };
 
-const useStyles = makeStyles({
-  root: {
+// const useStyles = makeStyles({
+//   root: {
    
-  }
-}); 
+//   }
+// }); 
 
 
 //sort mix data by descending date
@@ -28,7 +28,7 @@ var sortedMixData = sortJsonArray(mixData.data,'datecode','des');
 
 
 export default function Home() {
-  const classes = useStyles();
+ // const classes = useStyles();
   
   return (
   <StyleRoot>
