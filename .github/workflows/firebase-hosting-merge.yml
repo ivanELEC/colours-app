@@ -6,13 +6,15 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - master
+defaults:
+  run:
+    working-directory: ./colours-app
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: FirebaseExtended/action-hosting-deploy@v0
-        working-directory: ./colours-app
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COLOURS_PROJECT }}'
