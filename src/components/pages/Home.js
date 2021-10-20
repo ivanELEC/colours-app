@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 
 
 //sort mix data by descending date
-var sortedMixData = sortJsonArray(mixData .data,'datecode','des');
+var sortedMixData = sortJsonArray(mixData.data,'datecode','des');
 
 
 export default function Home() {
