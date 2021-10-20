@@ -11,7 +11,7 @@ import './fonts/HelveticaNeueCyr-Bold.ttf';
 import './fonts/HelveticaNeueCyr-Light.ttf';
 
 //for testing new deployment
-console.log("-- hello world --");
+console.log("*-- hello world --*");
 
 const routing = (
   <div>
