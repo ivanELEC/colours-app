@@ -1,12 +1,11 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
+// const useStyles = makeStyles({
 
-});
+// });
 
 export default function SoundcloudPlayer(props) {
-  const classes = useStyles();
+ // const classes = useStyles();
   /*string that stores url for mix
   colour (in hex) and mix ID are provided as props
   */
@@ -16,7 +15,7 @@ export default function SoundcloudPlayer(props) {
   console.log(srcString);
   return (
         <div>
-        <iframe 
+        <iframe title={`scplayer-${props.embedId}`} id={`scplayer-${props.embedId}`}
             width="100%" 
             height="166" 
             scrolling="no" 

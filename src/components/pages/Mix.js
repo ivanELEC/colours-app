@@ -44,7 +44,7 @@ export default function Mix() {
     //find index of current mix
     var currentMixIndex=0;
     for(let i = 0; i < sortedMixData.length; i++) {
-        if(sortedMixData[i].id==id.id){
+        if(sortedMixData[i].id === id.id){
             currentMixIndex=i;
         }
     }
