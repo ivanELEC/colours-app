@@ -11,15 +11,14 @@ const sortJsonArray = require('sort-json-array');
 
 
 
-//sort mix data by descending date
-var sortedMixData = sortJsonArray(mixData.data, 'datecode', 'des');
-
 export default function Home() {
+  //sort mix data by descending date
+  var sortedMixData = sortJsonArray(mixData.data, 'datecode', 'des');
   const useStyles = makeStyles({
     root: {
       animation: 'x 1s',
       animationName: Radium.keyframes(fadeInDown, 'fadeInDown'),
-      alignItems:"center"
+      alignItems: "center"
     }
   });
   const classes = useStyles();
