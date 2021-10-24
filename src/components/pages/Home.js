@@ -19,6 +19,12 @@ export default function Home() {
       animation: 'x 1s',
       animationName: Radium.keyframes(fadeInDown, 'fadeInDown'),
       alignItems: "center"
+    },
+    card: {
+      "&:hover": {
+        transform: "translateY(10px)",
+        transition: ".3s ease"
+      }
     }
   });
   const classes = useStyles();
@@ -36,13 +42,15 @@ export default function Home() {
           {sortedMixData.map(mix => (
             <Grid key={mix} item xs={12} sm={6} md={4} lg={3}>
               <Link to={{ pathname: `/Mix/${mix.id}` }} style={{ textDecoration: 'none' }}>
-                <PictureCard
-                  artistName={mix.artist}
-                  colourName={mix.colourName}
-                  colourHex={mix.colourHex}
-                  date={mix.date}
-                  image={mix.imageUrl}
-                />
+                <div className={classes.card}>
+                  <PictureCard
+                    artistName={mix.artist}
+                    colourName={mix.colourName}
+                    colourHex={mix.colourHex}
+                    date={mix.date}
+                    image={mix.imageUrl}
+                  />
+                </div>
               </Link>
             </Grid>
           ))}
