@@ -6,7 +6,10 @@ import Grid from '@material-ui/core/Grid';
 import mixData from '../../data/mixData.json';
 import { fadeInDown } from 'react-animations';
 import Radium, {StyleRoot} from 'radium';
+import Card from '../common/Card';
+import PictureCard from '../common/PictureCard';
 const sortJsonArray = require('sort-json-array');
+
 
 
 const styles = {
@@ -31,7 +34,11 @@ export default function Home() {
  // const classes = useStyles();
   
   return (
-  <StyleRoot>
+  <StyleRoot>  
+      <p>hello</p>
+    <PictureCard title={"Test"} image={""}>
+      This is a test
+    </PictureCard>
     <div style={styles.fadeInDown}>
       <Grid
               container
