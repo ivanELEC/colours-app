@@ -6,32 +6,35 @@ import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import SoundcloudPlayer from './SoundcloudPlayer';
 
-const useStyles = makeStyles({
-  title: {
-    fontFamily:'HelveticaBold',
-    'font-size':25,
-    margin:3,
-    maxWidth:'100%'
-  },
-  subtitle:{
-    fontFamily:'HelveticaLight',
-    'font-size':16,
-    margin:3,
-    maxWidth:'100%'
-  },
-  content:{
-    background:'#ffffff', 
-    margin:3
-  },
-  root: {
-    minWidth: 250,
-    minHeight:480,
-    padding:0, 
-    margin:25
-  }
-});
+
 
 export default function MixBoxMobile(props) {
+
+  const useStyles = makeStyles({
+    title: {
+      fontFamily:'HelveticaBold',
+      'font-size':25,
+      margin:3,
+      maxWidth:'100%'
+    },
+    subtitle:{
+      fontFamily:'HelveticaLight',
+      'font-size':16,
+      margin:3,
+      maxWidth:'100%'
+    },
+    content:{
+      background:'#ffffff', 
+      margin:3
+    },
+    root: {
+      minWidth: 250,
+      minHeight:480,
+      padding:0, 
+      margin:25
+    }
+  });
+  
   const classes = useStyles();
   return (
     <Card className={classes.root}>

@@ -11,35 +11,37 @@ artistName: Name of artist in bold
 colourName: Worded name of colour in light
 date: date of mix in light
 */
-const useStyles = makeStyles({
-  title: {
-    fontFamily:'HelveticaBold',
-    'font-size':25,
-    margin:3
-  },
-  subtitle:{
-    fontFamily:'HelveticaLight',
-    'font-size':16,
-    margin:3
-  },
-  content:{
-    background:'#ffffff', 
-    margin:3,
-    padding:3
-  },
-  header:{
-    minHeight:300
-  },
-  root: {
-    minWidth: 275,
-    minHeight:480,
-    maxWidth: 350,
-    padding:0, 
-    margin:25
-  }
-});
+
 
 export default function ColourCard(props) {
+  const useStyles = makeStyles({
+    title: {
+      fontFamily:'HelveticaBold',
+      'font-size':25,
+      margin:3
+    },
+    subtitle:{
+      fontFamily:'HelveticaLight',
+      'font-size':16,
+      margin:3
+    },
+    content:{
+      background:'#ffffff', 
+      margin:3,
+      padding:3
+    },
+    header:{
+      minHeight:300
+    },
+    root: {
+      minWidth: 275,
+      minHeight:480,
+      maxWidth: 350,
+      padding:0, 
+      margin:25
+    }
+  });
+  
   const classes = useStyles();
 
   return (
