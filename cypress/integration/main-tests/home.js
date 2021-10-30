@@ -3,7 +3,7 @@ import mixData from '../../../src/data/mixData.json';
 
 describe('open homepage', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000') 
+    cy.visit('http://localhost:3000',{ timeout: 240000 }) 
   })
 
   it('displays all mixes in mixData', () => {
