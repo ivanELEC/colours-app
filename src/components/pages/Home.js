@@ -23,6 +23,7 @@ export default function Home() {
     card: {
       "&:hover": {
         transform: "translateY(10px)",
+        "-webkit-transform": "translateY(10px)",
         transition: ".3s ease"
       }
     }
