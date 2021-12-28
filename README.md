@@ -1,5 +1,5 @@
 # colours-app
-Website for hosting the mix series concept birthed from Akash for hosting a mixes from DJs based on a particular colour. The website is a react application that primarily uses the Material UI component framework/library. 
+Website for hosting the mix series concept birthed from Akash for hosting a mixes from DJs based on a particular colour. The website is a react application that primarily uses the Material UI component framework/library
 
 # Chroma Mixes Website Documentation
 
