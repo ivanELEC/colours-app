@@ -10,10 +10,10 @@ const sortJsonArray = require('sort-json-array');
 
 export default function Home() {
   //init logger 
-  const logger = useWinstonLogger();
+  const logger = useWinstonLogger()
 
   //state hooks
-  const [mixData, setMixData] = useState(false);
+  const [mixData, setMixData] = useState(false)
   const [sortedMixData, setSortedMixData] = useState(false)
   const [dataLoaded, setDataLoaded] = useState(false)
   
@@ -25,15 +25,23 @@ export default function Home() {
       .then(res =>res.json())
       .then(data => setMixData(data))
       .catch(err => {
+        logger.error('Failed to fetch mix data', err)
         throw new Error(err)
       })
   },[]);
 
   useEffect(() => { //sort retrieved mix data in descending date
     logger.info('Sorting mix data')
-    let dataIn = sortJsonArray(mixData.data, 'datecode');
-    setSortedMixData(dataIn);
-    setDataLoaded(true);
+    try {
+      let dataIn = sortJsonArray(mixData.data, 'datecode')
+      setSortedMixData(dataIn)
+      setDataLoaded(true)
+    }
+    catch(err){
+      logger.error('Failed to sort mix data', err)
+    }
+    
+    
   },[mixData])
 
   //sort mix data by descending date
