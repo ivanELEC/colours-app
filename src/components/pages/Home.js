@@ -5,9 +5,13 @@ import Grid from '@material-ui/core/Grid';
 import { fadeInDown } from 'react-animations';
 import Radium, { StyleRoot } from 'radium';
 import PictureCard from '../common/PictureCard';
+import { useWinstonLogger } from 'winston-react';
 const sortJsonArray = require('sort-json-array');
 
 export default function Home() {
+  //init logger 
+  const logger = useWinstonLogger();
+
   //state hooks
   const [mixData, setMixData] = useState(false);
   const [sortedMixData, setSortedMixData] = useState(false)
@@ -16,6 +20,7 @@ export default function Home() {
   //effect hooks
 
   useEffect(() => { //get mix data from public folder
+    logger.info('Fetching mix data')
     fetch('http://localhost:3000/data/mixData.json')
       .then(res =>res.json())
       .then(data => setMixData(data))
@@ -25,6 +30,7 @@ export default function Home() {
   },[]);
 
   useEffect(() => { //sort retrieved mix data in descending date
+    logger.info('Sorting mix data')
     let dataIn = sortJsonArray(mixData.data, 'datecode');
     setSortedMixData(dataIn);
     setDataLoaded(true);
