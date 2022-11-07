@@ -33,7 +33,7 @@ export default function Footer(props) {
                 <Grid
                     container
                     direction="row"
-                    justify="space-between"
+                    justifyContent="space-between"
                     alignItems="center"
                 >
                     <Grid item xs={7} md={3} style={{ fontSize: '14px' }}>
@@ -44,7 +44,7 @@ export default function Footer(props) {
                     <Grid item xs={3} md={1}
                         container
                         direction="row"
-                        justify="space-between"
+                        justifyContent="space-between"
                         alignItems="center"
                     >
                         <Grid item xs={6} />

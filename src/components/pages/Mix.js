@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import MixBoxMobile from '../common/MixBoxMobile';
 import MixNavBar from '../navigation/MixNavBar';
-import mixData from '../../data/mixData.json';
 import Image from 'material-ui-image';
 import { fadeInDown } from 'react-animations';
 import Radium, { StyleRoot } from 'radium';
@@ -13,6 +12,64 @@ var sortJsonArray = require('sort-json-array');
 var jsonQuery = require('json-query');
 
 export default function Mix() {
+    //state hooks
+    const [mixData, setMixData] = useState(false);
+    const [sortedMixData, setSortedMixData] = useState(false);
+    const [mixMetadata, setMixMetadata] = useState(false);
+    const [dataLoaded, setDataLoaded] = useState(false);
+    const [currentMixIndex, setCurrentMixIndex] = useState(0);
+    const [previousMixData, setPreviousMixData] = useState(false);
+    const [nextMixData, setNextMixData] = useState(false);
+
+    //url param
+    const { id } = useParams();
+
+    
+    //effect hooks
+    useEffect(() => { //get mix data from public folder
+        fetch('http://localhost:3000/data/mixData.json')
+        .then(res => res.json())
+        .then(data => setMixData(data))
+        .catch(err => {
+            throw new Error(err)
+        })
+    },[]);
+
+    useEffect(() => {
+        //sort retrieved mix data in descending date
+        let sortedMixData = sortJsonArray(mixData.data, 'date');
+        setSortedMixData(sortedMixData);
+        //get metadata of current mix
+        let dataIn = jsonQuery('data[id=' + id.id + ']',
+        {
+            data: mixData.data
+        });
+        setMixMetadata(dataIn);
+    },[mixData])
+
+    useEffect(() => {
+        console.log(mixMetadata)
+    },[mixMetadata]);
+
+    useEffect(() => {
+        //find index of current mix
+        for (let i = 0; i < sortedMixData.length; i++) {
+            if (sortedMixData[i].id === id.id) {
+                setCurrentMixIndex(i);
+            }
+        }
+    },[sortedMixData])
+
+    useEffect(() => {
+        //use retrieveElementMix to return variables for previous and next mix (null if they don't exist)
+        let previousMix = retrieveElementMix(currentMixIndex - 1, sortedMixData)
+        let nextMix = retrieveElementMix(currentMixIndex + 1, sortedMixData)
+        setPreviousMixData(previousMix);
+        setNextMixData(nextMix);
+        setDataLoaded(true);
+    }, [currentMixIndex])
+
+
     const styles = {
         fadeInDown: {
             animation: 'x 1s',
@@ -31,25 +88,10 @@ export default function Mix() {
     });
     const classes = useStyles();
 
-    //extract mix data from JSON with URL parameters
-    let id = useParams();
-    const mixMetadata = jsonQuery('data[id=' + id.id + ']',
-        {
-            data: mixData
-        });
-
-    //sort mixes by date and extract previous and next mix
-    const sortedMixData = sortJsonArray(mixData.data, 'date');
-    //find index of current mix
-    var currentMixIndex = 0;
-    for (let i = 0; i < sortedMixData.length; i++) {
-        if (sortedMixData[i].id === id.id) {
-            currentMixIndex = i;
-        }
-    }
+    //functions
     /*function which returns contents of array element if it exists and null if it doesn't
-     function returns null for negative array index numbers also  
-   */
+        function returns null for negative array index numbers also  
+    */
     function retrieveElementMix(index, data) {
         if (index < 0) {
             return null;
@@ -61,11 +103,10 @@ export default function Mix() {
             return null;
         }
     }
-    //use retrieveElementMix to return variables for previous and next mix (null if they don't exist)
-    var previousMixData = retrieveElementMix(currentMixIndex - 1, sortedMixData)
-    var nextMixData = retrieveElementMix(currentMixIndex + 1, sortedMixData)
 
     return (
+        <div>
+        {dataLoaded?
         <StyleRoot>
             <div style={styles.fadeInDown}>
                 <MixNavBar
@@ -75,7 +116,7 @@ export default function Mix() {
                 <Grid
                     container
                     direction="row"
-                    justify="center"
+                    justifyContent="center"
                     alignItems="center"
                 >
                     <Grid item md={6} xs={12}>
@@ -94,7 +135,7 @@ export default function Mix() {
                 <Grid
                     container
                     direction="row"
-                    justify="center"
+                    justifyContent="center"
                     alignItems="center"
                     spacing={0}
                 >
@@ -107,6 +148,9 @@ export default function Mix() {
                     <Grid item xs={5} />
                 </Grid>
             </div>
-        </StyleRoot>
+        </StyleRoot>:
+        <div></div>
+        }
+        </div>
     );
 }

@@ -55,7 +55,7 @@ export default function MixNavBar(props) {
         <Grid
             container
             direction="row"
-            justify="center"
+            justifyContent="center"
             alignItems="center"
         >
             <Grid item xs={5} md={3}>
@@ -67,7 +67,7 @@ export default function MixNavBar(props) {
                                     <Grid item xs={12}
                                         container
                                         direction="row"
-                                        justify="flex-start"
+                                        justifyContent="flex-start"
                                         alignItems="center"
                                         spacing={0}
                                     >
@@ -101,7 +101,7 @@ export default function MixNavBar(props) {
                                     <Grid item xs={12}
                                         container
                                         direction="row"
-                                        justify="flex-start"
+                                        justifyContent="flex-start"
                                         alignItems="center"
                                         spacing={0}
                                     >

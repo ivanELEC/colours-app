@@ -1,19 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import mixData from '../../data/mixData.json';
 import { fadeInDown } from 'react-animations';
 import Radium, { StyleRoot } from 'radium';
 import PictureCard from '../common/PictureCard';
 const sortJsonArray = require('sort-json-array');
 
-
-
-
 export default function Home() {
+  //state hooks
+  const [mixData, setMixData] = useState(false);
+  const [sortedMixData, setSortedMixData] = useState(false)
+  const [dataLoaded, setDataLoaded] = useState(false)
+  
+  //effect hooks
+
+  useEffect(() => { //get mix data from public folder
+    fetch('http://localhost:3000/data/mixData.json')
+      .then(res =>res.json())
+      .then(data => setMixData(data))
+      .catch(err => {
+        throw new Error(err)
+      })
+  },[]);
+
+  useEffect(() => { //sort retrieved mix data in descending date
+    let dataIn = sortJsonArray(mixData.data, 'datecode');
+    setSortedMixData(dataIn);
+    setDataLoaded(true);
+  },[mixData])
+
   //sort mix data by descending date
-  var sortedMixData = sortJsonArray(mixData.data, 'datecode', 'des');
   const useStyles = makeStyles({
     root: {
       animation: 'x 1s',
@@ -31,33 +48,39 @@ export default function Home() {
   const classes = useStyles();
 
   return (
-    <StyleRoot>
-      <div className={classes.root}>
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-          spacing={0}
-          id="chroma-mix-grid"
-        >
-          {sortedMixData.map(mix => (
-            <Grid key={mix} item xs={12} sm={6} md={4} lg={3}>
-              <Link to={{ pathname: `/Mix/${mix.id}` }} style={{ textDecoration: 'none' }}>
-                <div id={`chroma-mix-item-${mix.id}`} className={classes.card}>
-                  <PictureCard
-                    artistName={mix.artist}
-                    colourName={mix.colourName}
-                    colourHex={mix.colourHex}
-                    date={mix.date}
-                    image={mix.imageUrl}
-                  />
-                </div>
-              </Link>
-            </Grid>
-          ))}
-        </Grid>
-      </div>
-    </StyleRoot>
+    <div>
+    {dataLoaded ?
+      <StyleRoot>
+        <div className={classes.root}>
+          <Grid
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+            spacing={0}
+            id="chroma-mix-grid"
+          >
+            {sortedMixData.map(mix => (
+              <Grid key={mix} item xs={12} sm={6} md={4} lg={3}>
+                <Link to={{ pathname: `/Mix/${mix.id}` }} style={{ textDecoration: 'none' }}>
+                  <div id={`chroma-mix-item-${mix.id}`} className={classes.card}>
+                    <PictureCard
+                      artistName={mix.artist}
+                      colourName={mix.colourName}
+                      colourHex={mix.colourHex}
+                      date={mix.date}
+                      image={mix.imageUrl}
+                    />
+                  </div>
+                </Link>
+              </Grid>
+            ))}
+          </Grid>
+        </div>
+      </StyleRoot>
+    :
+    <div></div>
+    }
+  </div>
   );
 }

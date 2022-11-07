@@ -42,7 +42,7 @@ export default function MixBoxMobile(props) {
       <Grid
             container
             direction="column"
-            justify="flex-start"
+            justifyContent="flex-start"
             alignItems="flex-start"
         > 
             <Grid item xs={6}>
@@ -65,13 +65,13 @@ export default function MixBoxMobile(props) {
          <Grid
             container
             direction="column"
-            justify="center"
+            justifyContent="center"
             alignItems="center"
          > 
             <Grid item  xs={12}
               container
               direction="row"
-              justify="center"
+              justifyContent="center"
               alignItems="center"
             >
               <Grid item xs={12}>
@@ -90,7 +90,7 @@ export default function MixBoxMobile(props) {
             <Grid item xs={12}
               container
               direction="row"
-              justify="leftAlign"
+              justifyContent="leftAlign"
               alignItems="leftAlign"
             >
             {props.links.map(link =>(
