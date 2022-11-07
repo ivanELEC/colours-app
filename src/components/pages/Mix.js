@@ -27,7 +27,7 @@ export default function Mix() {
     
     //effect hooks
     useEffect(() => { //get mix data from public folder
-        log.info('Fetching mix data')
+        logger.info('Fetching mix data')
         fetch('http://localhost:3000/data/mixData.json')
         .then(res => res.json())
         .then(data => setMixData(data))
@@ -56,7 +56,7 @@ export default function Mix() {
     },[mixData])
 
     useEffect(() => {
-        console.log(mixMetadata)
+        logger.info('loaded mix data',mixMetadata)
     },[mixMetadata]);
 
     useEffect(() => {
