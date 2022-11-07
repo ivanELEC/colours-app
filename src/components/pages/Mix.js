@@ -27,24 +27,32 @@ export default function Mix() {
     
     //effect hooks
     useEffect(() => { //get mix data from public folder
+        log.info('Fetching mix data')
         fetch('http://localhost:3000/data/mixData.json')
         .then(res => res.json())
         .then(data => setMixData(data))
         .catch(err => {
+            logger.error('Failed to fetch mix data', err)
             throw new Error(err)
         })
     },[]);
 
     useEffect(() => {
-        //sort retrieved mix data in descending date
-        let sortedMixData = sortJsonArray(mixData.data, 'date');
-        setSortedMixData(sortedMixData);
-        //get metadata of current mix
-        let dataIn = jsonQuery('data[id=' + id.id + ']',
-        {
-            data: mixData.data
-        });
-        setMixMetadata(dataIn);
+        logger.info('Sorting mix data')
+        try{
+            //sort retrieved mix data in descending date
+            let sortedMixData = sortJsonArray(mixData.data, 'date');
+            setSortedMixData(sortedMixData);
+            //get metadata of current mix
+            let dataIn = jsonQuery('data[id=' + id.id + ']',
+            {
+                data: mixData.data
+            });
+            setMixMetadata(dataIn);
+        }
+        catch(err){
+            logger.error('Failed to sort mix data', err)
+        }
     },[mixData])
 
     useEffect(() => {

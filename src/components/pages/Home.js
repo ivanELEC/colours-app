@@ -40,8 +40,6 @@ export default function Home() {
     catch(err){
       logger.error('Failed to sort mix data', err)
     }
-    
-    
   },[mixData])
 
   //sort mix data by descending date
