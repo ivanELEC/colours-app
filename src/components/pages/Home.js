@@ -73,7 +73,7 @@ export default function Home() {
             id="chroma-mix-grid"
           >
             {sortedMixData.map(mix => (
-              <Grid key={mix} item xs={12} sm={6} md={4} lg={3}>
+              <Grid key={mix.id} item xs={12} sm={6} md={4} lg={3}>
                 <Link to={{ pathname: `/Mix/${mix.id}` }} style={{ textDecoration: 'none' }}>
                   <div id={`chroma-mix-item-${mix.id}`} className={classes.card}>
                     <PictureCard
