@@ -31,14 +31,13 @@ export default function Mix() {
         .then(data => {
             //sort retrieved mix data in descending date
             let sortedMixData = sortJsonArray(data.data, 'date')
-
             //get metadata of current mix
             let dataIn = jsonQuery('data[id=' + id.id + ']',
             {
                 data: data.data
             });
             let mixMetadata = dataIn;
-            
+
             //find index of current mix
             for (let i = 0; i < sortedMixData.length; i++) {
                if (sortedMixData[i].id === id.id) {
