@@ -9,16 +9,16 @@ import { fadeInDown } from 'react-animations';
 import Radium, { StyleRoot } from 'radium';
 
 var sortJsonArray = require('sort-json-array');
-var jsonQuery = require('json-query');
 
 export default function Mix() {
+    
     //state hooks
     const [mixStates, setMixStates] = useState({
         mixMetadata: null,
-        previousMixData: null, 
-        nextMixData: null
+        nextMix: null, 
+        previousMix: null,
+        loaded: null
     });
-    const [dataLoaded, setDataLoaded] = useState(null);
 
     //get url param
     const { id } = useParams();
@@ -29,18 +29,18 @@ export default function Mix() {
         fetch('http://localhost:3000/data/mixData.json')
         .then(res => res.json())
         .then(data => {
+            //select current mix from array
+            let mixArray = data.data
+            let mixMetadata = mixArray.filter((mix) => {
+                return mix.id == id
+            })[0]
+
             //sort retrieved mix data in descending date
             let sortedMixData = sortJsonArray(data.data, 'date')
-            //get metadata of current mix
-            let dataIn = jsonQuery('data[id=' + id.id + ']',
-            {
-                data: data.data
-            });
-            let mixMetadata = dataIn;
 
             //find index of current mix
             for (let i = 0; i < sortedMixData.length; i++) {
-               if (sortedMixData[i].id === id.id) {
+               if (sortedMixData[i].id === id) {
                    var currentMixIndex = i
                }
             }
@@ -48,24 +48,18 @@ export default function Mix() {
             //use retrieveElementMix to return variables for previous and next mix (null if they don't exist)
             let previousMix = retrieveElementMix(currentMixIndex - 1, sortedMixData)
             let nextMix = retrieveElementMix(currentMixIndex + 1, sortedMixData)
-            console.log(nextMix)
-            //indicate data has loaded so that page elements can load
+            
+           //set states for dynamic elements and indicate page elements should be loaded
             setMixStates({
                 mixMetadata: mixMetadata, 
                 previousMixData: previousMix, 
-                nextMixData: nextMix
+                nextMixData: nextMix,
+                loaded: true
             })
         }).catch(err => {
             throw new Error(err)
         })
-    },[]);
-
-    useEffect(()=>{
-        console.log(mixStates)
-        if(mixStates.mixMetaData){
-            setDataLoaded(true)
-        }
-    }, [mixStates])
+    },[])
 
     //styles
     const styles = {
@@ -105,7 +99,7 @@ export default function Mix() {
 
     return (
         <div>
-        {dataLoaded?
+        {mixStates.loaded?
         <StyleRoot>
             <div style={styles.fadeInDown}>
                 <MixNavBar
@@ -120,14 +114,14 @@ export default function Mix() {
                 >
                     <Grid item md={6} xs={12}>
                         <MixBoxMobile
-                            artistName={mixStates.mixMetadata.value.artist}
-                            colourName={mixStates.mixMetadata.value.colourName}
-                            colourHex={mixStates.mixMetadata.value.colourHex}
-                            date={mixStates.mixMetadata.value.date}
-                            description={mixStates.mixMetadata.value.description}
-                            mixUrl={mixStates.mixMetadata.value.link}
-                            links={mixStates.mixMetadata.value.links}
-                            embedId={mixStates.mixMetadata.value.embedId}
+                            artistName={mixStates.mixMetadata.artist}
+                            colourName={mixStates.mixMetadata.colourName}
+                            colourHex={mixStates.mixMetadata.colourHex}
+                            date={mixStates.mixMetadata.date}
+                            description={mixStates.mixMetadata.description}
+                            mixUrl={mixStates.mixMetadata.link}
+                            links={mixStates.mixMetadata.links}
+                            embedId={mixStates.mixMetadata.embedId}
                         />
                     </Grid>
                 </Grid>
