@@ -9,9 +9,6 @@ import Footer from './components/navigation/Footer';
 import './fonts/HelveticaNeueCyr-Bold.ttf';
 import './fonts/HelveticaNeueCyr-Light.ttf';
 
-//for testing new deployment
-console.log("**-- hello world --**");
-
 const routing = (
   <div>
     <Router>
