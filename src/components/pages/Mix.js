@@ -22,9 +22,7 @@ export default function Mix() {
 
     //get url param
     const { id } = useParams();
-
-    
-    //effect hooks
+ 
     useEffect(() => { //get mix data from public folder
         fetch('http://localhost:3000/data/mixData.json')
         .then(res => res.json())
@@ -49,7 +47,7 @@ export default function Mix() {
             var previousMix = retrieveElementMix(currentMixIndex - 1, sortedMixData)
             var nextMix = retrieveElementMix(currentMixIndex + 1, sortedMixData)
            
-           //set states for dynamic elements and indicate page elements should be loaded
+            //set states for dynamic elements and indicate page elements should be loaded
             setMixStates({
                 mixMetadata: mixMetadata, 
                 previousMixData: previousMix, 
@@ -59,11 +57,9 @@ export default function Mix() {
         }).catch(err => {
             throw new Error(err)
         })
-    },[])
+    },[id])
 
     useEffect(() => {
-        console.log("Next Mix", mixStates.nextMix);
-        console.log("Previous Mix", mixStates.previousMix);
         console.log("Mix Metadata", mixStates.mixMetadata);
     },[mixStates])
 
