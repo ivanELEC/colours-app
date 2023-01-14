@@ -46,9 +46,9 @@ export default function Mix() {
             }
             
             //use retrieveElementMix to return variables for previous and next mix (null if they don't exist)
-            let previousMix = retrieveElementMix(currentMixIndex - 1, sortedMixData)
-            let nextMix = retrieveElementMix(currentMixIndex + 1, sortedMixData)
-            
+            var previousMix = retrieveElementMix(currentMixIndex - 1, sortedMixData)
+            var nextMix = retrieveElementMix(currentMixIndex + 1, sortedMixData)
+           
            //set states for dynamic elements and indicate page elements should be loaded
             setMixStates({
                 mixMetadata: mixMetadata, 
@@ -60,6 +60,12 @@ export default function Mix() {
             throw new Error(err)
         })
     },[])
+
+    useEffect(() => {
+        console.log("Next Mix", mixStates.nextMix);
+        console.log("Previous Mix", mixStates.previousMix);
+        console.log("Mix Metadata", mixStates.mixMetadata);
+    },[mixStates])
 
     //styles
     const styles = {
@@ -103,8 +109,8 @@ export default function Mix() {
         <StyleRoot>
             <div style={styles.fadeInDown}>
                 <MixNavBar
-                    back={mixStates.previousMix}
-                    forward={mixStates.nextMix}
+                    back={mixStates.previousMixData}
+                    forward={mixStates.nextMixData}
                 />
                 <Grid
                     container
