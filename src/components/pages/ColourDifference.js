@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Grid, TextField, Button}  from '@material-ui/core';
+import {Grid, TextField, Button, Typography}  from '@material-ui/core';
 import ColourCard from '../common/ColourCard';
 var cd = require('color-difference');
 
@@ -9,12 +9,13 @@ export default function ColourDifference() {
   //state hooks
   const [colour1, setColour1] = useState("ffffff")
   const [colour2, setColour2] = useState("000000")
+  const [diffVal, setDiffVal] = useState(null)
   
   //effect hooks
 
   const useStyles = makeStyles({
     root: {
-      
+      padding:25
     }
   });
 
@@ -36,6 +37,11 @@ export default function ColourDifference() {
 			setColour2(inputElement.value);
 		}
 	}
+  }
+
+  const calculateDiff = () => { //calculate the difference between the 2 colours
+	let diff = cd.compare(colour1, colour2);
+	setDiffVal(diff)
   }
 
 
@@ -96,8 +102,19 @@ export default function ColourDifference() {
 					</Grid>
 				</Grid>
 			</Grid>
-			<Grid item>
-				<Button id="calc-difference-btn" variant="contained">Calculate</Button>
+			<Grid 
+				container
+				item
+				direction="row"
+			>
+				<Grid item xs={6} sm={4}>
+					<Button id="calc-difference-btn" variant="contained" onClick={calculateDiff}>Calculate</Button>
+				</Grid>
+				<Grid item xs={6} sm={4}>
+					<Typography variant="h4">
+						Difference: {diffVal}
+					</Typography>
+				</Grid>
 			</Grid>
 		</Grid>
   </div>
