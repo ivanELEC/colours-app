@@ -1,4 +1,5 @@
 //utils to handle functions for colour comparison and grouping
+var cd = require('color-difference');
 
 export function getAllocatedColours(mixData){//flatten and output a list of colours present in mixData
 	let data = mixData.data
@@ -8,4 +9,8 @@ export function getAllocatedColours(mixData){//flatten and output a list of colo
 		return code
 	})
 	return colours
+}
+
+export function getSimilarColours(maxDifference=1, maxColours){//returns a list of colours 
+	
 }
