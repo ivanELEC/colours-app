@@ -4,60 +4,60 @@ import Grid from "@material-ui/core/Grid"
 import SendIcon from "@material-ui/icons/Send"
 
 export default function Footer(props) {
-	const useStyles = makeStyles({
-		style: {
-			backgroundColor: "#F8F8F8",
-			borderTop: "1px solid #E7E7E7",
-			textAlign: "left",
-			position: "fixed",
-			left: "0",
-			bottom: "0",
-			maxHeight: "30px",
-			width: "100%",
-			padding: "5px"
-		},
-		phantom: {
-			display: "block",
-			maxHeight: "30px",
-			width: "100%",
-			padding: "5px"
-		}
-	})
+    const useStyles = makeStyles({
+        style: {
+            backgroundColor: "#F8F8F8",
+            borderTop: "1px solid #E7E7E7",
+            textAlign: "left",
+            position: "fixed",
+            left: "0",
+            bottom: "0",
+            maxHeight: "30px",
+            width: "100%",
+            padding: "5px"
+        },
+        phantom: {
+            display: "block",
+            maxHeight: "30px",
+            width: "100%",
+            padding: "5px"
+        }
+    })
 
-    const classes = useStyles()
+	const classes = useStyles()
 
 	return (
-		<div>
-			<div className={classes.phantom} />
-			<div className={classes.style}>
-				<Grid container direction="row" justifyContent="space-between" alignItems="center">
-					<Grid item xs={7} md={3} style={{ fontSize: "14px" }}>
-						<div style={{ fontFamily: "HelveticaBold" }}>Chroma</div>{" "}
-						<div style={{ fontFamily: "HelveticaLight" }}>
+        <div>
+            <div className={classes.phantom} />
+            <div className={classes.style}>
+                <Grid container direction="row" justifyContent="space-between" alignItems="center">
+                    <Grid item xs={7} md={3} style={{ fontSize: "14px" }}>
+                        <div style={{ fontFamily: "HelveticaBold" }}>Chroma</div>{" "}
+                        <div style={{ fontFamily: "HelveticaLight" }}>
                             Akash Chohan + Ivan Yohuno, Est. 2020
-						</div>
-					</Grid>
-					<Grid item xs={2} md={8}></Grid>
-					<Grid
-						item
-						xs={3}
-						md={1}
-						container
-						direction="row"
-						justifyContent="space-between"
-						alignItems="center">
-						<Grid item xs={6} />
-						<Grid item xs={6}>
-							<a
-								style={{ color: "#000000", maxHeight: "70px" }}
-								href="mailto:chromamixes@gmail.com"
-								target="_top">
-								<SendIcon />
-							</a>
-						</Grid>
-					</Grid>
-				</Grid>
-			</div>
-		</div>
-	)
+                        </div>
+                    </Grid>
+                    <Grid item xs={2} md={8}></Grid>
+                    <Grid
+                        item
+                        xs={3}
+                        md={1}
+                        container
+                        direction="row"
+                        justifyContent="space-between"
+                        alignItems="center">
+                        <Grid item xs={6} />
+                        <Grid item xs={6}>
+                            <a
+                                style={{ color: "#000000", maxHeight: "70px" }}
+                                href="mailto:chromamixes@gmail.com"
+                                target="_top">
+                                <SendIcon />
+                            </a>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </div>
+        </div>
+    )
 }
