@@ -19,11 +19,11 @@ export default function Mix() {
       loaded: null
    })
 
-   //get url param
-   const { id } = useParams()
+	//get url param
+	const { id } = useParams()
 
-   useEffect(() => {
-		//get mix data from public folder
+	useEffect(() => {
+      //get mix data from public folder
       fetch("http://localhost:3000/data/mixData.json")
          .then((res) => res.json())
          .then((data) => {
@@ -33,25 +33,25 @@ export default function Mix() {
                return mix.id == id
             })[0]
 
-            //sort retrieved mix data in descending date
-            let sortedMixData = sortJsonArray(data.data, "date")
+				//sort retrieved mix data in descending date
+				let sortedMixData = sortJsonArray(data.data, "date")
 
-            //find index of current mix
-				for (let i = 0; i < sortedMixData.length; i++) {
+				//find index of current mix
+            for (let i = 0; i < sortedMixData.length; i++) {
                if (sortedMixData[i].id === id) {
                   var currentMixIndex = i
                }
             }
 
-            //use retrieveElementMix to return variables for previous and next mix (null if they don't exist)
-            var previousMix = retrieveElementMix(currentMixIndex - 1, sortedMixData)
-            var nextMix = retrieveElementMix(currentMixIndex + 1, sortedMixData)
+				//use retrieveElementMix to return variables for previous and next mix (null if they don't exist)
+				var previousMix = retrieveElementMix(currentMixIndex - 1, sortedMixData)
+				var nextMix = retrieveElementMix(currentMixIndex + 1, sortedMixData)
 
-            //set states for dynamic elements and indicate page elements should be loaded
-            setMixStates({
-               mixMetadata: mixMetadata,
-               previousMixData: previousMix,
-               nextMixData: nextMix,
+				//set states for dynamic elements and indicate page elements should be loaded
+				setMixStates({
+					mixMetadata: mixMetadata,
+					previousMixData: previousMix,
+					nextMixData: nextMix,
                loaded: true
             })
          })
@@ -60,30 +60,30 @@ export default function Mix() {
          })
    }, [id])
 
-   useEffect(() => {
-      console.log("Mix Metadata", mixStates.mixMetadata)
-   }, [mixStates])
+	useEffect(() => {
+		console.log("Mix Metadata", mixStates.mixMetadata)
+	}, [mixStates])
 
-   //styles
-   const styles = {
-      fadeInDown: {
-         animation: "x 1s",
-         animationName: Radium.keyframes(fadeInDown, "fadeInDown")
+	//styles
+	const styles = {
+		fadeInDown: {
+			animation: "x 1s",
+			animationName: Radium.keyframes(fadeInDown, "fadeInDown")
       }
    }
 
-   const useStyles = makeStyles({
-      root: {},
-      icon: {
-         maxHeight: 75,
-         maxWidth: 75
+	const useStyles = makeStyles({
+		root: {},
+		icon: {
+			maxHeight: 75,
+			maxWidth: 75
       }
    })
 
-   const classes = useStyles()
+	const classes = useStyles()
 
-   //functions
-	/*function which returns contents of array element if it exists and null if it doesn't
+	//functions
+   /*function which returns contents of array element if it exists and null if it doesn't
         function returns null for negative array index numbers also  
     */
    function retrieveElementMix(index, data) {
@@ -96,11 +96,11 @@ export default function Mix() {
       }
    }
 
-   return (
-      <div>
-         {mixStates.loaded ? (
-            <StyleRoot>
-               <div style={styles.fadeInDown}>
+	return (
+		<div>
+			{mixStates.loaded ? (
+				<StyleRoot>
+					<div style={styles.fadeInDown}>
                   <MixNavBar back={mixStates.previousMixData} forward={mixStates.nextMixData} />
                   <Grid container direction="row" justifyContent="center" alignItems="center">
                      <Grid item md={6} xs={12}>
