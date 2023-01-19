@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { makeStyles } from "@material-ui/core/styles"
 import { Card, CardContent, CardHeader, CardMedia } from "@material-ui/core"
 
@@ -17,28 +18,28 @@ export default function ColourCard(props) {
 		title: {
 			fontFamily: "HelveticaBold",
 			"font-size": 25,
-			margin: 3
+			margin: 3,
 		},
 		subtitle: {
 			fontFamily: "HelveticaLight",
 			"font-size": 16,
-			margin: 3
+			margin: 3,
 		},
 		content: {
 			background: "#ffffff",
 			margin: 3,
-			padding: 3
+			padding: 3,
 		},
 		header: {
-			minHeight: 300
+			minHeight: 300,
 		},
 		root: {
 			minWidth: 275,
 			minHeight: 480,
 			maxWidth: 350,
 			padding: 0,
-			margin: 25
-		}
+			margin: 25,
+		},
 	})
 
 	const classes = useStyles()
@@ -48,7 +49,10 @@ export default function ColourCard(props) {
 			{props.image ? (
 				<CardMedia className={classes.header} image={props.image} />
 			) : (
-				<CardHeader className={classes.header} style={{ background: props.colourHex }} />
+				<CardHeader
+					className={classes.header}
+					style={{ background: props.colourHex }}
+				/>
 			)}
 			<CardContent className={classes.content}>
 				<div className={classes.title}>
@@ -60,4 +64,12 @@ export default function ColourCard(props) {
 			</CardContent>
 		</Card>
 	)
+}
+
+ColourCard.propTypes = {
+	image: PropTypes.string,
+	colourHex: PropTypes.string,
+	colourName: PropTypes.string,
+	artistName: PropTypes.string,
+	date: PropTypes.string,
 }

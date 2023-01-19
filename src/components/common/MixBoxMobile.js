@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { makeStyles } from "@material-ui/core/styles"
 import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
@@ -12,24 +13,24 @@ export default function MixBoxMobile(props) {
 			fontFamily: "HelveticaBold",
 			"font-size": 25,
 			margin: 3,
-			maxWidth: "100%"
+			maxWidth: "100%",
 		},
 		subtitle: {
 			fontFamily: "HelveticaLight",
 			"font-size": 16,
 			margin: 3,
-			maxWidth: "100%"
+			maxWidth: "100%",
 		},
 		content: {
 			background: "#ffffff",
-			margin: 3
+			margin: 3,
 		},
 		root: {
 			minWidth: 250,
 			minHeight: 480,
 			padding: 0,
-			margin: 25
-		}
+			margin: 25,
+		},
 	})
 
 	const classes = useStyles()
@@ -40,7 +41,8 @@ export default function MixBoxMobile(props) {
 					container
 					direction="column"
 					justifyContent="flex-start"
-					alignItems="flex-start">
+					alignItems="flex-start"
+				>
 					<Grid item xs={6}>
 						<div className={classes.title}>
 							<p>{props.artistName}</p>
@@ -51,16 +53,25 @@ export default function MixBoxMobile(props) {
 					</Grid>
 					<Grid item xs={6}></Grid>
 				</Grid>
-				<Grid container direction="column" justifyContent="center" alignItems="center">
+				<Grid
+					container
+					direction="column"
+					justifyContent="center"
+					alignItems="center"
+				>
 					<Grid
 						item
 						xs={12}
 						container
 						direction="row"
 						justifyContent="center"
-						alignItems="center">
+						alignItems="center"
+					>
 						<Grid item xs={12}>
-							<SoundcloudPlayer embedId={props.embedId} colourHex={props.colourHex} />
+							<SoundcloudPlayer
+								embedId={props.embedId}
+								colourHex={props.colourHex}
+							/>
 						</Grid>
 					</Grid>
 					<p></p>
@@ -73,10 +84,15 @@ export default function MixBoxMobile(props) {
 						container
 						direction="row"
 						justifyContent="leftAlign"
-						alignItems="leftAlign">
+						alignItems="leftAlign"
+					>
 						{props.links.map((link) => (
 							<Grid item xs={4} key={link}>
-								<Link href={link.url} target="_blank" className={classes.subtitle}>
+								<Link
+									href={link.url}
+									target="_blank"
+									className={classes.subtitle}
+								>
 									{link.name}
 								</Link>
 							</Grid>
@@ -86,4 +102,14 @@ export default function MixBoxMobile(props) {
 			</CardContent>
 		</Card>
 	)
+}
+
+MixBoxMobile.propTypes = {
+	embedId: PropTypes.string,
+	colourHex: PropTypes.string,
+	colourName: PropTypes.string,
+	artistName: PropTypes.string,
+	date: PropTypes.string,
+	links: PropTypes.array,
+	description: PropTypes.string,
 }

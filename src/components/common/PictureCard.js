@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import Card from "./Card"
 import { makeStyles } from "@material-ui/core/styles"
 
@@ -77,4 +78,12 @@ export default function PictureCard(props) {
 			</Card>
 		</div>
 	)
+}
+
+PictureCard.propTypes = {
+	image: PropTypes.string,
+	colourHex: PropTypes.string,
+	colourName: PropTypes.string,
+	artistName: PropTypes.string,
+	date: PropTypes.string,
 }

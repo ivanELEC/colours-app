@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import SendIcon from "@material-ui/icons/Send"
 
-export default function Footer(props) {
+export default function Footer() {
 	const useStyles = makeStyles({
 		style: {
 			backgroundColor: "#F8F8F8",
@@ -14,14 +14,14 @@ export default function Footer(props) {
 			bottom: "0",
 			maxHeight: "30px",
 			width: "100%",
-			padding: "5px"
+			padding: "5px",
 		},
 		phantom: {
 			display: "block",
 			maxHeight: "30px",
 			width: "100%",
-			padding: "5px"
-		}
+			padding: "5px",
+		},
 	})
 
 	const classes = useStyles()
@@ -30,11 +30,16 @@ export default function Footer(props) {
 		<div>
 			<div className={classes.phantom} />
 			<div className={classes.style}>
-				<Grid container direction="row" justifyContent="space-between" alignItems="center">
+				<Grid
+					container
+					direction="row"
+					justifyContent="space-between"
+					alignItems="center"
+				>
 					<Grid item xs={7} md={3} style={{ fontSize: "14px" }}>
 						<div style={{ fontFamily: "HelveticaBold" }}>Chroma</div>{" "}
 						<div style={{ fontFamily: "HelveticaLight" }}>
-                            Akash Chohan + Ivan Yohuno, Est. 2020
+							Akash Chohan + Ivan Yohuno, Est. 2020
 						</div>
 					</Grid>
 					<Grid item xs={2} md={8}></Grid>
@@ -45,13 +50,15 @@ export default function Footer(props) {
 						container
 						direction="row"
 						justifyContent="space-between"
-						alignItems="center">
+						alignItems="center"
+					>
 						<Grid item xs={6} />
 						<Grid item xs={6}>
 							<a
 								style={{ color: "#000000", maxHeight: "70px" }}
 								href="mailto:chromamixes@gmail.com"
-								target="_top">
+								target="_top"
+							>
 								<SendIcon />
 							</a>
 						</Grid>

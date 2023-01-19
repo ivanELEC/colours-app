@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { Link } from "react-router-dom"
@@ -25,14 +26,14 @@ export default function MixNavBar(props) {
 		root: {},
 		paper: {
 			padding: "0px",
-			margin: "0px"
+			margin: "0px",
 		},
 		title: {
-			fontFamily: "HelveticaBold"
+			fontFamily: "HelveticaBold",
 		},
 		subtitle: {
-			fontFamily: "HelveticaLight"
-		}
+			fontFamily: "HelveticaLight",
+		},
 	})
 
 	const classes = useStyles()
@@ -55,10 +56,12 @@ export default function MixNavBar(props) {
 						<CardContent
 							className={classes.paper}
 							height="100%"
-							style={{ paddingBottom: "0px", minHeight: "45px" }}>
+							style={{ paddingBottom: "0px", minHeight: "45px" }}
+						>
 							<Link
 								to={{ pathname: `/Mix/${props.back.id}` }}
-								style={{ textDecoration: "none" }}>
+								style={{ textDecoration: "none" }}
+							>
 								<Grid
 									item
 									xs={12}
@@ -66,17 +69,17 @@ export default function MixNavBar(props) {
 									direction="row"
 									justifyContent="flex-start"
 									alignItems="center"
-									spacing={0}>
+									spacing={0}
+								>
 									<Grid item xs={8}>
 										<div
 											height="100%"
 											style={{
 												background: props.back.colourHex,
-												minHeight: "45px"
-											}}>
-											<Box
-												component="span"
-												style={{ color: colour1TextShade }}>
+												minHeight: "45px",
+											}}
+										>
+											<Box component="span" style={{ color: colour1TextShade }}>
 												<div style={{ padding: "5px" }}>
 													<div className={classes.title}>
 														{props.back.artist}
@@ -104,10 +107,12 @@ export default function MixNavBar(props) {
 						<CardContent
 							className={classes.paper}
 							height="100%"
-							style={{ paddingBottom: "0px", minHeight: "45px" }}>
+							style={{ paddingBottom: "0px", minHeight: "45px" }}
+						>
 							<Link
 								to={{ pathname: `/Mix/${props.forward.id}` }}
-								style={{ textDecoration: "none" }}>
+								style={{ textDecoration: "none" }}
+							>
 								<Grid
 									item
 									xs={12}
@@ -115,17 +120,17 @@ export default function MixNavBar(props) {
 									direction="row"
 									justifyContent="flex-start"
 									alignItems="center"
-									spacing={0}>
+									spacing={0}
+								>
 									<Grid item xs={8}>
 										<div
 											height="100%"
 											style={{
 												background: props.forward.colourHex,
-												minHeight: "45px"
-											}}>
-											<Box
-												component="span"
-												style={{ color: colour2TextShade }}>
+												minHeight: "45px",
+											}}
+										>
+											<Box component="span" style={{ color: colour2TextShade }}>
 												<div style={{ padding: "5px" }}>
 													<div className={classes.title}>
 														{props.forward.artist}
@@ -148,4 +153,9 @@ export default function MixNavBar(props) {
 			</Grid>
 		</Grid>
 	)
+}
+
+MixNavBar.propTypes = {
+	back: PropTypes.object,
+	forward: PropTypes.object,
 }

@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 
 export default function SoundcloudPlayer(props) {
 	/*string that stores url for mix
@@ -7,11 +8,11 @@ export default function SoundcloudPlayer(props) {
 	//remove # from colour hex code
 	var colourHex = props.colourHex.substring(1)
 	var srcString =
-        "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/" +
-        props.embedId +
-        "&color=%23" +
-        colourHex +
-        "&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+		"https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/" +
+		props.embedId +
+		"&color=%23" +
+		colourHex +
+		"&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
 	console.log(srcString)
 	return (
 		<div>
@@ -23,7 +24,13 @@ export default function SoundcloudPlayer(props) {
 				scrolling="no"
 				frameBorder="no"
 				allow="autoplay"
-				src={srcString}></iframe>
+				src={srcString}
+			></iframe>
 		</div>
 	)
+}
+
+SoundcloudPlayer.propTypes = {
+	embedId: PropTypes.string,
+	colourHex: PropTypes.string,
 }
