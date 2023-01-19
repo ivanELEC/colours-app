@@ -1,10 +1,6 @@
 import React from 'react' 
 
 export default function SoundcloudPlayer(props) {
-    // const useStyles = makeStyles({
-
-    // }) 
-    // const classes = useStyles() 
     /*string that stores url for mix
     colour (in hex) and mix ID are provided as props
     */
