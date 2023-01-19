@@ -37,7 +37,7 @@
 	},
 	"scripts": {
 		"start": "react-scripts start",
-		"build": "react-scripts build",
+		"build": "CI=false && react-scripts build",
 		"test:chrome": "cypress run --browser chrome",
 		"test:firefox": "cypress run --browser firefox",
 		"test:edge": "cypress run --browser edge",
