@@ -10,17 +10,17 @@ import "./fonts/HelveticaNeueCyr-Bold.ttf"
 import "./fonts/HelveticaNeueCyr-Light.ttf"
 
 const routing = (
-  <div>
-    <Router>
-      <Switch>
-        <Route exact path="/" component={App} />
-      </Switch>
-      <Switch>
-        <Route exact path="/Mix/:id" component={Mix} />
-      </Switch>
-      <Footer />
-    </Router>
-  </div>
+   <div>
+      <Router>
+         <Switch>
+            <Route exact path="/" component={App} />
+         </Switch>
+         <Switch>
+            <Route exact path="/Mix/:id" component={Mix} />
+         </Switch>
+         <Footer />
+      </Router>
+   </div>
 )
 
 ReactDOM.render(routing, document.getElementById("root"))
