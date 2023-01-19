@@ -1,10 +1,10 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
-import SoundcloudPlayer from './SoundcloudPlayer';
+import React from 'react' 
+import { makeStyles } from '@material-ui/core/styles' 
+import Card from '@material-ui/core/Card' 
+import CardContent from '@material-ui/core/CardContent' 
+import Grid from '@material-ui/core/Grid' 
+import Link from '@material-ui/core/Link' 
+import SoundcloudPlayer from './SoundcloudPlayer' 
 
 
 
@@ -33,9 +33,9 @@ export default function MixBoxMobile(props) {
       padding:0, 
       margin:25
     }
-  });
+  }) 
   
-  const classes = useStyles();
+  const classes = useStyles() 
   return (
     <Card className={classes.root}>
       <CardContent className={classes.content}>
@@ -102,5 +102,5 @@ export default function MixBoxMobile(props) {
         </Grid>
       </CardContent>
     </Card>
-  );
+  ) 
 }

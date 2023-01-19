@@ -1,6 +1,6 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import {Card, CardContent, CardHeader, CardMedia} from '@material-ui/core';
+import React from 'react' 
+import { makeStyles } from '@material-ui/core/styles' 
+import {Card, CardContent, CardHeader, CardMedia} from '@material-ui/core' 
 
 /*
 This colour card component is used for the homepage of the application
@@ -40,9 +40,9 @@ export default function ColourCard(props) {
       padding:0, 
       margin:25
     }
-  });
+  }) 
   
-  const classes = useStyles();
+  const classes = useStyles() 
 
   return (
     <Card className={classes.root}>
@@ -70,5 +70,5 @@ export default function ColourCard(props) {
         </div>
       </CardContent>
     </Card>
-  );
+  ) 
 }

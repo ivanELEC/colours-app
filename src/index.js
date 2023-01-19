@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import './index.css';
-import App from './App';
-import Mix from './components/pages/Mix';
-import Footer from './components/navigation/Footer';
+import React from 'react' 
+import ReactDOM from 'react-dom' 
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom' 
+import './index.css' 
+import App from './App' 
+import Mix from './components/pages/Mix' 
+import Footer from './components/navigation/Footer' 
 //load fonts
-import './fonts/HelveticaNeueCyr-Bold.ttf';
-import './fonts/HelveticaNeueCyr-Light.ttf';
+import './fonts/HelveticaNeueCyr-Bold.ttf' 
+import './fonts/HelveticaNeueCyr-Light.ttf' 
 
 const routing = (
   <div>
@@ -22,5 +22,5 @@ const routing = (
 ReactDOM.render(
   routing,
   document.getElementById('root')
-);
+) 
 

@@ -1,7 +1,7 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import SendIcon from '@material-ui/icons/Send';
+import React from 'react' 
+import { makeStyles } from '@material-ui/core/styles' 
+import Grid from '@material-ui/core/Grid' 
+import SendIcon from '@material-ui/icons/Send' 
 
 export default function Footer(props) {
     const useStyles = makeStyles({
@@ -22,9 +22,9 @@ export default function Footer(props) {
             width: '100%',
             padding:"5px"
         }
-    });
+    }) 
 
-    const classes = useStyles();
+    const classes = useStyles() 
     
     return (
         <div>

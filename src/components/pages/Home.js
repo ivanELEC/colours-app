@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import { fadeInDown } from 'react-animations';
-import Radium, { StyleRoot } from 'radium';
-import PictureCard from '../common/PictureCard';
-import { useWinstonLogger } from 'winston-react';
-const sortJsonArray = require('sort-json-array');
+import React, { useEffect, useState } from 'react' 
+import { Link } from 'react-router-dom' 
+import { makeStyles } from '@material-ui/core/styles' 
+import Grid from '@material-ui/core/Grid' 
+import { fadeInDown } from 'react-animations' 
+import Radium, { StyleRoot } from 'radium' 
+import PictureCard from '../common/PictureCard' 
+import { useWinstonLogger } from 'winston-react' 
+const sortJsonArray = require('sort-json-array') 
 
 export default function Home() {
   //init logger 
@@ -28,7 +28,7 @@ export default function Home() {
         logger.error('Failed to fetch mix data', err)
         throw new Error(err)
       })
-  },[]);
+  },[])
 
   useEffect(() => { //sort retrieved mix data in descending date
     logger.info('Sorting mix data')
@@ -56,8 +56,8 @@ export default function Home() {
         transition: ".3s ease"
       }
     }
-  });
-  const classes = useStyles();
+  }) 
+  const classes = useStyles() 
 
   return (
     <div>
@@ -94,5 +94,5 @@ export default function Home() {
     <div></div>
     }
   </div>
-  );
+  ) 
 }

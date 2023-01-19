@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link } from "react-router-dom";
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import MixBoxMobile from '../common/MixBoxMobile';
-import MixNavBar from '../navigation/MixNavBar';
-import Image from 'material-ui-image';
-import { fadeInDown } from 'react-animations';
-import Radium, { StyleRoot } from 'radium';
+import React, { useState, useEffect } from 'react' 
+import { useParams, Link } from "react-router-dom" 
+import { makeStyles } from '@material-ui/core/styles' 
+import Grid from '@material-ui/core/Grid' 
+import MixBoxMobile from '../common/MixBoxMobile' 
+import MixNavBar from '../navigation/MixNavBar' 
+import Image from 'material-ui-image' 
+import { fadeInDown } from 'react-animations' 
+import Radium, { StyleRoot } from 'radium' 
 
-var sortJsonArray = require('sort-json-array');
+var sortJsonArray = require('sort-json-array') 
 
 export default function Mix() {
     
@@ -18,10 +18,10 @@ export default function Mix() {
         nextMix: null, 
         previousMix: null,
         loaded: null
-    });
+    }) 
 
     //get url param
-    const { id } = useParams();
+    const { id } = useParams() 
  
     useEffect(() => { //get mix data from public folder
         fetch('http://localhost:3000/data/mixData.json')
@@ -37,7 +37,7 @@ export default function Mix() {
             let sortedMixData = sortJsonArray(data.data, 'date')
 
             //find index of current mix
-            for (let i = 0; i < sortedMixData.length; i++) {
+            for (let i = 0;  i < sortedMixData.length;  i++) {
                if (sortedMixData[i].id === id) {
                    var currentMixIndex = i
                }
@@ -60,7 +60,7 @@ export default function Mix() {
     },[id])
 
     useEffect(() => {
-        console.log("Mix Metadata", mixStates.mixMetadata);
+        console.log("Mix Metadata", mixStates.mixMetadata) 
     },[mixStates])
 
     //styles
@@ -69,7 +69,7 @@ export default function Mix() {
             animation: 'x 1s',
             animationName: Radium.keyframes(fadeInDown, 'fadeInDown')
         }
-    };
+    } 
 
     const useStyles = makeStyles({
         root: {
@@ -79,9 +79,9 @@ export default function Mix() {
             maxHeight: 75,
             maxWidth: 75
         }
-    });
+    }) 
 
-    const classes = useStyles();
+    const classes = useStyles() 
 
     //functions
     /*function which returns contents of array element if it exists and null if it doesn't
@@ -89,13 +89,13 @@ export default function Mix() {
     */
     function retrieveElementMix(index, data) {
         if (index < 0) {
-            return null;
+            return null 
         }
         else if (data[index]) {
-            return data[index];
+            return data[index] 
         }
         else {
-            return null;
+            return null 
         }
     }
 
@@ -147,5 +147,5 @@ export default function Mix() {
         <div></div>
         }
         </div>
-    );
+    ) 
 }

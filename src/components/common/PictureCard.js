@@ -1,6 +1,6 @@
-import React from 'react';
-import Card from './Card';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react' 
+import Card from './Card' 
+import { makeStyles } from '@material-ui/core/styles' 
 
 /*
 A simple card with an image, a title and some content
@@ -56,9 +56,9 @@ export default function PictureCard(props) {
             'font-size': 25,
             margin: 3,
         }
-    });
+    }) 
 
-    const classes = useStyles();
+    const classes = useStyles() 
 
     return (
         <div className={classes.root}>
@@ -78,5 +78,5 @@ export default function PictureCard(props) {
                 </div>
             </Card>
         </div>
-    );
+    ) 
 }

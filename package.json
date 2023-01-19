@@ -43,7 +43,8 @@
     "test:edge": "cypress run --browser edge",
     "test:electron": "cypress run --browser electron",
     "test:all": "run-s test:chrome test:firefox test:electron test:edge",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.js src/**/*.jsx"
   },
   "eslintConfig": {
     "extends": "react-app"
