@@ -33,13 +33,13 @@ export default function MixBoxMobile(props) {
 	})
 
 	const classes = useStyles()
-    return (
-        <Card className={classes.root}>
-            <CardContent className={classes.content}>
-                <Grid
-                    container
-                    direction="column"
-                    justifyContent="flex-start"
+	return (
+		<Card className={classes.root}>
+			<CardContent className={classes.content}>
+				<Grid
+					container
+					direction="column"
+					justifyContent="flex-start"
 					alignItems="flex-start">
 					<Grid item xs={6}>
 						<div className={classes.title}>

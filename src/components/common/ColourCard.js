@@ -43,7 +43,7 @@ export default function ColourCard(props) {
 
 	const classes = useStyles()
 
-    return (
+	return (
 		<Card className={classes.root}>
 			{props.image ? (
 				<CardMedia className={classes.header} image={props.image} />

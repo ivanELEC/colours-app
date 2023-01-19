@@ -24,5 +24,5 @@ export default function Card(props) {
 
 	const classes = useStyles()
 
-    return <div className={classes.root}>{props.children}</div>
+	return <div className={classes.root}>{props.children}</div>
 }

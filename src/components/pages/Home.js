@@ -13,16 +13,16 @@ export default function Home() {
 	const logger = useWinstonLogger()
 
 	//state hooks
-    const [mixData, setMixData] = useState(false)
-    const [sortedMixData, setSortedMixData] = useState(false)
-    const [dataLoaded, setDataLoaded] = useState(false)
+	const [mixData, setMixData] = useState(false)
+	const [sortedMixData, setSortedMixData] = useState(false)
+	const [dataLoaded, setDataLoaded] = useState(false)
 
-    //effect hooks
+	//effect hooks
 
-    useEffect(() => {
-        //get mix data from public folder
-        logger.info("Fetching mix data")
-        fetch("http://localhost:3000/data/mixData.json")
+	useEffect(() => {
+		//get mix data from public folder
+		logger.info("Fetching mix data")
+		fetch("http://localhost:3000/data/mixData.json")
 			.then((res) => res.json())
 			.then((data) => setMixData(data))
 			.catch((err) => {
@@ -32,25 +32,25 @@ export default function Home() {
 	}, [])
 
 	useEffect(() => {
-        //sort retrieved mix data in descending date
-        logger.info("Sorting mix data")
-        try {
-            let dataIn = sortJsonArray(mixData.data, "datecode")
-            setSortedMixData(dataIn)
-            setDataLoaded(true)
-        } catch (err) {
+		//sort retrieved mix data in descending date
+		logger.info("Sorting mix data")
+		try {
+			let dataIn = sortJsonArray(mixData.data, "datecode")
+			setSortedMixData(dataIn)
+			setDataLoaded(true)
+		} catch (err) {
 			logger.error("Failed to sort mix data", err)
 		}
 	}, [mixData])
 
 	//sort mix data by descending date
-    const useStyles = makeStyles({
-        root: {
-            animation: "x 1s",
-            animationName: Radium.keyframes(fadeInDown, "fadeInDown"),
-            alignItems: "center"
-        },
-        card: {
+	const useStyles = makeStyles({
+		root: {
+			animation: "x 1s",
+			animationName: Radium.keyframes(fadeInDown, "fadeInDown"),
+			alignItems: "center"
+		},
+		card: {
 			"&:hover": {
 				transform: "translateY(10px)",
 				"-webkit-transform": "translateY(10px)",
@@ -61,13 +61,13 @@ export default function Home() {
 	const classes = useStyles()
 
 	return (
-        <div>
-            {dataLoaded ? (
-                <StyleRoot>
-                    <div className={classes.root}>
-                        <Grid
-                            container
-                            direction="row"
+		<div>
+			{dataLoaded ? (
+				<StyleRoot>
+					<div className={classes.root}>
+						<Grid
+							container
+							direction="row"
 							justifyContent="center"
 							alignItems="center"
 							spacing={0}

@@ -37,7 +37,7 @@ export default function MixNavBar(props) {
 
 	const classes = useStyles()
 
-    //get text shades for navigation buttons
+	//get text shades for navigation buttons
 	if (props.back) {
 		var colour1Obj = tinycolor(props.back.colourHex)
 		var colour1TextShade = getTextShade(colour1Obj)
@@ -48,13 +48,13 @@ export default function MixNavBar(props) {
 	}
 
 	return (
-        <Grid container direction="row" justifyContent="center" alignItems="center">
-            <Grid item xs={5} md={3}>
-                {props.back ? (
-                    <Card className={classes.root}>
-                        <CardContent
-                            className={classes.paper}
-                            height="100%"
+		<Grid container direction="row" justifyContent="center" alignItems="center">
+			<Grid item xs={5} md={3}>
+				{props.back ? (
+					<Card className={classes.root}>
+						<CardContent
+							className={classes.paper}
+							height="100%"
 							style={{ paddingBottom: "0px", minHeight: "45px" }}>
 							<Link
 								to={{ pathname: `/Mix/${props.back.id}` }}

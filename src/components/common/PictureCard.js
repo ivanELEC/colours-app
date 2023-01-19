@@ -15,16 +15,16 @@ export default function PictureCard(props) {
 			fontFamily: "HelveticaLight",
 			fontSize: 16,
 			color: "black",
-			padding: 10
+			padding: 10,
 		},
 		mediaContainer: {
 			position: "relative",
 			"&:hover": {
 				opacity: 1,
 				"& > $mediaOverlay": {
-					opacity: 1
-				}
-			}
+					opacity: 1,
+				},
+			},
 		},
 		mediaOverlay: {
 			position: "absolute",
@@ -36,7 +36,7 @@ export default function PictureCard(props) {
 			width: "100%",
 			opacity: 0,
 			transition: ".5s ease",
-			backgroundColor: `${props.colourHex}`
+			backgroundColor: `${props.colourHex}`,
 		},
 		media: {
 			minHeight: 300,
@@ -44,23 +44,23 @@ export default function PictureCard(props) {
 			backgroundSize: "cover",
 			backgroundRepeat: "no-repeat",
 			backgroundPosition: "center",
-			backgroundColor: `${props.colourHex}`
+			backgroundColor: `${props.colourHex}`,
 		},
 		content: {
 			background: "#ffffff",
 			padding: 3,
-			margin: 3
+			margin: 3,
 		},
 		title: {
 			fontFamily: "HelveticaBold",
 			"font-size": 25,
-			margin: 3
-		}
+			margin: 3,
+		},
 	})
 
 	const classes = useStyles()
 
-    return (
+	return (
 		<div className={classes.root}>
 			<Card>
 				<div className={classes.mediaContainer}>

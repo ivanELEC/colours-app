@@ -26,7 +26,7 @@ export default function Footer(props) {
 
 	const classes = useStyles()
 
-    return (
+	return (
 		<div>
 			<div className={classes.phantom} />
 			<div className={classes.style}>
