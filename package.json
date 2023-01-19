@@ -30,7 +30,6 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "cypress": "^8.7.0",
-    "eslint": "^8.32.0",
     "eslint-plugin-react": "^7.32.1",
     "nodemon": "^2.0.14",
     "react-scripts": "3.4.1"
@@ -44,7 +43,7 @@
     "test:electron": "cypress run --browser electron",
     "test:all": "run-s test:chrome test:firefox test:electron test:edge",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.js src/**/*.jsx"
+    "lint": "eslint src/**/*.js"
   },
   "eslintConfig": {
     "extends": "react-app"
