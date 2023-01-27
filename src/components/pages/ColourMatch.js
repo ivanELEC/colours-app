@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Grid, TextField, Button, Typography, Paper}  from '@material-ui/core';
+import {Grid, TextField, Typography, Paper}  from '@material-ui/core';
 import ColourCard from '../common/ColourCard';
 import { getAllocatedColours, getSimilarColours, getTextShade } from '../../js/utils/colourMatch';
 import PropTypes from 'prop-types';
+const hexyjs = require("hexyjs");
 
 
 export default function ColourMatch(){
@@ -34,8 +35,9 @@ export default function ColourMatch(){
 	}, [mixData])
 
 	useEffect(() => { //retrieve list of similar colours 
-		if(colourList.length > 0){
-			let sortedColours = getSimilarColours(colourList, colour.colour, parseFloat(maxDiff), 10);
+		let validHex = hexyjs.isHex(`${colour}`)
+		if(colourList.length > 0 && validHex && colour.length == 6){
+			let sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 10);
 			console.log(sortedColours)
 			setSimilarColours(sortedColours)
 		}
@@ -94,7 +96,7 @@ export default function ColourMatch(){
 				>
 					<Grid item>
 						<TextField id="colour-match-input" label="Colour to match" variant="standard" onChange={handleChangeColour} />
-						<TextField id="colour-match-diff" label="Max difference" variant="standard" type="number" onChange={handleChangeDiff} />
+						<TextField id="colour-match-diff" label="Max difference" variant="standard" type="number" onChange={handleChangeDiff} defaultValue={maxDiff} />
 					</Grid>
 					<Grid item>
 						<ColourCard
