@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {Grid, TextField, Button, Typography}  from '@material-ui/core';
 import ColourCard from '../common/ColourCard';
+import PropTypes from 'prop-types';
 import { getAllocatedColours } from '../../js/utils/colourMatch';
 var cd = require('color-difference');
 
@@ -139,3 +140,8 @@ export default function ColourDifference() {
   </div>
   );
 }
+
+ColourDifference.propTypes = {
+	colour1: PropTypes.string,
+	colour2: PropTypes.string
+};
