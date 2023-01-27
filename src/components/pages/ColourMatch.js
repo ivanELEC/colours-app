@@ -142,5 +142,7 @@ export default function ColourMatch(){
 ColourMatch.propTypes = {
 	colour: PropTypes.string, 
 	mixData: PropTypes.object, 
-	colourList: PropTypes.array
+	colourList: PropTypes.array, 
+	similarColours: PropTypes.array, 
+	maxDiff: PropTypes.number
 };
