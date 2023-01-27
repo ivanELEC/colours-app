@@ -1,26 +1,144 @@
-import React, { useEffect, useState } from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import {Grid, TextField, Button, Typography}  from "@material-ui/core"
-import ColourCard from "../common/ColourCard"
-import { getAllocatedColours } from "../../js/utils/colourMatch"
-import PropTypes from "prop-types"
+import React, { useEffect, useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import {Grid, TextField, Button, Typography, Paper}  from '@material-ui/core';
+import ColourCard from '../common/ColourCard';
+import { getAllocatedColours, getSimilarColours, getTextShade } from '../../js/utils/colourMatch';
+import PropTypes from 'prop-types';
 
 
-export default ColourMatch = () => {
+export default function ColourMatch(){
 	//state hooks
+	const [colour, setColour] = useState(false)
+	const [mixData, setMixData] = useState(false)
+	const [colourList, setColourList] = useState([])
+	const [similarColours, setSimilarColours] = useState([])
+	const [maxDiff, setMaxDiff] = useState(50)
+ 
+	
+  //effects 
+  useEffect(() => { //get mix data from public folder
+	fetch('/data/mixData.json')
+		.then((res) => res.json())
+		.then((data) => setMixData(data))
+		.catch((err) => {
+			logger.error("Failed to fetch mix data", err)
+			throw new Error(err)
+		})
+	}, [])
 
-	//effects 
+	useEffect(() => { //flatten mixData to list of allocated colours
+		if(mixData){
+			let colours = getAllocatedColours(mixData)
+			setColourList(colours)
+		}
+	}, [mixData])
+
+	useEffect(() => { //retrieve list of similar colours 
+		if(colourList.length > 0){
+			let sortedColours = getSimilarColours(colourList, colour.colour, parseFloat(maxDiff), 10);
+			console.log(sortedColours)
+			setSimilarColours(sortedColours)
+		}
+	}, [colourList, colour, maxDiff])
+
 
 	//functions 
+	const handleChangeColour = (event) => {///saves colour hex to hook value depending on colourNo
+		var inputElement = event.target;
+		var elementId = inputElement.id;
+		if(inputElement){
+			if(elementId == "colour-match-input"){
+				setColour(inputElement.value);
+			}
+		}
+	}
+
+	const handleChangeDiff = (event) => {///saves colour hex to hook value depending on colourNo
+		var inputElement = event.target;
+		var elementId = inputElement.id;
+		if(inputElement){
+			if(elementId == "colour-match-diff"){
+				setMaxDiff(parseFloat(inputElement.value));
+			}
+		}
+	}
+
+	//styles
+	const useStyles = makeStyles({
+		root: {
+		  padding: 25
+		},
+		colourPaper: {
+			minHeight: 40,
+			textAlign: "center",
+		}
+	  });
+
+	const classes = useStyles();
 
 	return (
-		<div>
-			
+		<div className={classes.root}>
+			<Grid 
+				container 
+				item
+				direction="row"
+				justifyContent="center"
+			>
+				<Grid
+					container 
+					item
+					direction="column"
+					justiftContent="center"
+					xs={12}
+					sm={6}
+				>
+					<Grid item>
+						<TextField id="colour-match-input" label="Colour to match" variant="standard" onChange={handleChangeColour} />
+						<TextField id="colour-match-diff" label="Max difference" variant="standard" type="number" onChange={handleChangeDiff} />
+					</Grid>
+					<Grid item>
+						<ColourCard
+							colourName="???"
+							artistName="???"
+							colourHex={`#${colour}`}
+							date="1/1/2023"
+						/>
+					</Grid>
+				</Grid>
+				<Grid
+					container 
+					item
+					direction="column"
+					justiftContent="center"
+					xs={12}
+					sm={6}
+				>
+					<Grid
+						container
+						citem
+						direction="row"
+						justifyContent="center"
+						alignItems="center"
+						spacing={4}
+					>
+						{similarColours.map((colour) => (
+							
+							<Grid key={colour.colour} item xs={4} sm={3}>
+								<Paper className={classes.colourPaper} style={{backgroundColor: `#${colour.colour}`}}>
+									<Typography style={{color:colour.textShade}}>{`#${colour.colour}`}</Typography>
+								</Paper>
+							</Grid>
+						))}	
+					</Grid>	
+				</Grid>
+			</Grid>
 		</div>
-	)
-}
+	);
+};
 
 
 ColourMatch.propTypes = {
-
-}
+	colour: PropTypes.string, 
+	mixData: PropTypes.object, 
+	colourList: PropTypes.array
+};

@@ -5,6 +5,7 @@ import "./index.css"
 import App from "./App"
 import Mix from "./components/pages/Mix"
 import ColourDifference from "./components/pages/ColourDifference"
+import ColourMatch from "./components/pages/ColourMatch"
 import Footer from "./components/navigation/Footer"
 //load fonts
 import "./fonts/HelveticaNeueCyr-Bold.ttf"
@@ -16,6 +17,7 @@ const routing = (
 			<Switch><Route exact path="/" component={App} /></Switch>
 			<Switch><Route exact path="/Mix/:id" component={Mix} /></Switch>
 			<Switch><Route exact path="/ColourDifference" component={ColourDifference} /></Switch>
+			<Switch><Route exact path="/ColourMatch" component={ColourMatch} /></Switch>
 			<Footer/>
 		</Router>
 	</div>
