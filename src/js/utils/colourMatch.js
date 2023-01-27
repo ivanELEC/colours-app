@@ -1,3 +1,5 @@
+import { ConsoleWriter } from "istanbul-lib-report"
+
 //utils to handle functions for colour comparison and grouping
 var cd = require("color-difference")
 var tinycolor = require("tinycolor2")
@@ -23,6 +25,7 @@ export function getSimilarColours(colourList, inputColour, maxDifference=100, ma
 	let sortedColours = []
 
 	sortedColours = colourList.map((colour)=>{
+		console.log(colour, inputColour)
 		let colourDiff = cd.compare(colour, inputColour)
 		let colourHex = `#${colour}`
 		let textShade = getTextShade(colourHex)
@@ -42,11 +45,11 @@ export function getSimilarColours(colourList, inputColour, maxDifference=100, ma
 	return selectedColours
 }
 
-/*function that uses the tiny-colour library to determine whether text should be white or black
-depending on the brightness of the input colour (brightness range from 0 to 255)
-anything under the brightness threshold returns hex for white, anything brightness threshold or over returns hex for black 
-*/
 export function getTextShade(colour) {
+	/*function that uses the tiny-colour library to determine whether text should be white or black
+	depending on the brightness of the input colour (brightness range from 0 to 255)
+	anything under the brightness threshold returns hex for white, anything brightness threshold or over returns hex for black 
+	*/
 	let colourObj = tinycolor(colour)
 	let colourBrightness = colourObj.getBrightness()
 	let brightnessThreshold = 165
