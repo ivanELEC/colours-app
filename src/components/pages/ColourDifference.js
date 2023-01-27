@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {Grid, TextField, Button, Typography}  from '@material-ui/core';
 import ColourCard from '../common/ColourCard';
+import { getAllocatedColours } from '../../js/utils/colourMatch';
 var cd = require('color-difference');
 
 export default function ColourDifference() {
@@ -10,6 +11,8 @@ export default function ColourDifference() {
   const [colour1, setColour1] = useState("ffffff")
   const [colour2, setColour2] = useState("000000")
   const [diffVal, setDiffVal] = useState(null)
+  const [mixData, setMixData] = useState(false)
+  const [colourList, setColourList] = useState([])
   
   //effect hooks
 
@@ -20,6 +23,21 @@ export default function ColourDifference() {
   });
 
   //effects 
+  useEffect(() => {
+	//get mix data from public folder
+	fetch('http://localhost:3000/data/mixData.json')
+		.then((res) => res.json())
+		.then((data) => setMixData(data))
+		.catch((err) => {
+			logger.error("Failed to fetch mix data", err)
+			throw new Error(err)
+		})
+	}, [])
+
+	useEffect(() => {
+		setColourList(getAllocatedColours(mixData))
+		console.log(colourList)
+	}, [mixData])
 
 
 	
