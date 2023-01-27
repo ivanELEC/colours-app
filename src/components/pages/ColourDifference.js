@@ -23,8 +23,7 @@ export default function ColourDifference() {
   });
 
   //effects 
-  useEffect(() => {
-	//get mix data from public folder
+  useEffect(() => { //get mix data from public folder
 	fetch('http://localhost:3000/data/mixData.json')
 		.then((res) => res.json())
 		.then((data) => setMixData(data))
@@ -34,9 +33,11 @@ export default function ColourDifference() {
 		})
 	}, [])
 
-	useEffect(() => {
-		setColourList(getAllocatedColours(mixData))
-		console.log(colourList)
+	useEffect(() => { //flatten mixData to list of allocated colours
+		if(mixData){
+			let colours = getAllocatedColours(mixData)
+			setColourList(colours)
+		}
 	}, [mixData])
 
 
