@@ -21,8 +21,8 @@ export default function Home() {
 
 	useEffect(() => {
 		//get mix data from public folder
-		logger.info("Fetching mix data")
-		fetch("http://localhost:3000/data/mixData.json")
+		logger.info('Fetching mix data')
+		fetch('http://localhost:3000/data/mixData.json')
 			.then((res) => res.json())
 			.then((data) => setMixData(data))
 			.catch((err) => {
