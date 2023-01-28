@@ -1,5 +1,3 @@
-import { ConsoleWriter } from "istanbul-lib-report"
-
 //utils to handle functions for colour comparison and grouping
 var cd = require("color-difference")
 var tinycolor = require("tinycolor2")
@@ -25,7 +23,6 @@ export function getSimilarColours(colourList, inputColour, maxDifference=100, ma
 	let sortedColours = []
 
 	sortedColours = colourList.map((colour)=>{
-		console.log(colour, inputColour)
 		let colourDiff = cd.compare(colour, inputColour)
 		let colourHex = `#${colour}`
 		let textShade = getTextShade(colourHex)

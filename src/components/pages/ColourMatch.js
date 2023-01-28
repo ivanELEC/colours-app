@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import {Grid, TextField, Typography, Paper}  from '@material-ui/core';
-import ColourCard from '../common/ColourCard';
-import { getAllocatedColours, getSimilarColours, getTextShade } from '../../js/utils/colourMatch';
-import PropTypes from 'prop-types';
-const hexyjs = require("hexyjs");
+import React, { useEffect, useState } from "react"
+import { makeStyles } from "@material-ui/core/styles"
+import {Grid, TextField, Typography, Paper}  from "@material-ui/core"
+import ColourCard from "../common/ColourCard"
+import { getAllocatedColours, getSimilarColours } from "../../js/utils/colourMatch"
+import PropTypes from "prop-types"
+const hexyjs = require("hexyjs")
 
 
 export default function ColourMatch(){
@@ -16,15 +16,15 @@ export default function ColourMatch(){
 	const [maxDiff, setMaxDiff] = useState(50)
  
 	
-  //effects 
-  useEffect(() => { //get mix data from public folder
-	fetch('/data/mixData.json')
-		.then((res) => res.json())
-		.then((data) => setMixData(data))
-		.catch((err) => {
-			logger.error("Failed to fetch mix data", err)
-			throw new Error(err)
-		})
+	//effects 
+	useEffect(() => { //get mix data from public folder
+		fetch("/data/mixData.json")
+			.then((res) => res.json())
+			.then((data) => setMixData(data))
+			.catch((err) => {
+				console.log("Failed to fetch mix data", err)
+				throw new Error(err)
+			})
 	}, [])
 
 	useEffect(() => { //flatten mixData to list of allocated colours
@@ -37,7 +37,7 @@ export default function ColourMatch(){
 	useEffect(() => { //retrieve list of similar colours 
 		let validHex = hexyjs.isHex(`${colour}`)
 		if(colourList.length > 0 && validHex && colour.length == 6){
-			let sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 10);
+			let sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 10)
 			console.log(sortedColours)
 			setSimilarColours(sortedColours)
 		}
@@ -46,21 +46,21 @@ export default function ColourMatch(){
 
 	//functions 
 	const handleChangeColour = (event) => {///saves colour hex to hook value depending on colourNo
-		var inputElement = event.target;
-		var elementId = inputElement.id;
+		var inputElement = event.target
+		var elementId = inputElement.id
 		if(inputElement){
 			if(elementId == "colour-match-input"){
-				setColour(inputElement.value);
+				setColour(inputElement.value)
 			}
 		}
 	}
 
 	const handleChangeDiff = (event) => {///saves colour hex to hook value depending on colourNo
-		var inputElement = event.target;
-		var elementId = inputElement.id;
+		var inputElement = event.target
+		var elementId = inputElement.id
 		if(inputElement){
 			if(elementId == "colour-match-diff"){
-				setMaxDiff(parseFloat(inputElement.value));
+				setMaxDiff(parseFloat(inputElement.value))
 			}
 		}
 	}
@@ -68,15 +68,15 @@ export default function ColourMatch(){
 	//styles
 	const useStyles = makeStyles({
 		root: {
-		  padding: 25
+			padding: 25
 		},
 		colourPaper: {
 			minHeight: 40,
 			textAlign: "center",
 		}
-	  });
+	})
 
-	const classes = useStyles();
+	const classes = useStyles()
 
 	return (
 		<div className={classes.root}>
@@ -135,8 +135,8 @@ export default function ColourMatch(){
 				</Grid>
 			</Grid>
 		</div>
-	);
-};
+	)
+}
 
 
 ColourMatch.propTypes = {
@@ -145,4 +145,4 @@ ColourMatch.propTypes = {
 	colourList: PropTypes.array, 
 	similarColours: PropTypes.array, 
 	maxDiff: PropTypes.number
-};
+}
