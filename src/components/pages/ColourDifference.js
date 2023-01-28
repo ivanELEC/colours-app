@@ -11,8 +11,6 @@ export default function ColourDifference() {
   const [colour1, setColour1] = useState("ffffff")
   const [colour2, setColour2] = useState("000000")
   const [diffVal, setDiffVal] = useState(null)
-  const [mixData, setMixData] = useState(false)
-  const [colourList, setColourList] = useState([])
   
   //effect hooks
 
