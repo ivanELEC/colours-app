@@ -5,21 +5,7 @@ import Grid from "@material-ui/core/Grid"
 import { Link } from "react-router-dom"
 import Box from "@material-ui/core/Box"
 import { Card, CardContent } from "@material-ui/core"
-var tinycolor = require("tinycolor2")
-
-/*function that uses the tiny-colour library to determine whether text should be white or black
-depending on the brightness of the input colour (brightness range from 0 to 255)
-anything under the brightness threshold returns hex for white, anything brightness threshold or over returns hex for black 
-*/
-function getTextShade(colourObj) {
-	var colourBrightness = colourObj.getBrightness()
-	var brightnessThreshold = 165
-	if (parseInt(colourBrightness) > brightnessThreshold) {
-		return "#38383b"
-	} else if (parseInt(colourBrightness) <= brightnessThreshold) {
-		return "#ffffff"
-	}
-}
+import { getTextShade } from "../../js/utils/colourMatch"
 
 export default function MixNavBar(props) {
 	const useStyles = makeStyles({
@@ -40,12 +26,10 @@ export default function MixNavBar(props) {
 
 	//get text shades for navigation buttons
 	if (props.back) {
-		var colour1Obj = tinycolor(props.back.colourHex)
-		var colour1TextShade = getTextShade(colour1Obj)
+		var colour1TextShade = getTextShade(props.back.colourHex)
 	}
 	if (props.forward) {
-		var colour2Obj = tinycolor(props.forward.colourHex)
-		var colour2TextShade = getTextShade(colour2Obj)
+		var colour2TextShade = getTextShade(props.forward.colourHex)
 	}
 
 	return (
