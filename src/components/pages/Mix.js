@@ -60,6 +60,10 @@ export default function Mix() {
 			})
 	}, [id])
 
+	useEffect(() => {
+		console.log("Mix Metadata", mixStates.mixMetadata)
+	}, [mixStates])
+
 	//styles
 	const styles = {
 		fadeInDown: {
