@@ -38,7 +38,6 @@ export default function ColourMatch(){
 		let validHex = hexyjs.isHex(`${colour}`)
 		if(colourList.length > 0 && validHex && colour.length == 6){
 			let sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 10)
-			console.log(sortedColours)
 			setSimilarColours(sortedColours)
 		}
 	}, [colourList, colour, maxDiff])
