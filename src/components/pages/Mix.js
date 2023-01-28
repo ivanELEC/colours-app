@@ -24,7 +24,7 @@ export default function Mix() {
 
 	useEffect(() => {
 		//get mix data from public folder
-		fetch("http://localhost:3000/data/mixData.json")
+		fetch("/data/mixData.json")
 			.then((res) => res.json())
 			.then((data) => {
 				//select current mix from array

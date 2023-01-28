@@ -5,8 +5,10 @@
 	"dependencies": {
 		"@material-ui/core": "^4.12.3",
 		"@material-ui/icons": "^4.11.2",
+		"color-difference": "^0.3.4",
 		"fetch-json": "^2.6.1",
 		"get-json": "^1.0.1",
+		"hexyjs": "^2.1.4",
 		"json-query": "^2.2.2",
 		"material-ui-image": "^3.3.2",
 		"node-fetch": "^2.6.5",
