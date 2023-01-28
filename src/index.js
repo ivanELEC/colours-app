@@ -9,6 +9,7 @@ import "./fonts/HelveticaNeueCyr-Light.ttf"
 
 const application = (
 	<div>
+		<base href="/"/>
 		<App/>
 	</div>
 )
