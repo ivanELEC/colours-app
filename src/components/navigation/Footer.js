@@ -12,15 +12,21 @@ export default function Footer() {
 			position: "fixed",
 			left: "0",
 			bottom: "0",
-			maxHeight: "30px",
+			maxHeight: "40px",
 			width: "100%",
-			padding: "5px",
+			WebkitBoxSizing: "border-box",
+			MozBoxSizing: "border-box",
+			boxSizing: "border-box",
+			padding: 5
 		},
 		phantom: {
 			display: "block",
-			maxHeight: "30px",
+			maxHeight: "40px",
 			width: "100%",
-			padding: "5px",
+			WebkitBoxSizing: "border-box",
+			MozBoxSizing: "border-box",
+			boxSizing: "border-box",
+			padding: 5
 		},
 	})
 
