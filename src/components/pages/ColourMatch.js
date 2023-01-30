@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { makeStyles } from "@material-ui/core/styles"
-import {Grid, TextField, Typography, Paper}  from "@material-ui/core"
+import { Link } from "react-router-dom"
+import {Grid, TextField}  from "@material-ui/core"
 import ColourCard from "../common/ColourCard"
 import { getAllocatedColours, getSimilarColours } from "../../js/utils/colourMatch"
 import PropTypes from "prop-types"
@@ -126,13 +127,18 @@ export default function ColourMatch(){
 						{similarColours.map((colour) => (
 							
 							<Grid key={colour.colour} item xs={12} md={6}>
-								<ColourCard
-									colourName={`${colour.mixData.colourName}`}
-									artistName={`${colour.mixData.artist}`}
-									colourHex={`${colour.mixData.colourHex}`}
-									date={`#${colour.mixData.date}`}
-									mini={true}
-								/>
+								<Link
+									to={{ pathname: `/Mix/${colour.mixData.id}` }}
+									style={{ textDecoration: "none" }}
+								>
+									<ColourCard
+										colourName={`${colour.mixData.colourName}`}
+										artistName={`${colour.mixData.artist}`}
+										colourHex={`${colour.mixData.colourHex}`}
+										date={`#${colour.mixData.date}`}
+										mini={true}
+									/>
+								</Link>
 							</Grid>
 						))}	
 					</Grid>	
