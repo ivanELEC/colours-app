@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import MixBoxMobile from "../common/MixBoxMobile"
 import MixNavBar from "../navigation/MixNavBar"
+import BackButton from "../common/BackButton"
 import Image from "material-ui-image"
 import { fadeInDown } from "react-animations"
 import Radium, { StyleRoot } from "radium"
@@ -127,13 +128,7 @@ export default function Mix() {
 							spacing={0}>
 							<Grid item xs={4} md={5} />
 							<Grid item xs={2}>
-								<Link to={{ pathname: "/" }}>
-									<Image
-										src="https://firebasestorage.googleapis.com/v0/b/colours-project.appspot.com/o/images%2Fbackicon.png?alt=media&token=ccf1bdfd-e667-4891-af5e-707a1304ae78"
-										className={classes.icon}
-										style={{ left: "30%" }}
-									/>
-								</Link>
+								<BackButton/>
 							</Grid>
 							<Grid item xs={5} />
 						</Grid>
