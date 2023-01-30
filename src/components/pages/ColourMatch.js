@@ -125,10 +125,14 @@ export default function ColourMatch(){
 					>
 						{similarColours.map((colour) => (
 							
-							<Grid key={colour.colour} item xs={4} sm={3}>
-								<Paper className={classes.colourPaper} style={{backgroundColor: `#${colour.colour}`}}>
-									<Typography style={{color:colour.textShade}}>{`#${colour.colour}`}</Typography>
-								</Paper>
+							<Grid key={colour.colour} item xs={12} md={6}>
+								<ColourCard
+									colourName={`${colour.mixData.colourName}`}
+									artistName={`${colour.mixData.artist}`}
+									colourHex={`${colour.mixData.colourHex}`}
+									date={`#${colour.mixData.date}`}
+									mini={true}
+								/>
 							</Grid>
 						))}	
 					</Grid>	
