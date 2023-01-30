@@ -11,9 +11,21 @@ colourHex: hex code for colour, used for both light title and header background
 artistName: Name of artist in bold
 colourName: Worded name of colour in light
 date: date of mix in light
+mini: true/false - if true, use smaller version of component
 */
 
 export default function ColourCard(props) {
+	//variables for size of component - reduces if mini = true
+	var minHeightHeader = 300
+	var minHeight = 480
+	var minWidth = 275
+
+	if(props.mini == true){
+		minHeightHeader = 100
+		minHeight = 170
+		minWidth = 90
+	}
+
 	const useStyles = makeStyles({
 		title: {
 			fontFamily: "HelveticaBold",
@@ -31,11 +43,11 @@ export default function ColourCard(props) {
 			padding: 3,
 		},
 		header: {
-			minHeight: 300,
+			minHeight: minHeightHeader,
 		},
 		root: {
-			minWidth: 275,
-			minHeight: 480,
+			minWidth: minWidth,
+			minHeight: minHeight,
 			maxWidth: 350,
 			padding: 0,
 			margin: 25,
@@ -72,4 +84,5 @@ ColourCard.propTypes = {
 	colourName: PropTypes.string,
 	artistName: PropTypes.string,
 	date: PropTypes.string,
+	mini: PropTypes.bool
 }

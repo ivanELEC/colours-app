@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { makeStyles } from "@material-ui/core/styles"
-import {Grid, TextField, Typography, Paper}  from "@material-ui/core"
+import { Link } from "react-router-dom"
+import {Grid, TextField}  from "@material-ui/core"
 import ColourCard from "../common/ColourCard"
 import { getAllocatedColours, getSimilarColours } from "../../js/utils/colourMatch"
 import PropTypes from "prop-types"
@@ -36,12 +37,12 @@ export default function ColourMatch(){
 
 	useEffect(() => { //retrieve list of similar colours 
 		let validHex = hexyjs.isHex(`${colour}`)
-		if(colourList.length > 0 && validHex && colour.length == 6){
-			let sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 10)
+		if(colourList.length > 0 && validHex && colour.length == 6 && mixData.data){
+			let sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 10, mixData)
 			console.log(sortedColours)
 			setSimilarColours(sortedColours)
 		}
-	}, [colourList, colour, maxDiff])
+	}, [colourList, colour, maxDiff, mixData])
 
 
 	//functions 
@@ -125,10 +126,19 @@ export default function ColourMatch(){
 					>
 						{similarColours.map((colour) => (
 							
-							<Grid key={colour.colour} item xs={4} sm={3}>
-								<Paper className={classes.colourPaper} style={{backgroundColor: `#${colour.colour}`}}>
-									<Typography style={{color:colour.textShade}}>{`#${colour.colour}`}</Typography>
-								</Paper>
+							<Grid key={colour.colour} item xs={12} md={6}>
+								<Link
+									to={{ pathname: `/Mix/${colour.mixData.id}` }}
+									style={{ textDecoration: "none" }}
+								>
+									<ColourCard
+										colourName={`${colour.mixData.colourName}`}
+										artistName={`${colour.mixData.artist}`}
+										colourHex={`${colour.mixData.colourHex}`}
+										date={`#${colour.mixData.date}`}
+										mini={true}
+									/>
+								</Link>
 							</Grid>
 						))}	
 					</Grid>	
