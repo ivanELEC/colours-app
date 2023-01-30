@@ -12,11 +12,12 @@ export function getAllocatedColours(mixData){//flatten and output a list of colo
 	return colours
 }
 
-export function getSimilarColours(colourList, inputColour, maxDifference=100, maxColours=5){
+export function getSimilarColours(colourList, inputColour, maxDifference=100, maxColours=5, mixData=null){
 /*
 	Returns a list of colours similar to inputColour from an input colourList
 	maxDifference is the max difference in scale the colours picked can be (max is 1)
 	maxColours is the max number of colours in the list 
+	if mixData is populated - it will pick out the mix information for each colour and include it in the data
 */
 
 	let selectedColours = []
@@ -26,7 +27,11 @@ export function getSimilarColours(colourList, inputColour, maxDifference=100, ma
 		let colourDiff = cd.compare(colour, inputColour)
 		let colourHex = `#${colour}`
 		let textShade = getTextShade(colourHex)
-		return {"colourDiff": colourDiff, "colour": colour, "textShade": textShade}
+		let data = null
+		if(mixData){
+			data = findMixData(mixData, colour)
+		}
+		return {"colourDiff": colourDiff, "colour": colour, "textShade": textShade, "mixData": data}
 	})
 
 	sortedColours.sort((a,b) => {
@@ -40,6 +45,20 @@ export function getSimilarColours(colourList, inputColour, maxDifference=100, ma
 	})
 
 	return selectedColours
+}
+
+function findMixData(data, colourHex){
+	data = data.data
+	let selectedData = data.filter((mix) => {
+		return mix.colourHex == `#${colourHex}`
+	})
+	
+	if(selectedData){
+		return selectedData[0]
+	}
+	else{
+		return null
+	}
 }
 
 export function getTextShade(colour) {

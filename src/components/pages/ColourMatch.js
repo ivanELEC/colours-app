@@ -36,12 +36,12 @@ export default function ColourMatch(){
 
 	useEffect(() => { //retrieve list of similar colours 
 		let validHex = hexyjs.isHex(`${colour}`)
-		if(colourList.length > 0 && validHex && colour.length == 6){
-			let sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 10)
+		if(colourList.length > 0 && validHex && colour.length == 6 && mixData.data){
+			let sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 10, mixData)
 			console.log(sortedColours)
 			setSimilarColours(sortedColours)
 		}
-	}, [colourList, colour, maxDiff])
+	}, [colourList, colour, maxDiff, mixData])
 
 
 	//functions 
