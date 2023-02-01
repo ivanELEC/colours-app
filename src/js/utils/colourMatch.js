@@ -1,6 +1,6 @@
-//utils to handle functions for colour comparison and grouping
 var cd = require("color-difference")
 var tinycolor = require("tinycolor2")
+const Color = require("color")
 
 export function getAllocatedColours(mixData){//flatten and output a list of colours present in mixData
 	let data = mixData.data
@@ -74,4 +74,18 @@ export function getTextShade(colour) {
 	} else if (parseInt(colourBrightness) <= brightnessThreshold) {
 		return "#ffffff"
 	}
+}
+
+export function colourGradientColumn(gridData, column, colourHex){
+	/* function will set the colours of one column (# column - 0 indexed) in gridData 
+	 to a scale of one colour, going from the colour (colourHex) and lightening by an equal 
+	 lightness factor in each row*/
+	var colour = Color(colourHex, "hex")
+	var lightenFactor = 1/(gridData.length * 1.2)
+	for(let i = 0; i<gridData.length; i++){
+		gridData[i][column].colourHex = colour.hex()
+		colour = colour.lighten(lightenFactor)
+	}
+
+	return gridData
 }

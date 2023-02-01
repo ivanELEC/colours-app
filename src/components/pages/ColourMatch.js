@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import { Link } from "react-router-dom"
+import { gridData } from "../../js/utils/grid"
 import {Grid, TextField}  from "@material-ui/core"
 import ColourCard from "../common/ColourCard"
-import { getAllocatedColours, getSimilarColours } from "../../js/utils/colourMatch"
+import { getAllocatedColours, getSimilarColours, colourGradientColumn } from "../../js/utils/colourMatch"
 import PropTypes from "prop-types"
 const hexyjs = require("hexyjs")
 
@@ -15,10 +16,17 @@ export default function ColourMatch(){
 	const [colourList, setColourList] = useState([])
 	const [similarColours, setSimilarColours] = useState([])
 	const [maxDiff, setMaxDiff] = useState(50)
+
+	const colourPalette = ["#E42406", "#EC6E08", "#EC9508", "#ECF701", "#2DC84D", "#14C7D1", "#147BD1", "#443BBD", "#753BBD", "#BD3B89"]
  
 	
 	//effects 
 	useEffect(() => { //get mix data from public folder
+		let grid = gridData()
+		for(let i = 0; i < colourPalette.length; i++){
+			grid = colourGradientColumn(grid, i, colourPalette[i])
+		}
+		console.log(grid)
 		fetch("/data/mixData.json")
 			.then((res) => res.json())
 			.then((data) => setMixData(data))

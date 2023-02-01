@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react"
 import Image from "material-ui-image"
 import { makeStyles } from "@material-ui/core/styles"
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom"
 
 export default function BackButton() {
 	
@@ -26,6 +26,6 @@ export default function BackButton() {
 				style={{ left: "30%" }}
 			/>
 		</div>
-	);
+	)
 	
 }
