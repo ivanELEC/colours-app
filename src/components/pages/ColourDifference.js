@@ -62,7 +62,7 @@ export default function ColourDifference() {
 						container 
 						item
 						direction="column"
-						justiftContent="center"
+						justifyContent="center"
 						xs={12}
 						sm={6}
 					>
@@ -82,7 +82,7 @@ export default function ColourDifference() {
 						container 
 						item
 						direction="column"
-						justiftContent="center"
+						justifyContent="center"
 						xs={12}
 						sm={6}
 					>

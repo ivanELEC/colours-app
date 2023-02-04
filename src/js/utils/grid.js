@@ -10,6 +10,7 @@ export function gridData(rows=10, columns=10, width=50, height=50) {
 		// iterate for cells/columns inside rows
 		for (var column = 0; column < columns; column++) {
 			data[row].push({
+				index: column,
 				x: xpos,
 				y: ypos,
 				width: width,

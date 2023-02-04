@@ -5,7 +5,7 @@ import { gridData } from "../../js/utils/grid"
 import {Grid, TextField}  from "@material-ui/core"
 import ColourCard from "../common/ColourCard"
 import { getAllocatedColours, getSimilarColours, colourGradientColumn } from "../../js/utils/colourMatch"
-import PropTypes from "prop-types"
+import ColourGrid from "../common/ColourGrid"
 const hexyjs = require("hexyjs")
 
 
@@ -16,17 +16,22 @@ export default function ColourMatch(){
 	const [colourList, setColourList] = useState([])
 	const [similarColours, setSimilarColours] = useState([])
 	const [maxDiff, setMaxDiff] = useState(50)
+	const [grid, setGrid] = useState(null)
 
 	const colourPalette = ["#E42406", "#EC6E08", "#EC9508", "#ECF701", "#2DC84D", "#14C7D1", "#147BD1", "#443BBD", "#753BBD", "#BD3B89"]
  
 	
 	//effects 
-	useEffect(() => { //get mix data from public folder
+	useEffect(() => {
+		//generate grid
 		let grid = gridData()
 		for(let i = 0; i < colourPalette.length; i++){
 			grid = colourGradientColumn(grid, i, colourPalette[i])
 		}
+		setGrid(grid)
 		console.log(grid)
+		
+		//get mix data from public folder
 		fetch("/data/mixData.json")
 			.then((res) => res.json())
 			.then((data) => setMixData(data))
@@ -64,7 +69,7 @@ export default function ColourMatch(){
 		}
 	}
 
-	const handleChangeDiff = (event) => {///saves colour hex to hook value depending on colourNo
+	const handleChangeDiff = (event) => {///saves colour diff value to hook value depending on colourNo
 		var inputElement = event.target
 		var elementId = inputElement.id
 		if(inputElement){
@@ -99,28 +104,39 @@ export default function ColourMatch(){
 					container 
 					item
 					direction="column"
-					justiftContent="center"
+					justifyContent="flex-start"
 					xs={12}
-					sm={6}
+					spacing={4}
 				>
 					<Grid item>
-						<TextField id="colour-match-input" label="Colour to match" variant="standard" onChange={handleChangeColour} />
-						<TextField id="colour-match-diff" label="Max difference" variant="standard" type="number" onChange={handleChangeDiff} defaultValue={maxDiff} />
-					</Grid>
-					<Grid item>
-						<ColourCard
-							colourName="???"
-							artistName="???"
-							colourHex={`#${colour}`}
-							date="1/1/2023"
+						<TextField 
+							id="colour-match-input" 
+							label="Colour to match" 
+							variant="standard" 
+							onChange={handleChangeColour} 
 						/>
+						<TextField 
+							id="colour-match-diff" 
+							label="Max difference" 
+							variant="standard" 
+							type="number" 
+							onChange={handleChangeDiff} 
+							defaultValue={maxDiff} 
+						/>
+					</Grid>
+					<Grid item xs={12} sm={6}>
+						{grid?(
+							<ColourGrid grid={grid}/>
+						):(
+							<div></div>
+						)}
 					</Grid>
 				</Grid>
 				<Grid
 					container 
 					item
 					direction="column"
-					justiftContent="center"
+					justifyContent="center"
 					xs={12}
 					sm={6}
 				>
@@ -154,13 +170,4 @@ export default function ColourMatch(){
 			</Grid>
 		</div>
 	)
-}
-
-
-ColourMatch.propTypes = {
-	colour: PropTypes.string, 
-	mixData: PropTypes.object, 
-	colourList: PropTypes.array, 
-	similarColours: PropTypes.array, 
-	maxDiff: PropTypes.number
 }
