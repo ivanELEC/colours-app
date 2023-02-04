@@ -31,11 +31,10 @@ export default function ColourGrid(props) {
 				container
 				direction="column-reverse"
 				spacing={1}
-				xs={12}
 			> 
 				{props.grid.map((colourRow) => (
-					<Grid item xs={12} sm={6} key={props.grid.indexOf(colourRow)} spacing={1}>
-						<ColourRow rowData={colourRow}/>
+					<Grid item xs={12} sm={6} key={props.grid.indexOf(colourRow)}>
+						<ColourRow onSelectCell={props.onSelectCell} rowData={colourRow}/>
 					</Grid>
 				))}
 			</Grid>
@@ -44,5 +43,6 @@ export default function ColourGrid(props) {
 }
 
 ColourGrid.propTypes = {
-	grid: PropTypes.array
+	grid: PropTypes.array,
+	onSelectCell: PropTypes.func
 } 

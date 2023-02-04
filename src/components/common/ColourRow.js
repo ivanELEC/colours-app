@@ -34,6 +34,7 @@ export default function ColourRow(props) {
 				{props.rowData.map((colour) => (
 					<Grid item key={colour.index} xs={1}> 
 						<Paper 
+							onClick={props.onSelectCell}
 							className={classes.paperCard} 
 							style={{"backgroundColor":`${colour.colourHex}`}}
 						/>

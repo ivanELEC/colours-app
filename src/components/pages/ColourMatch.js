@@ -7,6 +7,8 @@ import ColourCard from "../common/ColourCard"
 import { getAllocatedColours, getSimilarColours, colourGradientColumn } from "../../js/utils/colourMatch"
 import ColourGrid from "../common/ColourGrid"
 const hexyjs = require("hexyjs")
+const Color = require('color');
+
 
 
 export default function ColourMatch(){
@@ -79,6 +81,20 @@ export default function ColourMatch(){
 		}
 	}
 
+	const handleSelectColour = (event) => {
+		var inputElement = event.target
+		if(inputElement){
+			var colourRgb = window.getComputedStyle( inputElement ,null).getPropertyValue('background-color'); 
+			let colourSelectElement = document.getElementById("colour-match-input")
+			const colour = Color(colourRgb)
+			let colourHex = colour.hex()
+			colourHex = colourHex.slice(1)
+			colourHex = colourHex.toLocaleLowerCase()
+			colourSelectElement.value = colourHex
+			setColour(colourHex)
+		}
+	}
+
 	//styles
 	const useStyles = makeStyles({
 		root: {
@@ -114,6 +130,8 @@ export default function ColourMatch(){
 							label="Colour to match" 
 							variant="standard" 
 							onChange={handleChangeColour} 
+							InputLabelProps={{ shrink: true }} 
+							defaultValue={"------"}
 						/>
 						<TextField 
 							id="colour-match-diff" 
@@ -121,12 +139,13 @@ export default function ColourMatch(){
 							variant="standard" 
 							type="number" 
 							onChange={handleChangeDiff} 
+							InputLabelProps={{ shrink: true }} 
 							defaultValue={maxDiff} 
 						/>
 					</Grid>
 					<Grid item xs={12} sm={6}>
 						{grid?(
-							<ColourGrid grid={grid}/>
+							<ColourGrid grid={grid} onSelectCell={handleSelectColour} />
 						):(
 							<div></div>
 						)}
@@ -142,7 +161,7 @@ export default function ColourMatch(){
 				>
 					<Grid
 						container
-						citem
+						item
 						direction="row"
 						justifyContent="center"
 						alignItems="center"
