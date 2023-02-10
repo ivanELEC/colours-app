@@ -14,7 +14,7 @@ export default function ColourGrid(props) {
 	//styles
 	const useStyles = makeStyles({
 		root: {
-			
+			minWidth: 400,
 		},
 		paperCard: {
 			minHeight: 20,
@@ -33,7 +33,7 @@ export default function ColourGrid(props) {
 				spacing={1}
 			> 
 				{props.grid.map((colourRow) => (
-					<Grid item xs={12} sm={6} key={props.grid.indexOf(colourRow)}>
+					<Grid item xs={12} key={props.grid.indexOf(colourRow)}>
 						<ColourRow onSelectCell={props.onSelectCell} rowData={colourRow}/>
 					</Grid>
 				))}

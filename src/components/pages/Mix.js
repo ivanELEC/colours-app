@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import MixBoxMobile from "../common/MixBoxMobile"
 import MixNavBar from "../navigation/MixNavBar"
 import BackButton from "../common/BackButton"
-import Image from "material-ui-image"
 import { fadeInDown } from "react-animations"
 import Radium, { StyleRoot } from "radium"
 
