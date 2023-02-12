@@ -104,7 +104,7 @@ export default function ColourMatch(){
 			textAlign: "center",
 		},
 		titleCard: {
-			fontSize: "7vh",
+			fontSize: "5vh",
 			width: "100%",
 			height: "100%",
 			minHeight: 150,
@@ -116,9 +116,9 @@ export default function ColourMatch(){
 			color: titleTextColour,
 		}, 
 		titleColourSelect: {
-			fontSize: "7vh",
+			fontSize: "5vh",
 			verticalAlign: "middle",
-			fontFamily: "HelveticaBold",
+			fontFamily: "HelveticaLight",
 			color: titleTextColour,
 			borderColor: titleTextColour
 		},	
@@ -163,12 +163,9 @@ export default function ColourMatch(){
 					<Grid item xs={12} sm={12} md={8}>
 						<Paper 
 							className={classes.titleCard}
-							variant="outlined"
-							square
-							style={{backgroundColor:`#${selectedColour}`}}
+							elevation={1}
 						>
-							<div>Chroma</div>
-							<div>
+							<div style={{backgroundColor:`#${selectedColour}`, minHeight: "40%"}}>
 								<TextField
 									disable
 									InputProps={{
@@ -181,6 +178,7 @@ export default function ColourMatch(){
 									onChange={handleChangeColour} 
 								/>
 							</div>
+							<div style={{color: "black", paddingTop: "1em"}}>Chroma</div>
 						</Paper>
 					</Grid>
 				</Grid>
