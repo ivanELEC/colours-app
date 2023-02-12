@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import MixBoxMobile from "../common/MixBoxMobile"
 import MixNavBar from "../navigation/MixNavBar"
@@ -71,16 +70,6 @@ export default function Mix() {
 			animationName: Radium.keyframes(fadeInDown, "fadeInDown")
 		}
 	}
-
-	const useStyles = makeStyles({
-		root: {},
-		icon: {
-			maxHeight: 75,
-			maxWidth: 75
-		}
-	})
-
-	const classes = useStyles()
 
 	//functions
 	/*function which returns contents of array element if it exists and null if it doesn't

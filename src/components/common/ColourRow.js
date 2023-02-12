@@ -30,7 +30,7 @@ export default function ColourRow(props) {
 				container
 				direction="row"
 				spacing={1} 
-				justifyContent={{sm:"space-between", md: "flex-start"}}
+				justifyContent="flex-start"
 			>	
 				{props.rowData.map((colour) => (
 					<Grid item key={colour.index} xs={1}> 
@@ -43,9 +43,10 @@ export default function ColourRow(props) {
 				))}
 			</Grid>
 		</div>
-	);
+	)
 }
 
 ColourRow.propTypes = {
-	rowData: PropTypes.array
+	rowData: PropTypes.array,
+	onSelectCell: PropTypes.func
 } 

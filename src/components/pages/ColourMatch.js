@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import { Link } from "react-router-dom"
 import { gridData } from "../../js/utils/grid"
-import {Grid, Paper}  from "@material-ui/core"
+import {Grid, Paper, TextField, InputAdornment}  from "@material-ui/core"
 import ColourCard from "../common/ColourCard"
 import { getAllocatedColours, getSimilarColours, colourGradientColumn, getTextShade } from "../../js/utils/colourMatch"
 import ColourGrid from "../common/ColourGrid"
 const hexyjs = require("hexyjs")
-const Color = require('color');
+const Color = require("color")
 
 
 
@@ -17,9 +17,10 @@ export default function ColourMatch(){
 	
 	//state hooks
 	const [colour, setColour] = useState("ffffff")
+	const [selectedColour, setSelectedColour] = useState("ffffff")
 	const [mixData, setMixData] = useState(false)
 	const [colourList, setColourList] = useState([])
-	const [titleTextColour, setTitleTextColour] = useState(false)
+	const [titleTextColour, setTitleTextColour] = useState("38383b")
 	const [similarColours, setSimilarColours]  = useState([])
 	const [grid, setGrid] = useState(null)
 
@@ -56,9 +57,10 @@ export default function ColourMatch(){
 
 	useEffect(() => { //retrieve list of similar colours and set title text colour
 		let validHex = hexyjs.isHex(`${colour}`)
-		let textColour = getTextShade(colour)
-		setTitleTextColour(textColour)
-		if(colourList.length > 0 && validHex && colour.length == 6 && mixData.data){
+		if(colourList.length > 0 && validHex && colour.length > 2 && colour.length < 7 && mixData.data){
+			let textColour = getTextShade(colour)
+			setSelectedColour(colour)
+			setTitleTextColour(textColour)
 			let sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 10, mixData)
 			console.log(sortedColours)
 			setSimilarColours(sortedColours)
@@ -77,14 +79,16 @@ export default function ColourMatch(){
 		}
 	}
 
-	const handleSelectColour = (event) => {
+	const handleSelectColour = (event) => { //saves colour hex on selected colour grid to hook value and colour-match-input 
 		var inputElement = event.target
 		if(inputElement){
-			var colourRgb = window.getComputedStyle( inputElement ,null).getPropertyValue('background-color'); 
+			var colourRgb = window.getComputedStyle( inputElement ,null).getPropertyValue("background-color") 
 			const colour = Color(colourRgb)
 			let colourHex = colour.hex()
 			colourHex = colourHex.slice(1)
 			colourHex = colourHex.toLocaleLowerCase()
+			var colourMatchElement = document.getElementById("colour-match-input")
+			colourMatchElement.value = colourHex
 			setColour(colourHex)
 		}
 	}
@@ -111,9 +115,24 @@ export default function ColourMatch(){
 			border: 0,
 			color: titleTextColour,
 		}, 
-		grid: {
-			border: 1,
-			minHeight: 300
+		titleColourSelect: {
+			fontSize: "7vh",
+			verticalAlign: "middle",
+			fontFamily: "HelveticaBold",
+			color: titleTextColour,
+			borderColor: titleTextColour
+		},	
+		"& .MuiInput-underline:before": {
+			borderColor: titleTextColour
+		},
+		"& .MuiInput-underline:after": {
+			borderColor: titleTextColour
+		},
+		"& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+			borderColor: titleTextColour,
+		},
+		"& .MuiFocused:after": {
+			borderColor: titleTextColour,
 		}
 	})
 
@@ -130,8 +149,8 @@ export default function ColourMatch(){
 				<Grid 
 					container
 					item
-					direction={{xs: "row", sm: "row", md: "column"}}
-					justifyContent={{xs: "center", sm: "center", md: "flex-start"}}
+					direction="row"
+					justifyContent="flex-start"
 					spacing={2}
 				>
 					<Grid item xs={12} sm={12} md={4}>
@@ -142,14 +161,26 @@ export default function ColourMatch(){
 						)}
 					</Grid>
 					<Grid item xs={12} sm={12} md={8}>
-					<Paper 
+						<Paper 
 							className={classes.titleCard}
 							variant="outlined"
 							square
-							style={{backgroundColor:`#${colour}`}}
+							style={{backgroundColor:`#${selectedColour}`}}
 						>
 							<div>Chroma</div>
-							<div>{colour?(`#${colour}`):(``)}</div>
+							<div>
+								<TextField
+									disable
+									InputProps={{
+										startAdornment: <InputAdornment position="start"><div className={classes.titleColourSelect}>#</div></InputAdornment>,
+										className: classes.titleColourSelect
+									}}
+									id="colour-match-input"
+									variant="standard" 
+									defaultValue={colour}
+									onChange={handleChangeColour} 
+								/>
+							</div>
 						</Paper>
 					</Grid>
 				</Grid>
@@ -168,8 +199,8 @@ export default function ColourMatch(){
 						<Grid
 							container
 							item
-							direction={{xs:"column", sm: "column", md: "row"}}
-							justifyContent={{xs: "center", sm: "center", md: "flex-start"}}
+							direction="row"
+							justifyContent="flex-start"
 							alignItems="center"
 							spacing={2}
 						>

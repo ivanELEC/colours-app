@@ -40,7 +40,7 @@ export default function ColourGrid(props) {
 				))}
 			</Grid>
 		</div>
-	);
+	)
 }
 
 ColourGrid.propTypes = {
