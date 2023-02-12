@@ -120,8 +120,16 @@ export default function ColourMatch(){
 			verticalAlign: "middle",
 			fontFamily: "HelveticaLight",
 			color: titleTextColour,
-			borderColor: titleTextColour
+			borderColor: titleTextColour,
 		},	
+		titlePaperTop:{
+			backgroundColor:`#${selectedColour}`,
+			minHeight: "45%"
+		},
+		titlePaperBottom: {
+			color: "black",
+			paddingTop: "1em"
+		},
 		"& .MuiInput-underline:before": {
 			borderColor: titleTextColour
 		},
@@ -165,7 +173,7 @@ export default function ColourMatch(){
 							className={classes.titleCard}
 							elevation={1}
 						>
-							<div style={{backgroundColor:`#${selectedColour}`, minHeight: "40%"}}>
+							<div className={classes.titlePaperTop}>
 								<TextField
 									disable
 									InputProps={{
@@ -178,7 +186,7 @@ export default function ColourMatch(){
 									onChange={handleChangeColour} 
 								/>
 							</div>
-							<div style={{color: "black", paddingTop: "1em"}}>Chroma</div>
+							<div className={classes.titlePaperBottom}>Chroma</div>
 						</Paper>
 					</Grid>
 				</Grid>

@@ -36,7 +36,7 @@ export default function PictureCard(props) {
 			height: "100%",
 			width: "100%",
 			opacity: 0,
-			transition: ".5s ease",
+			transition: "1.7s ease",
 			backgroundColor: `${props.colourHex}`,
 		},
 		media: {
