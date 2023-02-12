@@ -98,6 +98,13 @@ export default function ColourMatch(){
 		root: {
 			padding: 25,
 			fontFamily: "HelveticaLight",
+			"& .MuiInput-underline:before":{
+				borderColor: titleTextColour
+			},
+			"& .MuiInput-underline:after":{
+				borderColor: titleTextColour
+			}
+
 		},
 		colourPaper: {
 			minHeight: 40,
@@ -120,7 +127,7 @@ export default function ColourMatch(){
 			verticalAlign: "middle",
 			fontFamily: "HelveticaLight",
 			color: titleTextColour,
-			borderColor: titleTextColour,
+			borderColor: titleTextColour
 		},	
 		titlePaperTop:{
 			backgroundColor:`#${selectedColour}`,
@@ -129,21 +136,9 @@ export default function ColourMatch(){
 		titlePaperBottom: {
 			color: "black",
 			paddingTop: "1em"
-		},
-		"& .MuiInput-underline:before": {
-			borderColor: titleTextColour
-		},
-		"& .MuiInput-underline:after": {
-			borderColor: titleTextColour
-		},
-		"& .MuiInput-underline:hover:not(.Mui-disabled):before": {
-			borderColor: titleTextColour,
-		},
-		"& .MuiFocused:after": {
-			borderColor: titleTextColour,
 		}
 	})
-
+	
 	const classes = useStyles()
 
 	return (
