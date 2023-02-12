@@ -30,6 +30,7 @@ export default function ColourRow(props) {
 				container
 				direction="row"
 				spacing={1} 
+				justifyContent={{sm:"space-between", md: "flex-start"}}
 			>	
 				{props.rowData.map((colour) => (
 					<Grid item key={colour.index} xs={1}> 

@@ -23,14 +23,15 @@ export default function ColourMatch(){
 	const [similarColours, setSimilarColours]  = useState([])
 	const [grid, setGrid] = useState(null)
 
-	const colourPalette = ["#E42406", "#EC6E08", "#EC9508", "#ECF701", "#2DC84D", "#14C7D1", "#147BD1", "#443BBD", "#753BBD", "#BD3B89"]
+	const colourPalette = ["#E42406", "#EC6E08", "#EC9508", "#ECF701","#CFFF00", "#2DC84D", "#14C7D1", "#147BD1", "#2700FF", "#443BBD", "#753BBD", "#BD3B89"]
  
 	
 	//effects 
 	useEffect(() => {
 		//generate grid
-		let grid = gridData()
+		let grid = gridData(10,12)
 		for(let i = 0; i < colourPalette.length; i++){
+			console.log(`creating column for colour ${colourPalette[i]}`)
 			grid = colourGradientColumn(grid, i, colourPalette[i])
 		}
 		setGrid(grid)
@@ -99,14 +100,20 @@ export default function ColourMatch(){
 			textAlign: "center",
 		},
 		titleCard: {
-			fontSize: "5vw",
+			fontSize: "7vh",
 			width: "100%",
 			height: "100%",
+			minHeight: 150,
+			minWidth: 250,
 			textAlign: "center",
 			verticalAlign: "middle",
 			fontFamily: "HelveticaBold",
 			border: 0,
 			color: titleTextColour,
+		}, 
+		grid: {
+			border: 1,
+			minHeight: 300
 		}
 	})
 
@@ -121,22 +128,21 @@ export default function ColourMatch(){
 				spacing={4}
 			>
 				<Grid 
-					container 
-					item 
-					direction="row"
-					justifyContent={{md:"space-evenly", sm:"center"}}
-					xs={12}
-					spacing={1}
+					container
+					item
+					direction={{xs: "row", sm: "row", md: "column"}}
+					justifyContent={{xs: "center", sm: "center", md: "flex-start"}}
+					spacing={2}
 				>
-					<Grid item sm={12} lg={4}>
+					<Grid item xs={12} sm={12} md={4}>
 						{grid?(
 							<ColourGrid grid={grid} onSelectCell={handleSelectColour} />
 						):(
 							<div></div>
 						)}
 					</Grid>
-					<Grid item sm={12} lg={8}>
-						<Paper 
+					<Grid item xs={12} sm={12} md={8}>
+					<Paper 
 							className={classes.titleCard}
 							variant="outlined"
 							square
@@ -162,13 +168,14 @@ export default function ColourMatch(){
 						<Grid
 							container
 							item
-							direction="row"
-							justifyContent="flex-start"
-							spacing={4}
+							direction={{xs:"column", sm: "column", md: "row"}}
+							justifyContent={{xs: "center", sm: "center", md: "flex-start"}}
+							alignItems="center"
+							spacing={2}
 						>
 							{similarColours.map((colour) => (
 								
-								<Grid key={colour.colour} item xs={12} md={3}>
+								<Grid key={colour.colour} item xs={12} sm={6} md={3}>
 									<Link
 										to={{ pathname: `/Mix/${colour.mixData.id}` }}
 										style={{ textDecoration: "none" }}
@@ -186,6 +193,7 @@ export default function ColourMatch(){
 						</Grid>	
 					</Grid>
 				</Grid>
+				
 			</Grid>
 		</div>
 	)

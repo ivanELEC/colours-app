@@ -14,7 +14,7 @@ export default function ColourGrid(props) {
 	//styles
 	const useStyles = makeStyles({
 		root: {
-			minWidth: 400,
+			minWidth: 300
 		},
 		paperCard: {
 			minHeight: 20,
@@ -30,6 +30,7 @@ export default function ColourGrid(props) {
 			<Grid 
 				container
 				direction="column-reverse"
+				justifyContent="center"
 				spacing={1}
 			> 
 				{props.grid.map((colourRow) => (

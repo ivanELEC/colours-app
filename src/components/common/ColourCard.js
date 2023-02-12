@@ -23,7 +23,7 @@ export default function ColourCard(props) {
 	if(props.mini == true){
 		minHeightHeader = 100
 		minHeight = 170
-		minWidth = 90
+		minWidth = 220
 	}
 
 	const useStyles = makeStyles({
