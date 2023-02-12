@@ -94,6 +94,7 @@ export default function Home() {
 												date={mix.date}
 												image={mix.imageUrl}
 												mini={false}
+												colourFirst={false}
 											/>
 										</div>
 									</Link>

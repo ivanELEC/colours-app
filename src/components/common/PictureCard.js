@@ -20,6 +20,38 @@ export default function PictureCard(props) {
 		minHeightContent = 110
 	}
 
+	var mediaOverlayStyles = {
+		position: "absolute",
+		top: 0,
+		bottom: 0,
+		left: 0,
+		right: 0,
+		height: "100%",
+		width: "100%",
+		opacity: 0,
+		transition: "1.7s ease",
+		backgroundColor: `${props.colourHex}`,
+		maxHeight: maxHeightHeader,
+		minHeight: minHeight
+	}
+
+	var mediaStyles = {
+		minHeight: minHeight,
+		backgroundImage: `url("${props.image}")`,
+		backgroundSize: "cover",
+		backgroundRepeat: "no-repeat",
+		backgroundPosition: "center",
+		backgroundColor: `${props.colourHex}`,
+	}
+
+	if(props.colourFirst){
+		mediaOverlayStyles.backgroundImage = `url("${props.image}")`
+		mediaOverlayStyles.backgroundSize =  "cover"
+		mediaOverlayStyles.backgroundRepeat = "no-repeat"
+		mediaOverlayStyles.backgroundPosition = "center"
+		delete mediaStyles.backgroundImage
+	}
+
 	const useStyles = makeStyles({
 		root: {
 			minWidth: minWidth,
@@ -40,28 +72,8 @@ export default function PictureCard(props) {
 				},
 			},
 		},
-		mediaOverlay: {
-			position: "absolute",
-			top: 0,
-			bottom: 0,
-			left: 0,
-			right: 0,
-			height: "100%",
-			width: "100%",
-			opacity: 0,
-			transition: "1.7s ease",
-			backgroundColor: `${props.colourHex}`,
-			maxHeight: maxHeightHeader,
-			minHeight: minHeight
-		},
-		media: {
-			minHeight: minHeight,
-			backgroundImage: `url("${props.image}")`,
-			backgroundSize: "cover",
-			backgroundRepeat: "no-repeat",
-			backgroundPosition: "center",
-			backgroundColor: `${props.colourHex}`,
-		},
+		mediaOverlay: mediaOverlayStyles,
+		media: mediaStyles,
 		content: {
 			background: "#ffffff",
 			padding: 10,
@@ -102,5 +114,6 @@ PictureCard.propTypes = {
 	colourName: PropTypes.string,
 	artistName: PropTypes.string,
 	date: PropTypes.string,
-	mini: PropTypes.bool
+	mini: PropTypes.bool,
+	colourFirst: PropTypes.bool
 }

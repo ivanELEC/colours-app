@@ -222,7 +222,9 @@ export default function ColourMatch(){
 											artistName={`${colour.mixData.artist}`}
 											colourHex={`${colour.mixData.colourHex}`}
 											date={`#${colour.mixData.date}`}
+											image={colour.mixData.imageUrl}
 											mini={true}
+											colourFirst={true}
 										/>
 									</Link>
 								</Grid>
