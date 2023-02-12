@@ -170,7 +170,7 @@ export default function ColourMatch(){
 						>
 							<div className={classes.titlePaperTop}>
 								<TextField
-									disable
+									disable="true"
 									InputProps={{
 										startAdornment: <InputAdornment position="start"><div className={classes.titleColourSelect}>#</div></InputAdornment>,
 										className: classes.titleColourSelect

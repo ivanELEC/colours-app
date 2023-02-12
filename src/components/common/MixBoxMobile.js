@@ -83,8 +83,8 @@ export default function MixBoxMobile(props) {
 						xs={12}
 						container
 						direction="row"
-						justifyContent="leftAlign"
-						alignItems="leftAlign"
+						justifyContent="flex-start"
+						alignItems="flex-start"
 					>
 						{props.links.map((link) => (
 							<Grid item xs={4} key={link}>
