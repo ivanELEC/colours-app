@@ -66,7 +66,7 @@ export default function Mix() {
 	//styles
 	const styles = {
 		fadeInDown: {
-			animation: "x 1s",
+			animation: "x 1.3s",
 			animationName: Radium.keyframes(fadeInDown, "fadeInDown")
 		}
 	}
