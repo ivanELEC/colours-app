@@ -9,8 +9,6 @@ Basic white card with shadow
 export default function Card(props) {
 	const useStyles = makeStyles({
 		root: {
-			minWidth: 275,
-			minHeight: 480,
 			maxWidth: 350,
 			fontFamily: "HelveticaLight",
 			fontSize: 16,

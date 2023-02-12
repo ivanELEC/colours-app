@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import { Link } from "react-router-dom"
 import { gridData } from "../../js/utils/grid"
 import {Grid, Paper, TextField, InputAdornment}  from "@material-ui/core"
-import ColourCard from "../common/ColourCard"
+import PictureCard from "../common/PictureCard"
 import { getAllocatedColours, getSimilarColours, colourGradientColumn, getTextShade } from "../../js/utils/colourMatch"
 import ColourGrid from "../common/ColourGrid"
 const hexyjs = require("hexyjs")
@@ -217,7 +217,7 @@ export default function ColourMatch(){
 										to={{ pathname: `/Mix/${colour.mixData.id}` }}
 										style={{ textDecoration: "none" }}
 									>
-										<ColourCard
+										<PictureCard
 											colourName={`${colour.mixData.colourName}`}
 											artistName={`${colour.mixData.artist}`}
 											colourHex={`${colour.mixData.colourHex}`}

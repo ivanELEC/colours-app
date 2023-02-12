@@ -93,6 +93,7 @@ export default function Home() {
 												colourHex={mix.colourHex}
 												date={mix.date}
 												image={mix.imageUrl}
+												mini={false}
 											/>
 										</div>
 									</Link>

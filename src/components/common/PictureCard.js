@@ -7,10 +7,23 @@ import { makeStyles } from "@material-ui/core/styles"
 A simple card with an image, a title and some content
 */
 export default function PictureCard(props) {
+	//variables for size of component - reduces if mini = true
+	var maxHeightHeader = 300
+	var minHeightContent = 120
+	var minHeight = 320
+	var minWidth = 275
+
+	if(props.mini == true){
+		maxHeightHeader = 150
+		minHeight = 170
+		minWidth = 220
+		minHeightContent = 110
+	}
+
 	const useStyles = makeStyles({
 		root: {
-			minWidth: 230,
-			minHeight: 480,
+			minWidth: minWidth,
+			minHeight: minHeight,
 			maxWidth: 400,
 			borderRadius: 4,
 			fontFamily: "HelveticaLight",
@@ -38,9 +51,11 @@ export default function PictureCard(props) {
 			opacity: 0,
 			transition: "1.7s ease",
 			backgroundColor: `${props.colourHex}`,
+			maxHeight: maxHeightHeader,
+			minHeight: minHeight
 		},
 		media: {
-			minHeight: 300,
+			minHeight: minHeight,
 			backgroundImage: `url("${props.image}")`,
 			backgroundSize: "cover",
 			backgroundRepeat: "no-repeat",
@@ -49,8 +64,9 @@ export default function PictureCard(props) {
 		},
 		content: {
 			background: "#ffffff",
-			padding: 3,
+			padding: 10,
 			margin: 3,
+			minHeight: minHeightContent
 		},
 		title: {
 			fontFamily: "HelveticaBold",
@@ -86,4 +102,5 @@ PictureCard.propTypes = {
 	colourName: PropTypes.string,
 	artistName: PropTypes.string,
 	date: PropTypes.string,
+	mini: PropTypes.bool
 }
