@@ -221,7 +221,7 @@ export default function ColourMatch(){
 											colourName={`${colour.mixData.colourName}`}
 											artistName={`${colour.mixData.artist}`}
 											colourHex={`${colour.mixData.colourHex}`}
-											date={`#${colour.mixData.date}`}
+											date={`${colour.mixData.date}`}
 											image={colour.mixData.imageUrl}
 											mini={true}
 											colourFirst={true}
