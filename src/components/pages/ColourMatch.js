@@ -103,8 +103,11 @@ export default function ColourMatch(){
 			},
 			"& .MuiInput-underline:after":{
 				borderColor: titleTextColour
-			}
-
+			},
+			"& .MuiInput-underline:hover:not(.Mui-disabled):before":{
+				borderBottom: `2px solid ${titleTextColour} !important`
+			},
+			
 		},
 		colourPaper: {
 			minHeight: 40,
