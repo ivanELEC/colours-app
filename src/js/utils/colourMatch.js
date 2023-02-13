@@ -70,7 +70,7 @@ export function getTextShade(colour) {
 	let colourBrightness = colourObj.getBrightness()
 	let brightnessThreshold = 165
 	if (parseInt(colourBrightness) > brightnessThreshold) {
-		return "#38383b"
+		return "#000000"
 	} else if (parseInt(colourBrightness) <= brightnessThreshold) {
 		return "#ffffff"
 	}

@@ -22,7 +22,7 @@ export default function ColourMatch(){
 	const [colourList, setColourList] = useState([])
 	const [titleTextColour, setTitleTextColour] = useState("38383b")
 	const [similarColours, setSimilarColours]  = useState([])
-	const [grid, setGrid] = useState(null)
+	const [grid, setGrid] = useState(false)
 
 	const colourPalette = ["#E42406", "#EC6E08", "#EC9508", "#ECF701","#CFFF00", "#2DC84D", "#14C7D1", "#147BD1", "#2700FF", "#443BBD", "#753BBD", "#BD3B89"]
  
@@ -107,7 +107,6 @@ export default function ColourMatch(){
 			"& .MuiInput-underline:hover:not(.Mui-disabled):before":{
 				borderBottom: `2px solid ${titleTextColour} !important`
 			},
-			
 		},
 		colourPaper: {
 			minHeight: 40,
