@@ -6,6 +6,7 @@ import {Grid, Paper, TextField, InputAdornment}  from "@material-ui/core"
 import PictureCard from "../common/PictureCard"
 import { getAllocatedColours, getSimilarColours, colourGradientColumn, getTextShade } from "../../js/utils/colourMatch"
 import ColourGrid from "../common/ColourGrid"
+import Radium, { StyleRoot } from "radium"
 const hexyjs = require("hexyjs")
 const Color = require("color")
 
@@ -17,6 +18,7 @@ export default function ColourMatch(){
 	
 	//state hooks
 	const [colour, setColour] = useState("ffffff")
+	const [oldColour, setOldColour] = useState("ffffff")
 	const [selectedColour, setSelectedColour] = useState("ffffff")
 	const [mixData, setMixData] = useState(false)
 	const [colourList, setColourList] = useState([])
@@ -59,13 +61,18 @@ export default function ColourMatch(){
 		let validHex = hexyjs.isHex(`${colour}`)
 		if(colourList.length > 0 && validHex && colour.length > 2 && colour.length < 7 && mixData.data){
 			let textColour = getTextShade(colour)
+			let sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 10, mixData)
 			setSelectedColour(colour)
 			setTitleTextColour(textColour)
-			let sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 10, mixData)
-			console.log(sortedColours)
 			setSimilarColours(sortedColours)
 		}
 	}, [colourList, colour, mixData])
+
+	useEffect(() => {
+		console.log("colour", colour)
+		console.log("oldColour", oldColour)
+		console.log("selectedColour", selectedColour)
+	},[colour, oldColour, selectedColour])
 
 
 	//functions 
@@ -74,6 +81,7 @@ export default function ColourMatch(){
 		var elementId = inputElement.id
 		if(inputElement){
 			if(elementId == "colour-match-input"){
+				setOldColour(colour) //set old colour so that when page re-renders we can use it to transition to the new one 
 				setColour(inputElement.value)
 			}
 		}
@@ -82,18 +90,37 @@ export default function ColourMatch(){
 	const handleSelectColour = (event) => { //saves colour hex on selected colour grid to hook value and colour-match-input 
 		var inputElement = event.target
 		if(inputElement){
-			var colourRgb = window.getComputedStyle( inputElement ,null).getPropertyValue("background-color") 
-			const colour = Color(colourRgb)
-			let colourHex = colour.hex()
+			setOldColour(colour) //set old colour so that when page re-renders we can use it to transition to the new one 
+			let colourRgb = window.getComputedStyle( inputElement ,null).getPropertyValue("background-color") 
+			const colourObj = Color(colourRgb)
+			let colourHex = colourObj.hex()
 			colourHex = colourHex.slice(1)
 			colourHex = colourHex.toLocaleLowerCase()
-			var colourMatchElement = document.getElementById("colour-match-input")
+			let colourMatchElement = document.getElementById("colour-match-input")
 			colourMatchElement.value = colourHex
 			setColour(colourHex)
 		}
 	}
 
 	//styles
+	var colourTransitionKeyframes = Radium.keyframes({
+		"0%": {
+			"background-color": `#${oldColour}`
+		},
+		"100%": {
+			"background-color": `#${selectedColour}`
+		}
+	}, "colourTransition")
+
+	var styles = {
+		titlePaperTop:{
+			animation: "2s forwards",
+			animationName: colourTransitionKeyframes,
+			backgroundColour: `#${selectedColour}`,
+			minHeight: "45%"
+		}
+	}
+	
 	const useStyles = makeStyles({
 		root: {
 			padding: 25,
@@ -131,10 +158,6 @@ export default function ColourMatch(){
 			color: titleTextColour,
 			borderColor: titleTextColour
 		},	
-		titlePaperTop:{
-			backgroundColor:`#${selectedColour}`,
-			minHeight: "45%"
-		},
 		titlePaperBottom: {
 			color: "black",
 			paddingTop: "1em"
@@ -170,19 +193,21 @@ export default function ColourMatch(){
 							className={classes.titleCard}
 							elevation={1}
 						>
-							<div className={classes.titlePaperTop}>
-								<TextField
-									disable="true"
-									InputProps={{
-										startAdornment: <InputAdornment position="start"><div className={classes.titleColourSelect}>#</div></InputAdornment>,
-										className: classes.titleColourSelect
-									}}
-									id="colour-match-input"
-									variant="standard" 
-									defaultValue={colour}
-									onChange={handleChangeColour} 
-								/>
-							</div>
+							<StyleRoot>
+								<div  style={styles.titlePaperTop}>
+									<TextField
+										disable="true"
+										InputProps={{
+											startAdornment: <InputAdornment position="start"><div className={classes.titleColourSelect}>#</div></InputAdornment>,
+											className: classes.titleColourSelect
+										}}
+										id="colour-match-input"
+										variant="standard" 
+										defaultValue={colour}
+										onChange={handleChangeColour} 
+									/>
+								</div>
+							</StyleRoot>
 							<div className={classes.titlePaperBottom}>Chroma</div>
 						</Paper>
 					</Grid>

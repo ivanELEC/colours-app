@@ -43,13 +43,14 @@ export default function Home() {
 		}
 	}, [mixData])
 
-	//sort mix data by descending date
+	//styles
 	const styles = {
 		fadeInDown: {
 			animation: "x 1.3s",
 			animationName: Radium.keyframes(fadeInDown, "fadeInDown"),
 		}
 	}
+
 	const useStyles = makeStyles({
 		root: {
 			alignItems: "center",
