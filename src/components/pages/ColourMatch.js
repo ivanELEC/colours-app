@@ -7,6 +7,7 @@ import PictureCard from "../common/PictureCard"
 import { getAllocatedColours, getSimilarColours, colourGradientColumn, getTextShade } from "../../js/utils/colourMatch"
 import ColourGrid from "../common/ColourGrid"
 import Radium, { StyleRoot } from "radium"
+import { fadeInRight } from "react-animations"
 const hexyjs = require("hexyjs")
 const Color = require("color")
 
@@ -23,6 +24,7 @@ export default function ColourMatch(){
 	const [mixData, setMixData] = useState(false)
 	const [colourList, setColourList] = useState([])
 	const [titleTextColour, setTitleTextColour] = useState("38383b")
+	const [oldTitleTextColour, setOldTitleTextColour] = useState("38383b")
 	const [similarColours, setSimilarColours]  = useState([])
 	const [grid, setGrid] = useState(false)
 
@@ -63,6 +65,7 @@ export default function ColourMatch(){
 			let textColour = getTextShade(colour)
 			let sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 10, mixData)
 			setSelectedColour(colour)
+			setOldTitleTextColour(titleTextColour)
 			setTitleTextColour(textColour)
 			setSimilarColours(sortedColours)
 		}
@@ -112,12 +115,34 @@ export default function ColourMatch(){
 		}
 	}, "colourTransition")
 
+	var textTitleTransitionKeyframes = Radium.keyframes({
+		"0%": {
+			"color": `#${oldTitleTextColour}`
+		},
+		"100%": {
+			"color": `#${titleTextColour}`
+		}
+	}, "textTitleTransition")
+
 	var styles = {
 		titlePaperTop:{
 			animation: "2s forwards",
 			animationName: colourTransitionKeyframes,
 			backgroundColour: `#${selectedColour}`,
-			minHeight: "45%"
+			minHeight: "40%"
+		},
+		titleColourSelect: {
+			animation: "2s forwards",
+			animationName: textTitleTransitionKeyframes,
+			fontSize: "5vh",
+			verticalAlign: "middle",
+			fontFamily: "HelveticaLight",
+			color: titleTextColour,
+			borderColor: titleTextColour
+		},
+		fadeInRight: {
+			animation: "1.5s",
+			animationName: Radium.keyframes(fadeInRight, "fadeInRight"),
 		}
 	}
 	
@@ -167,39 +192,39 @@ export default function ColourMatch(){
 	const classes = useStyles()
 
 	return (
-		<div className={classes.root}>
-			<Grid
-				container 
-				direction="column"
-				justifyContent="flex-start"
-				spacing={4}
-			>
-				<Grid 
-					container
-					item
-					direction="row"
+		<StyleRoot>
+			<div className={classes.root}>
+				<Grid
+					container 
+					direction="column"
 					justifyContent="flex-start"
-					spacing={2}
+					spacing={4}
 				>
-					<Grid item xs={12} sm={12} md={4}>
-						{grid?(
-							<ColourGrid grid={grid} onSelectCell={handleSelectColour} />
-						):(
-							<div></div>
-						)}
-					</Grid>
-					<Grid item xs={12} sm={12} md={8}>
-						<Paper 
-							className={classes.titleCard}
-							elevation={1}
-						>
-							<StyleRoot>
+					<Grid 
+						container
+						item
+						direction="row"
+						justifyContent="flex-start"
+						spacing={2}
+					>
+						<Grid item xs={12} sm={12} md={4}>
+							{grid?(
+								<ColourGrid grid={grid} onSelectCell={handleSelectColour} />
+							):(
+								<div></div>
+							)}
+						</Grid>
+						<Grid item xs={12} sm={12} md={8}>
+							<Paper 
+								className={classes.titleCard}
+								elevation={1}
+							>
 								<div  style={styles.titlePaperTop}>
 									<TextField
 										disable="true"
 										InputProps={{
 											startAdornment: <InputAdornment position="start"><div className={classes.titleColourSelect}>#</div></InputAdornment>,
-											className: classes.titleColourSelect
+											style: styles.titleColourSelect
 										}}
 										id="colour-match-input"
 										variant="standard" 
@@ -207,55 +232,56 @@ export default function ColourMatch(){
 										onChange={handleChangeColour} 
 									/>
 								</div>
-							</StyleRoot>
-							<div className={classes.titlePaperBottom}>Chroma</div>
-						</Paper>
+								<div className={classes.titlePaperBottom}>Chroma</div>
+							</Paper>
+						</Grid>
 					</Grid>
-				</Grid>
-				<Grid 
-					container 
-					item
-					direction="row"
-					justifyContent="flex-start"
-				>
-					<Grid
+					<Grid 
 						container 
 						item
-						direction="column"
+						direction="row"
 						justifyContent="flex-start"
 					>
 						<Grid
-							container
+							container 
 							item
-							direction="row"
+							direction="column"
 							justifyContent="flex-start"
-							alignItems="center"
-							spacing={2}
 						>
-							{similarColours.map((colour) => (
-								
-								<Grid key={colour.colour} item xs={12} sm={6} md={3}>
-									<Link
-										to={{ pathname: `/Mix/${colour.mixData.id}` }}
-										style={{ textDecoration: "none" }}
-									>
-										<PictureCard
-											colourName={`${colour.mixData.colourName}`}
-											artistName={`${colour.mixData.artist}`}
-											colourHex={`${colour.mixData.colourHex}`}
-											date={`${colour.mixData.date}`}
-											image={colour.mixData.imageUrl}
-											mini={true}
-											colourFirst={true}
-										/>
-									</Link>
-								</Grid>
-							))}	
-						</Grid>	
+							<div style={styles.fadeInRight} key={selectedColour}>
+								<Grid
+									container
+									item
+									direction="row"
+									justifyContent="flex-start"
+									alignItems="center"
+									spacing={2}
+								>
+									{similarColours.map((colour) => (
+										
+										<Grid key={colour.colour} item xs={12} sm={6} md={3}>
+											<Link
+												to={{ pathname: `/Mix/${colour.mixData.id}` }}
+												style={{ textDecoration: "none" }}
+											>
+												<PictureCard
+													colourName={`${colour.mixData.colourName}`}
+													artistName={`${colour.mixData.artist}`}
+													colourHex={`${colour.mixData.colourHex}`}
+													date={`${colour.mixData.date}`}
+													image={colour.mixData.imageUrl}
+													mini={true}
+													colourFirst={true}
+												/>
+											</Link>
+										</Grid>
+									))}	
+								</Grid>	
+							</div>
+						</Grid>
 					</Grid>
 				</Grid>
-				
-			</Grid>
-		</div>
+			</div>
+		</StyleRoot>
 	)
 }
