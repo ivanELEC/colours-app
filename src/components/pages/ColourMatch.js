@@ -24,7 +24,6 @@ export default function ColourMatch(){
 	const [mixData, setMixData] = useState(false)
 	const [colourList, setColourList] = useState([])
 	const [titleTextColour, setTitleTextColour] = useState("38383b")
-	const [oldTitleTextColour, setOldTitleTextColour] = useState("38383b")
 	const [similarColours, setSimilarColours]  = useState([])
 	const [grid, setGrid] = useState(false)
 
@@ -61,22 +60,17 @@ export default function ColourMatch(){
 
 	useEffect(() => { //retrieve list of similar colours and set title text colour
 		let validHex = hexyjs.isHex(`${colour}`)
-		if(colourList.length > 0 && validHex && colour.length > 2 && colour.length < 7 && mixData.data){
+		console.log(colour)
+		if(validHex && mixData.data){
 			let textColour = getTextShade(colour)
-			let sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 10, mixData)
 			setSelectedColour(colour)
-			setOldTitleTextColour(titleTextColour)
 			setTitleTextColour(textColour)
-			setSimilarColours(sortedColours)
+			if(colourList.length > 0){
+				let sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 10, mixData)
+				setSimilarColours(sortedColours)
+			}
 		}
 	}, [colourList, colour, mixData])
-
-	useEffect(() => {
-		console.log("colour", colour)
-		console.log("oldColour", oldColour)
-		console.log("selectedColour", selectedColour)
-	},[colour, oldColour, selectedColour])
-
 
 	//functions 
 	const handleChangeColour = (event) => {///saves colour hex to hook value depending on colourNo
@@ -84,8 +78,12 @@ export default function ColourMatch(){
 		var elementId = inputElement.id
 		if(inputElement){
 			if(elementId == "colour-match-input"){
-				setOldColour(colour) //set old colour so that when page re-renders we can use it to transition to the new one 
-				setColour(inputElement.value)
+				if(inputElement.value){
+					if(inputElement.value.length == 6){
+						setOldColour(colour) //set old colour so that when page re-renders we can use it to transition to the new one 
+						setColour(inputElement.value)
+					}
+				}
 			}
 		}
 	}
@@ -100,7 +98,7 @@ export default function ColourMatch(){
 			colourHex = colourHex.slice(1)
 			colourHex = colourHex.toLocaleLowerCase()
 			let colourMatchElement = document.getElementById("colour-match-input")
-			colourMatchElement.value = colourHex
+			colourMatchElement.value = colourHex	
 			setColour(colourHex)
 		}
 	}
@@ -115,15 +113,6 @@ export default function ColourMatch(){
 		}
 	}, "colourTransition")
 
-	var textTitleTransitionKeyframes = Radium.keyframes({
-		"0%": {
-			"color": `#${oldTitleTextColour}`
-		},
-		"100%": {
-			"color": `#${titleTextColour}`
-		}
-	}, "textTitleTransition")
-
 	var styles = {
 		titlePaperTop:{
 			animation: "2s forwards",
@@ -132,8 +121,6 @@ export default function ColourMatch(){
 			minHeight: "40%"
 		},
 		titleColourSelect: {
-			animation: "2s forwards",
-			animationName: textTitleTransitionKeyframes,
 			fontSize: "5vh",
 			verticalAlign: "middle",
 			fontFamily: "HelveticaLight",
@@ -228,7 +215,7 @@ export default function ColourMatch(){
 										}}
 										id="colour-match-input"
 										variant="standard" 
-										defaultValue={colour}
+										defaultValue={selectedColour}
 										onChange={handleChangeColour} 
 									/>
 								</div>
