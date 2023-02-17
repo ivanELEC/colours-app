@@ -8,9 +8,9 @@ A simple card with an image, a title and some content
 */
 export default function PictureCard(props) {
 	//variables for size of component - reduces if mini = true
-	var maxHeightHeader = 300
-	var minHeightContent = 120
-	var minHeight = 320
+	var maxHeightHeader = 280
+	var minHeightContent = 140
+	var minHeight = 300
 	var minWidth = 275
 
 	if(props.mini == true){
@@ -62,6 +62,7 @@ export default function PictureCard(props) {
 			fontSize: 16,
 			color: "black",
 			padding: 10,
+			margin: "auto", 
 		},
 		mediaContainer: {
 			position: "relative",

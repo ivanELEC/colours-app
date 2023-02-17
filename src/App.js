@@ -8,6 +8,9 @@ const logger = winston.createLogger({
 	transports: [new winston.transports.Console()]
 })
 
+//scale page
+document.body.style.zoom = 0.85
+
 function App() {
 	return (
 		<WinstonProvider logger={logger}>

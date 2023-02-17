@@ -12,7 +12,6 @@ export default function Footer() {
 			position: "fixed",
 			left: "0",
 			bottom: "0",
-			maxHeight: "40px",
 			width: "100%",
 			WebkitBoxSizing: "border-box",
 			MozBoxSizing: "border-box",
@@ -21,7 +20,6 @@ export default function Footer() {
 		},
 		phantom: {
 			display: "block",
-			maxHeight: "40px",
 			width: "100%",
 			WebkitBoxSizing: "border-box",
 			MozBoxSizing: "border-box",
@@ -42,7 +40,7 @@ export default function Footer() {
 					justifyContent="space-between"
 					alignItems="center"
 				>
-					<Grid item xs={7} md={3} style={{ fontSize: "14px" }}>
+					<Grid item xs={7} md={3} style={{ fontSize: "2.8vh" }}>
 						<div style={{ fontFamily: "HelveticaBold" }}>Chroma</div>{" "}
 						<div style={{ fontFamily: "HelveticaLight" }}>
 							Akash Chohan + Ivan Yohuno, Est. 2020

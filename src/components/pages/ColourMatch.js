@@ -118,7 +118,9 @@ export default function ColourMatch(){
 			animation: "2s forwards",
 			animationName: colourTransitionKeyframes,
 			backgroundColour: `#${selectedColour}`,
-			minHeight: "40%"
+			minHeight: "40%",
+			paddingLeft : 20,
+			paddingRight: 20
 		},
 		titleColourSelect: {
 			fontSize: "5vh",
@@ -249,7 +251,7 @@ export default function ColourMatch(){
 										<Grid key={colour.colour} item xs={12} sm={6} md={3}>
 											<Link
 												to={{ pathname: `/Mix/${colour.mixData.id}` }}
-												style={{ textDecoration: "none" }}
+												style={{ textDecoration: "none", margin: "auto" }}
 											>
 												<PictureCard
 													colourName={`${colour.mixData.colourName}`}
