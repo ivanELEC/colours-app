@@ -12,13 +12,14 @@ export default function ColourGrid(props) {
 	//functions
 	
 	//styles
+	const minWidth = 300
 	const useStyles = makeStyles({
 		root: {
-			minWidth: 300
+			minWidth: minWidth
 		},
 		paperCard: {
-			minHeight: 20,
-			minWidth: 20
+			minHeight: minWidth * 0.07,
+			minWidth: minWidth * 0.07
 		}
 	})
 

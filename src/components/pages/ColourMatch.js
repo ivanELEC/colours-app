@@ -194,14 +194,14 @@ export default function ColourMatch(){
 						justifyContent="flex-start"
 						spacing={2}
 					>
-						<Grid item xs={12} sm={12} md={4}>
+						<Grid item xs={12} sm={12} md={5}>
 							{grid?(
 								<ColourGrid grid={grid} onSelectCell={handleSelectColour} />
 							):(
 								<div></div>
 							)}
 						</Grid>
-						<Grid item xs={12} sm={12} md={8}>
+						<Grid item xs={12} sm={12} md={7}>
 							<Paper 
 								className={classes.titleCard}
 								elevation={1}
