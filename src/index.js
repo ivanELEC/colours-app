@@ -14,10 +14,8 @@ import "./fonts/HelveticaNeueCyr-Light.ttf"
 const routing = (
 	<div>
 		<Router>
-			<Switch><Route exact path="/" component={App} /></Switch>
+			<Switch><Route exact path="/" component={ColourMatch} /></Switch>
 			<Switch><Route exact path="/Mix/:id" component={Mix} /></Switch>
-			<Switch><Route exact path="/ColourDifference" component={ColourDifference} /></Switch>
-			<Switch><Route exact path="/ColourMatch" component={ColourMatch} /></Switch>
 			<Footer/>
 		</Router>
 	</div>
