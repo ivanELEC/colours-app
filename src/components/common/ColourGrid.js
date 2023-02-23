@@ -16,10 +16,6 @@ export default function ColourGrid(props) {
 	const useStyles = makeStyles({
 		root: {
 			minWidth: minWidth
-		},
-		paperCard: {
-			minHeight: minWidth * 0.07,
-			minWidth: minWidth * 0.07
 		}
 	})
 

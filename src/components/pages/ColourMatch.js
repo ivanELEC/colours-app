@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import { Link } from "react-router-dom"
 import { gridData } from "../../js/utils/grid"
-import {Grid, Paper, TextField, InputAdornment}  from "@material-ui/core"
+import {Grid, Paper, TextField, InputAdornment, Hidden}  from "@material-ui/core"
 import PictureCard from "../common/PictureCard"
 import { getAllocatedColours, getSimilarColours, colourGradientColumn, getTextShade } from "../../js/utils/colourMatch"
 import ColourGrid from "../common/ColourGrid"
@@ -197,11 +197,16 @@ export default function ColourMatch(){
 						spacing={2}
 					>
 						<Grid item xs={12} sm={12} md={5}>
-							{grid?(
-								<ColourGrid grid={grid} onSelectCell={handleSelectColour} />
-							):(
-								<div></div>
-							)}
+							<Hidden mdUp>
+								MOBILE
+							</Hidden>
+							<Hidden smDown>
+								{grid?(
+									<ColourGrid grid={grid} onSelectCell={handleSelectColour} />
+								):(
+									<div></div>
+								)}
+							</Hidden>
 						</Grid>
 						<Grid item xs={12} sm={12} md={7}>
 							<Paper 
