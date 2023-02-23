@@ -30,8 +30,8 @@ code {
 	padding: 2
   }
   ::-webkit-scrollbar-thumb {
-	background: #ffffff;
-	border: 1px solid #000000;
+	background: #000000;
+	border: 4px solid #ffffff;
 	border-radius: 50px;
   }
   ::-webkit-scrollbar-track {
