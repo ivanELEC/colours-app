@@ -24,7 +24,7 @@ export default function Footer() {
 			WebkitBoxSizing: "border-box",
 			MozBoxSizing: "border-box",
 			boxSizing: "border-box",
-			padding: 5
+			padding: 5,
 		},
 	})
 

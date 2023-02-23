@@ -13,9 +13,23 @@ export default function ColourGrid(props) {
 	
 	//styles
 	const minWidth = 300
+	var minGridWidth = minWidth
+	var overflowMode = "hidden"
+	
+	if(props.mini){
+		overflowMode = "auto"
+		minGridWidth = minWidth * 2.6
+	}
+
 	const useStyles = makeStyles({
 		root: {
-			minWidth: minWidth
+			minWidth: minWidth,	
+			"overflow-x": overflowMode,
+			"overflow-y": "hidden"
+
+		},
+		grid: {
+			minWidth: minGridWidth
 		}
 	})
 
@@ -24,23 +38,26 @@ export default function ColourGrid(props) {
 	
 	return (
 		<div className={classes.root}>
-			<Grid 
-				container
-				direction="column-reverse"
-				justifyContent="center"
-				spacing={1}
-			> 
-				{props.grid.map((colourRow) => (
-					<Grid item xs={12} key={props.grid.indexOf(colourRow)}>
-						<ColourRow onSelectCell={props.onSelectCell} rowData={colourRow}/>
-					</Grid>
-				))}
-			</Grid>
+			<div className={classes.grid}>
+				<Grid 
+					container
+					direction="column-reverse"
+					justifyContent="center"
+					spacing={1}
+				> 
+					{props.grid.map((colourRow) => (
+						<Grid item xs={12} key={props.grid.indexOf(colourRow)}>
+							<ColourRow mini={props.mini} onSelectCell={props.onSelectCell} rowData={colourRow}/>
+						</Grid>
+					))}
+				</Grid>
+			</div>
 		</div>
 	)
 }
 
 ColourGrid.propTypes = {
 	grid: PropTypes.array,
-	onSelectCell: PropTypes.func
+	onSelectCell: PropTypes.func,
+	mini: PropTypes.bool
 } 

@@ -11,13 +11,19 @@ export default function ColourRow(props) {
 	//functions
 	
 	//styles
+	var minHeight = 20
+	var minWidth = 20
+	if(props.mini){
+		minHeight = 40
+		minWidth = 40
+	}
 	const useStyles = makeStyles({
 		root: {
 			
 		},
 		paperCard: {
-			minHeight: 20,
-			minWidth: 20
+			minHeight: minHeight,
+			minWidth: minHeight
 		}
 	})
 
@@ -48,5 +54,6 @@ export default function ColourRow(props) {
 
 ColourRow.propTypes = {
 	rowData: PropTypes.array,
-	onSelectCell: PropTypes.func
+	onSelectCell: PropTypes.func,
+	mini: PropTypes.bool
 } 

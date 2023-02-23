@@ -198,11 +198,15 @@ export default function ColourMatch(){
 					>
 						<Grid item xs={12} sm={12} md={5}>
 							<Hidden mdUp>
-								MOBILE
+								{grid?(
+									<ColourGrid mini={true} grid={grid} onSelectCell={handleSelectColour} />
+								):(
+									<div></div>
+								)}
 							</Hidden>
 							<Hidden smDown>
 								{grid?(
-									<ColourGrid grid={grid} onSelectCell={handleSelectColour} />
+									<ColourGrid mini={false} grid={grid} onSelectCell={handleSelectColour} />
 								):(
 									<div></div>
 								)}
