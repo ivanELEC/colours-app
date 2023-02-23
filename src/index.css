@@ -20,8 +20,8 @@ code {
 }
 
 ::-webkit-scrollbar {
-	width: 12px;
-	height: 1px;
+	width: 15px;
+	height: 15px;
   }
   ::-webkit-scrollbar-button {
 	width: 0px;
@@ -41,6 +41,7 @@ code {
   }
   ::-webkit-scrollbar-track {
 	background:#ffffff;
+	border: 0px none #ffffff;
 	border-radius: 52px;
   }
   ::-webkit-scrollbar-track:hover {
