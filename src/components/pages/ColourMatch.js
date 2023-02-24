@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react"
+import { useTheme } from "@mui/material/styles"
 import { makeStyles } from "@mui/styles"
+import useMediaQuery from "@mui/material/useMediaQuery"
 import { Link } from "react-router-dom"
 import { gridData } from "../../js/utils/grid"
-import {Grid, Paper, TextField, InputAdornment, Hidden}  from "@mui/material"
+import {Grid, Paper, TextField, InputAdornment }  from "@mui/material"
 import PictureCard from "../common/PictureCard"
 import { getAllocatedColours, getSimilarColours, colourGradientColumn, getTextShade } from "../../js/utils/colourMatch"
 import ColourGrid from "../common/ColourGrid"
@@ -103,8 +105,9 @@ export default function ColourMatch(){
 		}
 	}
 
-	//styles
-	var colourTransitionKeyframes = Radium.keyframes({
+	//--styles--
+	//for animations
+	let colourTransitionKeyframes = Radium.keyframes({
 		"0%": {
 			"background-color": `#${oldColour}`
 		},
@@ -113,7 +116,7 @@ export default function ColourMatch(){
 		}
 	}, "colourTransition")
 
-	var styles = {
+	let styles = {
 		titlePaperTop:{
 			animation: "2s forwards",
 			animationName: colourTransitionKeyframes,
@@ -134,7 +137,13 @@ export default function ColourMatch(){
 			animationName: Radium.keyframes(fadeInRight, "fadeInRight"),
 		}
 	}
-	
+
+	//for breakpoints
+	const theme = useTheme()
+	const mdUp = useMediaQuery(theme.breakpoints.up("md"))
+	const mdDown = useMediaQuery(theme.breakpoints.down("md"))
+
+	//general styles
 	const useStyles = makeStyles({
 		root: {
 			padding: 25,
@@ -200,20 +209,19 @@ export default function ColourMatch(){
 						spacing={2}
 					>
 						<Grid item xs={12} sm={12} md={5}>
-							<Hidden mdUp>
-								{grid?(
+							{grid&&mdDown?(
+								<div style={{"padding-bottom": "20px"}}>
 									<ColourGrid mini={true} grid={grid} onSelectCell={handleSelectColour} />
-								):(
-									<div></div>
-								)}
-							</Hidden>
-							<Hidden smDown>
-								{grid?(
-									<ColourGrid mini={false} grid={grid} onSelectCell={handleSelectColour} />
-								):(
-									<div></div>
-								)}
-							</Hidden>
+								</div>
+							):(
+								<div></div>
+							)}
+							{grid&&mdUp?(
+								<ColourGrid mini={false} grid={grid} onSelectCell={handleSelectColour} />
+							):(
+								<div></div>
+							)}
+							
 						</Grid>
 						<Grid item xs={12} sm={12} md={7}>
 							<Paper 
