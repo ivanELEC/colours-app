@@ -10,20 +10,19 @@ export default function BackButton() {
 		root: {},
 		icon: {
 			maxHeight: 75,
-			maxWidth: 75
 		}
 	})
 
 	const classes = useStyles()
 	
 	return (
-		<div>
+		<div style={{ "margin": "auto", "width": "50%", "text-align": "center" }}>
 			<img
 				alt="back button"
 				onClick={() => history.goBack()}
 				src={iconUrl}
 				className={classes.icon}
-				style={{ left: "30%" }}
+				style={{ "margin": "auto" }}
 			/>
 		</div>
 	)

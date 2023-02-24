@@ -7,7 +7,7 @@ import BackButton from "../common/BackButton"
 import { fadeInDown } from "react-animations"
 import Radium, { StyleRoot } from "radium"
 
-var sortJsonArray = require("sort-json-array")
+let sortJsonArray = require("sort-json-array")
 
 export default function Mix() {
 	//state hooks
@@ -36,9 +36,10 @@ export default function Mix() {
 				let sortedMixData = sortJsonArray(data.data, "date")
 
 				//find index of current mix
+				let currentMixIndex = null
 				for (let i = 0; i < sortedMixData.length; i++) {
 					if (sortedMixData[i].id === id) {
-						var currentMixIndex = i
+					  currentMixIndex = i
 					}
 				}
 
@@ -108,18 +109,7 @@ export default function Mix() {
 								/>
 							</Grid>
 						</Grid>
-						<Grid
-							container
-							direction="row"
-							justifyContent="center"
-							alignItems="center"
-							spacing={0}>
-							<Grid item xs={4} md={5} />
-							<Grid item xs={2}>
-								<BackButton/>
-							</Grid>
-							<Grid item xs={5} />
-						</Grid>
+						<BackButton/>
 					</div>
 				</StyleRoot>
 			) : (
