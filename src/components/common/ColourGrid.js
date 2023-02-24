@@ -18,14 +18,15 @@ export default function ColourGrid(props) {
 	
 	if(props.mini){
 		overflowMode = "auto"
-		minGridWidth = minWidth * 2.6
+		minGridWidth = minWidth * 2.7
 	}
 
 	const useStyles = makeStyles({
 		root: {
 			minWidth: minWidth,	
 			"overflow-x": overflowMode,
-			"overflow-y": "hidden"
+			"overflow-y": "hidden",
+			padding: 5
 		},
 		grid: {
 			minWidth: minGridWidth
