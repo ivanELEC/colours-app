@@ -50,7 +50,6 @@ export default function ColourCard(props) {
 			minHeight: minHeight,
 			maxWidth: 350,
 			padding: 0,
-			margin: 25,
 			margin: "auto", 
 		},
 	})

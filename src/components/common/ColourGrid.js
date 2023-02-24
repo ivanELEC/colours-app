@@ -26,7 +26,6 @@ export default function ColourGrid(props) {
 			minWidth: minWidth,	
 			"overflow-x": overflowMode,
 			"overflow-y": "hidden"
-
 		},
 		grid: {
 			minWidth: minGridWidth

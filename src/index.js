@@ -2,14 +2,15 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom"
 import "./index.css"
-import App from "./App"
 import Mix from "./components/pages/Mix"
-import ColourDifference from "./components/pages/ColourDifference"
 import ColourMatch from "./components/pages/ColourMatch"
 import Footer from "./components/navigation/Footer"
 //load fonts
 import "./fonts/HelveticaNeueCyr-Bold.ttf"
 import "./fonts/HelveticaNeueCyr-Light.ttf"
+
+//scale page
+document.body.style.zoom = 0.85
 
 const routing = (
 	<div>

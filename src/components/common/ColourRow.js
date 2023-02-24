@@ -23,7 +23,7 @@ export default function ColourRow(props) {
 		},
 		paperCard: {
 			minHeight: minHeight,
-			minWidth: minHeight
+			minWidth: minWidth
 		}
 	})
 
