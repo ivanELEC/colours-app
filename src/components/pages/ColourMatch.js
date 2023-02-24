@@ -149,9 +149,12 @@ export default function ColourMatch(){
 				borderBottom: `2px solid ${titleTextColour} !important`
 			},
 		},
-		colourPaper: {
-			minHeight: 40,
-			textAlign: "center",
+		pictureCard: {
+			"&:hover": {
+				transform: "translateY(4px)",
+				"-webkit-transform": "translateY(4px)",
+				transition: ".3s ease",
+			}
 		},
 		titleCard: {
 			fontSize: "5vh",
@@ -258,20 +261,23 @@ export default function ColourMatch(){
 									{similarColours.map((colour) => (
 										
 										<Grid key={colour.colour} item xs={12} sm={6} md={3}>
-											<Link
-												to={{ pathname: `/Mix/${colour.mixData.id}` }}
-												style={{ textDecoration: "none", margin: "auto" }}
-											>
-												<PictureCard
-													colourName={`${colour.mixData.colourName}`}
-													artistName={`${colour.mixData.artist}`}
-													colourHex={`${colour.mixData.colourHex}`}
-													date={`${colour.mixData.date}`}
-													image={colour.mixData.imageUrl}
-													mini={true}
-													colourFirst={true}
-												/>
-											</Link>
+											<div className={classes.pictureCard} id={`chroma-match-mix-item-${colour.mixData.id}`}>
+												<Link
+													to={{ pathname: `/Mix/${colour.mixData.id}` }}
+													style={{ textDecoration: "none", margin: "auto" }}
+												>
+													<PictureCard
+                            
+														colourName={`${colour.mixData.colourName}`}
+														artistName={`${colour.mixData.artist}`}
+														colourHex={`${colour.mixData.colourHex}`}
+														date={`${colour.mixData.date}`}
+														image={colour.mixData.imageUrl}
+														mini={true}
+														colourFirst={true}
+													/>
+												</Link>             
+											</div>
 										</Grid>
 									))}	
 								</Grid>	
