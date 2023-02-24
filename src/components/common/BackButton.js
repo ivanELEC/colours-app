@@ -1,5 +1,4 @@
 import React from "react"
-import Image from "material-ui-image"
 import { makeStyles } from "@material-ui/core/styles"
 import { useHistory } from "react-router-dom"
 
@@ -19,7 +18,8 @@ export default function BackButton() {
 	
 	return (
 		<div>
-			<Image
+			<img
+				alt="back button"
 				onClick={() => history.goBack()}
 				src={iconUrl}
 				className={classes.icon}
