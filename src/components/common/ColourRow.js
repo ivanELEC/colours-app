@@ -23,7 +23,12 @@ export default function ColourRow(props) {
 		},
 		paperCard: {
 			minHeight: minHeight,
-			minWidth: minWidth
+			minWidth: minWidth,
+      "&:hover": {
+				transform: "translateY(2px)",
+				"-webkit-transform": "translateY(2px)",
+				transition: ".3s ease",
+			},
 		}
 	})
 
