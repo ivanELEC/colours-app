@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Card from "./Card"
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@mui/styles"
 
 /*
 A simple card with an image, a title and some content

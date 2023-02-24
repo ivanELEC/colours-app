@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import {Grid, TextField, Button, Typography}  from "@material-ui/core"
+import { makeStyles } from "@mui/styles"
+import {Grid, TextField, Button, Typography}  from "@mui/material"
 import ColourCard from "../common/ColourCard"
 import PropTypes from "prop-types"
 var cd = require("color-difference")

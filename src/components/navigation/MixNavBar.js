@@ -1,18 +1,18 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { makeStyles } from "@material-ui/core/styles"
-import Grid from "@material-ui/core/Grid"
+import { makeStyles } from "@mui/styles"
+import Grid from "@mui/material/Grid"
 import { Link } from "react-router-dom"
-import Box from "@material-ui/core/Box"
-import { Card, CardContent } from "@material-ui/core"
+import Box from "@mui/material/Box"
+import { Card, CardContent } from "@mui/material"
 import { getTextShade } from "../../js/utils/colourMatch"
 
 export default function MixNavBar(props) {
 	const useStyles = makeStyles({
 		root: {},
 		paper: {
-			padding: "0px",
-			margin: "0px",
+			padding: 0,
+			margin: 0,
 		},
 		title: {
 			fontFamily: "HelveticaBold",
@@ -40,7 +40,7 @@ export default function MixNavBar(props) {
 						<CardContent
 							className={classes.paper}
 							height="100%"
-							style={{ paddingBottom: "0px", minHeight: "45px" }}
+							style={{ padding: "0px", minHeight: "45px" }}
 						>
 							<Link
 								to={{ pathname: `/Mix/${props.back.id}` }}
@@ -91,7 +91,7 @@ export default function MixNavBar(props) {
 						<CardContent
 							className={classes.paper}
 							height="100%"
-							style={{ paddingBottom: "0px", minHeight: "45px" }}
+							style={{ padding: "0px", minHeight: "45px" }}
 						>
 							<Link
 								to={{ pathname: `/Mix/${props.forward.id}` }}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import Grid from "@material-ui/core/Grid"
+import Grid from "@mui/material/Grid"
 import MixBoxMobile from "../common/MixBoxMobile"
 import MixNavBar from "../navigation/MixNavBar"
 import BackButton from "../common/BackButton"
