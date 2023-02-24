@@ -39,7 +39,7 @@ export default function Mix() {
 				let currentMixIndex = null
 				for (let i = 0; i < sortedMixData.length; i++) {
 					if (sortedMixData[i].id === id) {
-					  currentMixIndex = i
+						currentMixIndex = i
 					}
 				}
 
