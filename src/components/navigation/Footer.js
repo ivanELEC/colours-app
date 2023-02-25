@@ -57,7 +57,7 @@ export default function Footer() {
 					>
 						<Grid item xs={6} />
 						<Grid item xs={6}>
-							<a
+							{/* <a
 								href="mailto:chromamixes@gmail.com"
 								target="_top"
 							>
@@ -65,7 +65,7 @@ export default function Footer() {
 									src="https://firebasestorage.googleapis.com/v0/b/colours-project.appspot.com/o/images%2Femail.png?alt=media&token=7ee3dd44-90c7-4168-8ef9-3a859150832c"
 									style={{ color: "#000000", maxHeight: "35px"}}
 								/>
-							</a>
+							</a> */}
 						</Grid>
 					</Grid>
 				</Grid>

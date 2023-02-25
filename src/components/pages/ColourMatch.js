@@ -4,8 +4,10 @@ import { makeStyles } from "@mui/styles"
 import useMediaQuery from "@mui/material/useMediaQuery"
 import { Link } from "react-router-dom"
 import { gridData } from "../../js/utils/grid"
-import {Grid, Paper, TextField, InputAdornment }  from "@mui/material"
+import {Grid, Paper, TextField, InputAdornment, Button, Menu, MenuItem }  from "@mui/material"
+import HelpCenterIcon from "@mui/icons-material/HelpCenter"
 import PictureCard from "../common/PictureCard"
+import Footer from "../navigation/Footer"
 import { getAllocatedColours, getSimilarColours, colourGradientColumn, getTextShade } from "../../js/utils/colourMatch"
 import ColourGrid from "../common/ColourGrid"
 import Radium, { StyleRoot } from "radium"
@@ -13,7 +15,11 @@ import { fadeInRight } from "react-animations"
 const hexyjs = require("hexyjs")
 const Color = require("color")
 
-
+const actions = [
+	{ icon: <HelpCenterIcon style={{color: "#000000"}}/>, name: "Help" },
+	{ icon: <HelpCenterIcon style={{color: "#000000"}}/>, name: "Info" },
+	{ icon: <HelpCenterIcon style={{color: "#000000"}}/>, name: "See All Mixes" }
+]
 
 export default function ColourMatch(){
 	//constants
@@ -28,9 +34,11 @@ export default function ColourMatch(){
 	const [titleTextColour, setTitleTextColour] = useState("38383b")
 	const [similarColours, setSimilarColours]  = useState([])
 	const [grid, setGrid] = useState(false)
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  
 
 	const colourPalette = ["#E42406", "#EC6E08", "#EC9508", "#ECF701","#CFFF00", "#2DC84D", "#14C7D1", "#147BD1", "#2700FF", "#443BBD", "#753BBD", "#BD3B89"]
- 
+  
 	
 	//effects 
 	useEffect(() => {
@@ -104,6 +112,15 @@ export default function ColourMatch(){
 			setColour(colourHex)
 		}
 	}
+
+  //for menu
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
 	//--styles--
 	//for animations
@@ -193,107 +210,110 @@ export default function ColourMatch(){
 	const classes = useStyles()
 
 	return (
-		<StyleRoot>
-			<div className={classes.root}>
-				<Grid
-					container 
-					direction="column"
-					justifyContent="flex-start"
-					spacing={4}
-				>
-					<Grid 
-						container
-						item
-						direction="row"
-						justifyContent="flex-start"
-						spacing={2}
-					>
-						<Grid item xs={12} sm={12} md={5}>
-							{grid&&mdDown?(
-								<div style={{"padding-bottom": "20px"}}>
-									<ColourGrid mini={true} grid={grid} onSelectCell={handleSelectColour} />
-								</div>
-							):(
-								<div></div>
-							)}
-							{grid&&mdUp?(
-								<ColourGrid mini={false} grid={grid} onSelectCell={handleSelectColour} />
-							):(
-								<div></div>
-							)}
-							
-						</Grid>
-						<Grid item xs={12} sm={12} md={7}>
-							<Paper 
-								className={classes.titleCard}
-								elevation={1}
-							>
-								<div  style={styles.titlePaperTop}>
-									<TextField
-										disable="true"
-										InputProps={{
-											startAdornment: <InputAdornment position="start"><div className={classes.titleColourSelect}>#</div></InputAdornment>,
-											style: styles.titleColourSelect
-										}}
-										id="colour-match-input"
-										variant="standard" 
-										defaultValue={selectedColour}
-										onChange={handleChangeColour} 
-									/>
-								</div>
-								<div className={classes.titlePaperBottom}>Chroma</div>
-							</Paper>
-						</Grid>
-					</Grid>
-					<Grid 
-						container 
-						item
-						direction="row"
-						justifyContent="flex-start"
-					>
-						<Grid
-							container 
-							item
-							direction="column"
-							justifyContent="flex-start"
-						>
-							<div style={styles.fadeInRight} key={selectedColour}>
-								<Grid
-									container
-									item
-									direction="row"
-									justifyContent="flex-start"
-									alignItems="center"
-									spacing={2}
-								>
-									{similarColours.map((colour) => (
-										
-										<Grid key={colour.colour} item xs={12} sm={6} md={3}>
-											<div className={classes.pictureCard} id={`chroma-match-mix-item-${colour.mixData.id}`}>
-												<Link
-													to={{ pathname: `/Mix/${colour.mixData.id}` }}
-													style={{ textDecoration: "none", margin: "auto" }}
-												>
-													<PictureCard
-                            
-														colourName={`${colour.mixData.colourName}`}
-														artistName={`${colour.mixData.artist}`}
-														colourHex={`${colour.mixData.colourHex}`}
-														date={`${colour.mixData.date}`}
-														image={colour.mixData.imageUrl}
-														mini={true}
-														colourFirst={true}
-													/>
-												</Link>             
-											</div>
-										</Grid>
-									))}	
-								</Grid>	
-							</div>
-						</Grid>
-					</Grid>
-				</Grid>
-			</div>
-		</StyleRoot>
+		<div>
+      <StyleRoot>
+          <div className={classes.root}>
+            <Grid
+              container 
+              direction="column"
+              justifyContent="flex-start"
+              spacing={4}
+            >
+              <Grid 
+                container
+                item
+                direction="row"
+                justifyContent="flex-start"
+                spacing={2}
+              >
+                <Grid item xs={12} sm={12} md={5}>
+                  {grid&&mdDown?(
+                    <div style={{"padding-bottom": "20px"}}>
+                      <ColourGrid mini={true} grid={grid} onSelectCell={handleSelectColour} />
+                    </div>
+                  ):(
+                    <div></div>
+                  )}
+                  {grid&&mdUp?(
+                    <ColourGrid mini={false} grid={grid} onSelectCell={handleSelectColour} />
+                  ):(
+                    <div></div>
+                  )}
+                  
+                </Grid>
+                <Grid item xs={12} sm={12} md={7}>
+                  <Paper 
+                    className={classes.titleCard}
+                    elevation={1}
+                  >
+                    <div  style={styles.titlePaperTop}>
+                      <TextField
+                        disable="true"
+                        InputProps={{
+                          startAdornment: <InputAdornment position="start"><div className={classes.titleColourSelect}>#</div></InputAdornment>,
+                          style: styles.titleColourSelect
+                        }}
+                        id="colour-match-input"
+                        variant="standard" 
+                        defaultValue={selectedColour}
+                        onChange={handleChangeColour} 
+                      />
+                    </div>
+                    <div className={classes.titlePaperBottom}>Chroma</div>
+                  </Paper>
+                </Grid>
+              </Grid>
+              <Grid 
+                container 
+                item
+                direction="row"
+                justifyContent="flex-start"
+              >
+                <Grid
+                  container 
+                  item
+                  direction="column"
+                  justifyContent="flex-start"
+                >
+                  <div style={styles.fadeInRight} key={selectedColour}>
+                    <Grid
+                      container
+                      item
+                      direction="row"
+                      justifyContent="flex-start"
+                      alignItems="center"
+                      spacing={2}
+                    >
+                      {similarColours.map((colour) => (
+                        
+                        <Grid key={colour.colour} item xs={12} sm={6} md={3}>
+                          <div className={classes.pictureCard} id={`chroma-match-mix-item-${colour.mixData.id}`}>
+                            <Link
+                              to={{ pathname: `/Mix/${colour.mixData.id}` }}
+                              style={{ textDecoration: "none", margin: "auto" }}
+                            >
+                              <PictureCard
+                                
+                                colourName={`${colour.mixData.colourName}`}
+                                artistName={`${colour.mixData.artist}`}
+                                colourHex={`${colour.mixData.colourHex}`}
+                                date={`${colour.mixData.date}`}
+                                image={colour.mixData.imageUrl}
+                                mini={true}
+                                colourFirst={true}
+                              />
+                            </Link>             
+                          </div>
+                        </Grid>
+                      ))}	
+                    </Grid>	
+                  </div>
+                </Grid>
+              </Grid>
+            </Grid>
+          </div>
+      </StyleRoot>
+      <Footer/>
+    </div>
 	)
 }

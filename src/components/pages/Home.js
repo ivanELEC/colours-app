@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid"
 import { fadeInDown } from "react-animations"
 import Radium, { StyleRoot } from "radium"
 import PictureCard from "../common/PictureCard"
+import Footer from "../navigation/Footer"
 const sortJsonArray = require("sort-json-array")
 
 export default function Home() {
@@ -103,6 +104,7 @@ export default function Home() {
 			) : (
 				<div></div>
 			)}
+      <Footer/>
 		</div>
 	)
 }

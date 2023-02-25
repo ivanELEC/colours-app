@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import Grid from "@mui/material/Grid"
 import MixBoxMobile from "../common/MixBoxMobile"
 import MixNavBar from "../navigation/MixNavBar"
+import Footer from "../navigation/Footer"
 import BackButton from "../common/BackButton"
 import { fadeInDown } from "react-animations"
 import Radium, { StyleRoot } from "radium"
@@ -115,6 +116,7 @@ export default function Mix() {
 			) : (
 				<div></div>
 			)}
+      <Footer/>
 		</div>
 	)
 }
