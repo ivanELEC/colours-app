@@ -14,7 +14,6 @@ const routing = (
 		<Router>
 			<Switch><Route exact path="/" component={App} /></Switch>
 			<Switch><Route exact path="/Mix/:id" component={Mix} /></Switch>
-			<Footer/>
 		</Router>
 	</div>
 )

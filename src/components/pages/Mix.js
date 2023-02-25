@@ -116,7 +116,7 @@ export default function Mix() {
 			) : (
 				<div></div>
 			)}
-      <Footer/>
+			<Footer/>
 		</div>
 	)
 }

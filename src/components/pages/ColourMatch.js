@@ -4,8 +4,7 @@ import { makeStyles } from "@mui/styles"
 import useMediaQuery from "@mui/material/useMediaQuery"
 import { Link } from "react-router-dom"
 import { gridData } from "../../js/utils/grid"
-import {Grid, Paper, TextField, InputAdornment, Button, Menu, MenuItem }  from "@mui/material"
-import HelpCenterIcon from "@mui/icons-material/HelpCenter"
+import {Grid, Paper, TextField, InputAdornment }  from "@mui/material"
 import PictureCard from "../common/PictureCard"
 import Footer from "../navigation/Footer"
 import { getAllocatedColours, getSimilarColours, colourGradientColumn, getTextShade } from "../../js/utils/colourMatch"
@@ -14,12 +13,6 @@ import Radium, { StyleRoot } from "radium"
 import { fadeInRight } from "react-animations"
 const hexyjs = require("hexyjs")
 const Color = require("color")
-
-const actions = [
-	{ icon: <HelpCenterIcon style={{color: "#000000"}}/>, name: "Help" },
-	{ icon: <HelpCenterIcon style={{color: "#000000"}}/>, name: "Info" },
-	{ icon: <HelpCenterIcon style={{color: "#000000"}}/>, name: "See All Mixes" }
-]
 
 export default function ColourMatch(){
 	//constants
@@ -33,12 +26,9 @@ export default function ColourMatch(){
 	const [colourList, setColourList] = useState([])
 	const [titleTextColour, setTitleTextColour] = useState("38383b")
 	const [similarColours, setSimilarColours]  = useState([])
-	const [grid, setGrid] = useState(false)
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  
+	const [grid, setGrid] = useState(false)  
 
 	const colourPalette = ["#E42406", "#EC6E08", "#EC9508", "#ECF701","#CFFF00", "#2DC84D", "#14C7D1", "#147BD1", "#2700FF", "#443BBD", "#753BBD", "#BD3B89"]
-  
 	
 	//effects 
 	useEffect(() => {
@@ -112,15 +102,6 @@ export default function ColourMatch(){
 			setColour(colourHex)
 		}
 	}
-
-  //for menu
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
 	//--styles--
 	//for animations
@@ -228,7 +209,7 @@ export default function ColourMatch(){
               >
                 <Grid item xs={12} sm={12} md={5}>
                   {grid&&mdDown?(
-                    <div style={{"padding-bottom": "20px"}}>
+                    <div style={{paddingBottom: "20px"}}>
                       <ColourGrid mini={true} grid={grid} onSelectCell={handleSelectColour} />
                     </div>
                   ):(

@@ -1,8 +1,22 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { makeStyles } from "@mui/styles"
-import Grid from "@mui/material/Grid"
+import { Grid, Menu, MenuItem, Button } from "@mui/material"
 
 export default function Footer() {
+  //hooks
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  
+  //functions
+  const handleClick = (event) => {
+    console.log(event.currentTarget.id)
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  //styling
 	const useStyles = makeStyles({
 		style: {
 			backgroundColor: "#F8F8F8",
@@ -31,6 +45,31 @@ export default function Footer() {
 
 	return (
 		<div>
+      <Button
+        id="footer-menu-button"
+        aria-controls={open ? 'footer-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
+        sx={{position: "fixed", bottom: 10, right: 15, zIndex: 1000}}
+      >
+        Menu
+      </Button>
+      <Menu
+        id="footer-menu"
+        aria-labelledby="footer-menu-button"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 0,
+          horizontal: 0,
+        }}
+      >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleClose}>Logout</MenuItem>
+      </Menu>
 			<div className={classes.phantom} />
 			<div className={classes.style}>
 				<Grid
@@ -57,15 +96,6 @@ export default function Footer() {
 					>
 						<Grid item xs={6} />
 						<Grid item xs={6}>
-							{/* <a
-								href="mailto:chromamixes@gmail.com"
-								target="_top"
-							>
-								<img 
-									src="https://firebasestorage.googleapis.com/v0/b/colours-project.appspot.com/o/images%2Femail.png?alt=media&token=7ee3dd44-90c7-4168-8ef9-3a859150832c"
-									style={{ color: "#000000", maxHeight: "35px"}}
-								/>
-							</a> */}
 						</Grid>
 					</Grid>
 				</Grid>
