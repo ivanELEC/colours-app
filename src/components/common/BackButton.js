@@ -19,7 +19,7 @@ export default function BackButton() {
 		<div style={{ "margin": "auto", "width": "50%", "text-align": "center" }}>
 			<img
 				alt="back button"
-				onClick={() => history.goBack()}
+				onClick={() => history.push("/")}
 				src={iconUrl}
 				className={classes.icon}
 				style={{ "margin": "auto" }}
