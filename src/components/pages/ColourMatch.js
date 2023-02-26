@@ -27,6 +27,7 @@ export default function ColourMatch(){
 	const [titleTextColour, setTitleTextColour] = useState("38383b")
 	const [similarColours, setSimilarColours]  = useState([])
 	const [grid, setGrid] = useState(false)  
+	const [seeAll, setSeeAll ] = useState(true)
 
 	const colourPalette = ["#E42406", "#EC6E08", "#EC9508", "#ECF701","#CFFF00", "#2DC84D", "#14C7D1", "#147BD1", "#2700FF", "#443BBD", "#753BBD", "#BD3B89"]
 	
@@ -66,7 +67,13 @@ export default function ColourMatch(){
 			setSelectedColour(colour)
 			setTitleTextColour(textColour)
 			if(colourList.length > 0){
-				let sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 10, mixData)
+				let sortedColours = []
+				if(seeAll){
+					sortedColours = getSimilarColours(colourList, colour, 100, 100000, mixData, true)
+				}
+				else{
+					sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 10, mixData)
+				}
 				setSimilarColours(sortedColours)
 			}
 		}
@@ -82,6 +89,7 @@ export default function ColourMatch(){
 					if(inputElement.value.length == 6){
 						setOldColour(colour) //set old colour so that when page re-renders we can use it to transition to the new one 
 						setColour(inputElement.value)
+						setSeeAll(false)
 					}
 				}
 			}
@@ -100,6 +108,7 @@ export default function ColourMatch(){
 			let colourMatchElement = document.getElementById("colour-match-input")
 			colourMatchElement.value = colourHex	
 			setColour(colourHex)
+			setSeeAll(false)
 		}
 	}
 
@@ -265,28 +274,26 @@ export default function ColourMatch(){
                       alignItems="center"
                       spacing={2}
                     >
-                      {similarColours.map((colour) => (
-                        
-                        <Grid key={colour.colour} item xs={12} sm={6} md={3}>
-                          <div className={classes.pictureCard} id={`chroma-match-mix-item-${colour.mixData.id}`}>
-                            <Link
-                              to={{ pathname: `/Mix/${colour.mixData.id}` }}
-                              style={{ textDecoration: "none", margin: "auto" }}
-                            >
-                              <PictureCard
-                                
-                                colourName={`${colour.mixData.colourName}`}
-                                artistName={`${colour.mixData.artist}`}
-                                colourHex={`${colour.mixData.colourHex}`}
-                                date={`${colour.mixData.date}`}
-                                image={colour.mixData.imageUrl}
-                                mini={true}
-                                colourFirst={true}
-                              />
-                            </Link>             
-                          </div>
-                        </Grid>
-                      ))}	
+						{similarColours.map((colour) => ( 
+							<Grid key={colour.colour} item xs={12} sm={6} md={3}>
+							<div className={classes.pictureCard} id={`chroma-match-mix-item-${colour.mixData.id}`}>
+								<Link
+								to={{ pathname: `/Mix/${colour.mixData.id}` }}
+								style={{ textDecoration: "none", margin: "auto" }}
+								>
+								<PictureCard
+									colourName={`${colour.mixData.colourName}`}
+									artistName={`${colour.mixData.artist}`}
+									colourHex={`${colour.mixData.colourHex}`}
+									date={`${colour.mixData.date}`}
+									image={colour.mixData.imageUrl}
+									mini={true}
+									colourFirst={true}
+								/>
+								</Link>             
+							</div>
+							</Grid>
+                    	))}	
                     </Grid>	
                   </div>
                 </Grid>

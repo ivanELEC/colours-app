@@ -2,8 +2,13 @@ import React from "react"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { makeStyles  } from "@mui/styles"
 import { Grid, Menu, MenuItem, Button } from "@mui/material"
+import { useHistory, useLocation } from "react-router-dom"
+
 
 export default function Footer() {
+	const history = useHistory()
+	const location = useLocation()
+
 	//hooks
 	const [anchorEl, setAnchorEl] = React.useState(null)
 	const [anchorPosCoordinates, setAnchorPosCoordinates] = React.useState({top:0, left:0})
@@ -11,17 +16,27 @@ export default function Footer() {
   
 	//functions
 	const handleClick = (event) => {
-	let targetCoordinates = {
-		top: event.currentTarget.offsetTop,  
-		left: event.currentTarget.offsetLeft
-	}
-	setAnchorPosCoordinates(targetCoordinates)
-	setAnchorEl(event.currentTarget)
+		let targetCoordinates = {
+			top: event.currentTarget.offsetTop,  
+			left: event.currentTarget.offsetLeft
+		}
+		setAnchorPosCoordinates(targetCoordinates)
+		setAnchorEl(event.currentTarget)
 	}
 
 	const handleClose = () => {
-	setAnchorEl(null)
-	};
+		setAnchorEl(null)
+	}
+
+	const seeAllMixes = () => { //reloads ColourMatch if already on ColourMatch, else goes to ColourMatch
+		let currentRoute = location.pathname
+		if(currentRoute == "/"){
+			history.go(0)
+		}
+		else{
+			history.push("/")
+		}
+	}
 
     //styling
 	const useStyles = makeStyles({
@@ -112,8 +127,7 @@ export default function Footer() {
 								onClose={handleClose}
 								anchorPosition={{ top: anchorPosCoordinates.top, left: anchorPosCoordinates.left }}
 							>
-								<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={handleClose}>See All Mixes</MenuItem>
-								<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={handleClose}>Home</MenuItem>
+								<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={seeAllMixes}>See All Mixes</MenuItem>
 								<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={handleClose}>Help</MenuItem>
 								<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={handleClose}>Contact Us</MenuItem>
 							</Menu>
