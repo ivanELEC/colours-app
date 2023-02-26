@@ -38,6 +38,10 @@ export default function Footer() {
 		}
 	}
 
+	const contactUs = () => {
+		window.location.href = "mailto:chromamixes@gmail.com"
+	}
+
     //styling
 	const useStyles = makeStyles({
 		style: {
@@ -129,7 +133,7 @@ export default function Footer() {
 							>
 								<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={seeAllMixes}>See All Mixes</MenuItem>
 								<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={handleClose}>Help</MenuItem>
-								<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={handleClose}>Contact Us</MenuItem>
+								<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={contactUs}>Contact Us</MenuItem>
 							</Menu>
 							</Grid>
 						</Grid>
