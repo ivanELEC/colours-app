@@ -1,7 +1,7 @@
 import React from "react"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { makeStyles  } from "@mui/styles"
-import { Grid, Menu, MenuItem, Button } from "@mui/material"
+import { Grid, Menu, MenuItem, Button, Modal, Box } from "@mui/material"
 import { useHistory, useLocation } from "react-router-dom"
 
 
@@ -12,10 +12,13 @@ export default function Footer() {
 	//hooks
 	const [anchorEl, setAnchorEl] = React.useState(null)
 	const [anchorPosCoordinates, setAnchorPosCoordinates] = React.useState({top:0, left:0})
-	const open = Boolean(anchorEl)
+	const [openHelp, setOpen] = React.useState(false);
+
+	const openMenu = Boolean(anchorEl)
+
   
 	//functions
-	const handleClick = (event) => {
+	const handleClickMenu = (event) => {
 		let targetCoordinates = {
 			top: event.currentTarget.offsetTop,  
 			left: event.currentTarget.offsetLeft
@@ -24,9 +27,12 @@ export default function Footer() {
 		setAnchorEl(event.currentTarget)
 	}
 
-	const handleClose = () => {
+	const handleCloseMenu = () => {
 		setAnchorEl(null)
 	}
+
+	const handleOpenHelp = () => setOpen(true);
+	const handleCloseHelp = () => setOpen(false);
 
 	const seeAllMixes = () => { //reloads ColourMatch if already on ColourMatch, else goes to ColourMatch
 		let currentRoute = location.pathname
@@ -40,6 +46,10 @@ export default function Footer() {
 
 	const contactUs = () => {
 		window.location.href = "mailto:chromamixes@gmail.com"
+	}
+
+	const help = () => {
+		handleOpenHelp()
 	}
 
     //styling
@@ -67,6 +77,31 @@ export default function Footer() {
 		},
 		spacing: {
 			marginTop: 50
+		},
+		helpModal: {
+			position: 'absolute',
+			top: '50%',
+			left: '50%',
+			transform: 'translate(-50%, -50%)',
+			width: 500,
+			maxWidth: "75%",
+			backgroundColor: "#ffffff",
+			boxShadow: 24,
+			padding: 25
+		},
+		helpModalTitle: {
+			fontFamily: "HelveticaBold",
+			fontSize: "3vh"
+		},
+		helpModalSubTitle: {
+			fontFamily: "HelveticaBold",
+			fontSize: "2vh",
+			paddingBottom: 5
+		},
+		helpModalText:{
+			fontFamily: "HelveticaLight",
+			fontSize: "1.7vh",
+			paddingBottom: 3
 		}
 	})
 
@@ -85,6 +120,22 @@ export default function Footer() {
 	return (
 		<ThemeProvider theme={theme}>
 			<div>
+			<Modal
+				open={openHelp}
+				onClose={handleCloseHelp}
+				aria-labelledby="modal-help-title"
+				aria-describedby="modal-help-description"
+			>
+				<Box className={classes.helpModal}>
+					<div id="modal-help-title" className={classes.helpModalTitle}>
+						Help
+					</div>
+					<br></br>
+					<div id="modal-help-description" className={classes.helpModalText} >
+						Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+					</div>
+				</Box>
+			</Modal>
 				<div className={classes.spacing} />
 				<div className={classes.phantom} />
 				<div className={classes.style}>
@@ -114,10 +165,10 @@ export default function Footer() {
 							<Grid item xs={7}>
 							<Button
 								id="footer-menu-button"
-								aria-controls={open ? 'footer-menu' : undefined}
+								aria-controls={openMenu ? 'footer-menu' : undefined}
 								aria-haspopup="true"
-								aria-expanded={open ? "true" : undefined}
-								onClick={handleClick}
+								aria-expanded={openMenu ? "true" : undefined}
+								onClick={handleClickMenu}
 								color="neutral"
 								sx={{fontFamily:  "HelveticaBold" }}
 							>
@@ -127,12 +178,12 @@ export default function Footer() {
 								id="footer-menu"
 								aria-labelledby="footer-menu-button"
 								anchorEl={anchorEl}
-								open={open}
-								onClose={handleClose}
+								open={openMenu}
+								onClose={handleCloseMenu}
 								anchorPosition={{ top: anchorPosCoordinates.top, left: anchorPosCoordinates.left }}
 							>
 								<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={seeAllMixes}>See All Mixes</MenuItem>
-								<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={handleClose}>Help</MenuItem>
+								<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={help}>Help</MenuItem>
 								<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={contactUs}>Contact Us</MenuItem>
 							</Menu>
 							</Grid>
