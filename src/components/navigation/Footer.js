@@ -63,7 +63,7 @@ export default function Footer() {
 					justifyContent="space-between"
 					alignItems="center"
 				>
-					<Grid item xs={7} md={3} style={{ fontSize: "2.8vh" }}>
+					<Grid item xs={7} md={3} style={{ fontSize: "2.4vh" }}>
 						<div style={{ fontFamily: "HelveticaBold" }}>Chroma</div>{" "}
 						<div style={{ fontFamily: "HelveticaLight" }}>
 							Akash Chohan + Ivan Yohuno, Est. 2020
