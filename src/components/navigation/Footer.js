@@ -4,16 +4,22 @@ import { Grid, Menu, MenuItem, Button } from "@mui/material"
 
 export default function Footer() {
   //hooks
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const [anchorPosCoordinates, setAnchorPosCoordinates] = React.useState({top:0, left:0})
+  const open = Boolean(anchorEl)
   
   //functions
   const handleClick = (event) => {
-    console.log(event.currentTarget.id)
-    setAnchorEl(event.currentTarget);
-  };
+	let targetCoordinates = {
+		top: event.currentTarget.offsetTop,  
+		left: event.currentTarget.offsetLeft
+	}
+	setAnchorPosCoordinates(targetCoordinates)
+    setAnchorEl(event.currentTarget)
+  }
+
   const handleClose = () => {
-    setAnchorEl(null);
+    setAnchorEl(null)
   };
 
   //styling
@@ -29,7 +35,7 @@ export default function Footer() {
 			WebkitBoxSizing: "border-box",
 			MozBoxSizing: "border-box",
 			boxSizing: "border-box",
-			padding: 5
+			padding: 5,
 		},
 		phantom: {
 			display: "block",
@@ -39,37 +45,16 @@ export default function Footer() {
 			boxSizing: "border-box",
 			padding: 5,
 		},
+		spacing: {
+			marginTop: 50
+		}
 	})
 
 	const classes = useStyles()
 
 	return (
 		<div>
-      <Button
-        id="footer-menu-button"
-        aria-controls={open ? 'footer-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}
-        sx={{position: "fixed", bottom: 10, right: 15, zIndex: 1000}}
-      >
-        Menu
-      </Button>
-      <Menu
-        id="footer-menu"
-        aria-labelledby="footer-menu-button"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 0,
-          horizontal: 0,
-        }}
-      >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
-      </Menu>
+			<div className={classes.spacing} />
 			<div className={classes.phantom} />
 			<div className={classes.style}>
 				<Grid
@@ -94,8 +79,30 @@ export default function Footer() {
 						justifyContent="space-between"
 						alignItems="center"
 					>
-						<Grid item xs={6} />
-						<Grid item xs={6}>
+						<Grid item xs={5} />
+						<Grid item xs={7}>
+						<Button
+							id="footer-menu-button"
+							aria-controls={open ? 'footer-menu' : undefined}
+							aria-haspopup="true"
+							aria-expanded={open ? "true" : undefined}
+							onClick={handleClick}
+							sx={{ zIndex: 1000}}
+						>
+							Menu
+						</Button>
+						<Menu
+							id="footer-menu"
+							aria-labelledby="footer-menu-button"
+							anchorEl={anchorEl}
+							open={open}
+							onClose={handleClose}
+							anchorPosition={{ top: anchorPosCoordinates.top, left: anchorPosCoordinates.left }}
+						>
+							<MenuItem onClick={handleClose}>Profile</MenuItem>
+							<MenuItem onClick={handleClose}>My account</MenuItem>
+							<MenuItem onClick={handleClose}>Logout</MenuItem>
+						</Menu>
 						</Grid>
 					</Grid>
 				</Grid>
