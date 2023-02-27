@@ -46,74 +46,88 @@ export default function ColourDifference() {
 	const classes = useStyles()
 
 	return (
-		<div className={classes.root}>
-			<Grid
-				container spacing={2}
-				direction="column"
-				justifyContent="center"
-			>
-				<Grid 
-					container 
-					item
-					direction="row"
-					justifyContent="center"
-				>
+		<div>
+			<p>
+				<a style={visuallyHidden} href="#main">
+					Skip to main content
+				</a>
+			</p>
+			<p>
+				<a style={visuallyHidden} href="#menu">
+					Skip to menu
+				</a>
+			</p>
+			<main id="main">
+				<div className={classes.root}>
 					<Grid
-						container 
-						item
+						container spacing={2}
 						direction="column"
 						justifyContent="center"
-						xs={12}
-						sm={6}
 					>
-						<Grid item>
-							<TextField id="colour-1-input" label="Colour 1" variant="standard" onChange={handleChange} />
+						<Grid 
+							container 
+							item
+							direction="row"
+							justifyContent="center"
+						>
+							<Grid
+								container 
+								item
+								direction="column"
+								justifyContent="center"
+								xs={12}
+								sm={6}
+							>
+								<Grid item>
+									<TextField id="colour-1-input" label="Colour 1" variant="standard" onChange={handleChange} />
+								</Grid>
+								<Grid item>
+									<ColourCard
+										colourName="???"
+										artistName="???"
+										colourHex={`#${colour1}`}
+										date="1/1/2023"
+									/>
+								</Grid>
+							</Grid>
+							<Grid
+								container 
+								item
+								direction="column"
+								justifyContent="center"
+								xs={12}
+								sm={6}
+							>
+								<Grid item>
+									<TextField id="colour-2-input" label="Colour 2" variant="standard" onChange={handleChange} />
+								</Grid>
+								<Grid item>
+									<ColourCard
+										colourName="???"
+										artistName="???"
+										colourHex={`#${colour2}`}
+										date="1/1/2023"
+									/>
+								</Grid>
+							</Grid>
 						</Grid>
-						<Grid item>
-							<ColourCard
-								colourName="???"
-								artistName="???"
-								colourHex={`#${colour1}`}
-								date="1/1/2023"
-							/>
+						<Grid 
+							container
+							item
+							direction="row"
+						>
+							<Grid item xs={6} sm={4}>
+								<Button id="calc-difference-btn" variant="contained" onClick={calculateDiff}>Calculate</Button>
+							</Grid>
+							<Grid item xs={6} sm={4}>
+								<Typography variant="h4">
+								Difference: {diffVal}
+								</Typography>
+							</Grid>
 						</Grid>
 					</Grid>
-					<Grid
-						container 
-						item
-						direction="column"
-						justifyContent="center"
-						xs={12}
-						sm={6}
-					>
-						<Grid item>
-							<TextField id="colour-2-input" label="Colour 2" variant="standard" onChange={handleChange} />
-						</Grid>
-						<Grid item>
-							<ColourCard
-								colourName="???"
-								artistName="???"
-								colourHex={`#${colour2}`}
-								date="1/1/2023"
-							/>
-						</Grid>
-					</Grid>
-				</Grid>
-				<Grid 
-					container
-					item
-					direction="row"
-				>
-					<Grid item xs={6} sm={4}>
-						<Button id="calc-difference-btn" variant="contained" onClick={calculateDiff}>Calculate</Button>
-					</Grid>
-					<Grid item xs={6} sm={4}>
-						<Typography variant="h4">
-						Difference: {diffVal}
-						</Typography>
-					</Grid>
-				</Grid>
-			</Grid>
+				</div>
+			</main>
 		</div>
 	)
 }

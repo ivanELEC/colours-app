@@ -200,7 +200,19 @@ export default function ColourMatch(){
 	return (
 		<div>
 			<StyleRoot>
-				<main id="maincontent">
+				<div id="skip-links">
+					<p>
+						<a style={visuallyHidden} href="#main">
+							Skip to main content
+						</a>
+					</p>
+					<p>
+						<a style={visuallyHidden} href="#menu">
+							Skip to menu
+						</a>
+					</p>
+				</div>
+				<main id="main">
 					<div className={classes.root}>
 						<Grid
 							container 

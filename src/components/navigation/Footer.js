@@ -176,17 +176,19 @@ export default function Footer() {
 						>
 							<Grid item xs={5} />
 							<Grid item xs={7}>
-								<Button
-									id="footer-menu-button"
-									aria-controls={openMenu ? "footer-menu" : undefined}
-									aria-haspopup="true"
-									aria-expanded={openMenu ? "true" : undefined}
-									onClick={handleClickMenu}
-									color="neutral"
-									sx={{fontFamily:  "HelveticaBold", fontSize: "2vh" }}
-								>
-								Menu
-								</Button>
+								<menu id="menu">
+									<Button
+										id="footer-menu-button"
+										aria-controls={openMenu ? "footer-menu" : undefined}
+										aria-haspopup="true"
+										aria-expanded={openMenu ? "true" : undefined}
+										onClick={handleClickMenu}
+										color="neutral"
+										sx={{fontFamily:  "HelveticaBold", fontSize: "1.8vh" }}
+									>
+										Menu
+									</Button>
+								</menu>
 								<Menu
 									id="footer-menu"
 									aria-labelledby="footer-menu-button"
