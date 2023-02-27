@@ -175,7 +175,7 @@ export default function Footer() {
 							alignItems="center"
 						>
 							<Grid item xs={5} />
-							<Grid item xs={7}>
+							<Grid item xs={7} sx={{paddingRight: 15}}>
 								<menu id="menu">
 									<Button
 										id="footer-menu-button"
@@ -184,7 +184,7 @@ export default function Footer() {
 										aria-expanded={openMenu ? "true" : undefined}
 										onClick={handleClickMenu}
 										color="neutral"
-										sx={{fontFamily:  "HelveticaBold", fontSize: "1.8vh" }}
+										sx={{fontFamily:  "HelveticaBold", fontSize: "2vh" }}
 									>
 										Menu
 									</Button>
