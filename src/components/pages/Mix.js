@@ -92,7 +92,7 @@ export default function Mix() {
 							back={mixStates.previousMixData}
 							forward={mixStates.nextMixData}
 						/>
-						<main>
+						<main id="maincontent">
 							<Grid container direction="row" justifyContent="center" alignItems="center">
 								<Grid item md={6} xs={12}>
 									<MixBoxMobile

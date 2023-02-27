@@ -33,7 +33,7 @@ export default function MixNavBar(props) {
 	}
 
 	return (
-		<nav>
+		<nav id="mixnavbar">
 			<Grid container direction="row" justifyContent="center" alignItems="center">
 				<Grid item xs={5} md={3}>
 					{props.back ? (

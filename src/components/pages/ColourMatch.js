@@ -4,6 +4,7 @@ import { makeStyles } from "@mui/styles"
 import useMediaQuery from "@mui/material/useMediaQuery"
 import { Link } from "react-router-dom"
 import { gridData } from "../../js/utils/grid"
+import { visuallyHidden } from '@mui/utils';
 import {Grid, Paper, TextField, InputAdornment, InputLabel, FormHelperText, FormControl }  from "@mui/material"
 import PictureCard from "../common/PictureCard"
 import Footer from "../navigation/Footer"
@@ -199,7 +200,7 @@ export default function ColourMatch(){
 	return (
 		<div>
 			<StyleRoot>
-				<main>
+				<main id="maincontent">
 					<div className={classes.root}>
 						<Grid
 							container 
@@ -236,7 +237,7 @@ export default function ColourMatch(){
 									>
 										<div  style={styles.titlePaperTop}>
 											<FormControl>
-												<InputLabel style={{display:"none"}} htmlFor="colour-match-input">Colour picker</InputLabel>
+												<InputLabel sx={visuallyHidden} htmlFor="colour-match-input">Colour picker</InputLabel>
 												<TextField
 													disable="true"
 													InputProps={{
@@ -251,7 +252,7 @@ export default function ColourMatch(){
 													defaultValue={selectedColour}
 													onChange={handleChangeColour} 
 												/>
-												<FormHelperText style={{display:"none"}} id="chroma-colour-picker-helper-text">Enter a 6 digit hex code to choose a colour</FormHelperText>
+												<FormHelperText sx={visuallyHidden} id="chroma-colour-picker-helper-text">Enter a 6 digit hex code to choose a colour</FormHelperText>
 											</FormControl>
 										</div>
 										<div className={classes.titlePaperBottom}>Chroma</div>
