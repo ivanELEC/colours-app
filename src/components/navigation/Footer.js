@@ -65,7 +65,8 @@ export default function Footer() {
 			WebkitBoxSizing: "border-box",
 			MozBoxSizing: "border-box",
 			boxSizing: "border-box",
-			padding: 5,
+			paddingLeft: 5,
+			paddingRight: 5
 		},
 		phantom: {
 			display: "block",
@@ -73,7 +74,8 @@ export default function Footer() {
 			WebkitBoxSizing: "border-box",
 			MozBoxSizing: "border-box",
 			boxSizing: "border-box",
-			padding: 5,
+			paddingLeft: 5,
+			paddingRight: 5
 		},
 		spacing: {
 			marginTop: 50
