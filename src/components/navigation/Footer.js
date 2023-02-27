@@ -121,7 +121,7 @@ export default function Footer() {
 
 	return (
 		<ThemeProvider theme={theme}>
-			<div>
+			<footer>
 				<Modal
 					open={openHelp}
 					onClose={handleCloseHelp}
@@ -203,7 +203,7 @@ export default function Footer() {
 						</Grid>
 					</Grid>
 				</div>
-			</div>
+			</footer>
 		</ThemeProvider>
 	)
 }

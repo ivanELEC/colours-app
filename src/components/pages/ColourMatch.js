@@ -199,111 +199,113 @@ export default function ColourMatch(){
 	return (
 		<div>
 			<StyleRoot>
-				<div className={classes.root}>
-					<Grid
-						container 
-						direction="column"
-						justifyContent="flex-start"
-						spacing={4}
-					>
-						<Grid 
-							container
-							item
-							direction="row"
-							justifyContent="flex-start"
-							spacing={2}
-						>
-							<Grid item xs={12} sm={12} md={5}>
-								{grid&&mdDown?(
-									<div style={{paddingBottom: "20px"}}>
-										<ColourGrid mini={true} grid={grid} onSelectCell={handleSelectColour} />
-									</div>
-								):(
-									<div></div>
-								)}
-								{grid&&mdUp?(
-									<ColourGrid mini={false} grid={grid} onSelectCell={handleSelectColour} />
-								):(
-									<div></div>
-								)}
-                  
-							</Grid>
-							<Grid item xs={12} sm={12} md={7}>
-								<Paper 
-									className={classes.titleCard}
-									elevation={1}
-								>
-									<div  style={styles.titlePaperTop}>
-										<FormControl>
-											<InputLabel style={{display:"none"}} htmlFor="colour-match-input">Colour picker</InputLabel>
-											<TextField
-												disable="true"
-												InputProps={{
-													startAdornment: <InputAdornment position="start"><div className={classes.titleColourSelect}>#</div></InputAdornment>,
-													style: styles.titleColourSelect,
-													id: "colour-match-input",
-													"aria-describedby": "chroma-colour-picker-helper-text"
-												}}
-												type="text"
-												name="colour"
-												variant="standard" 
-												defaultValue={selectedColour}
-												onChange={handleChangeColour} 
-											/>
-											<FormHelperText style={{display:"none"}} id="chroma-colour-picker-helper-text">Enter a 6 digit hex code to choose a colour</FormHelperText>
-										</FormControl>
-									</div>
-									<div className={classes.titlePaperBottom}>Chroma</div>
-								</Paper>
-							</Grid>
-						</Grid>
-						<Grid 
+				<main>
+					<div className={classes.root}>
+						<Grid
 							container 
-							item
-							direction="row"
+							direction="column"
 							justifyContent="flex-start"
+							spacing={4}
 						>
-							<Grid
+							<Grid 
+								container
+								item
+								direction="row"
+								justifyContent="flex-start"
+								spacing={2}
+							>
+								<Grid item xs={12} sm={12} md={5}>
+									{grid&&mdDown?(
+										<div style={{paddingBottom: "20px"}}>
+											<ColourGrid mini={true} grid={grid} onSelectCell={handleSelectColour} />
+										</div>
+									):(
+										<div></div>
+									)}
+									{grid&&mdUp?(
+										<ColourGrid mini={false} grid={grid} onSelectCell={handleSelectColour} />
+									):(
+										<div></div>
+									)}
+					
+								</Grid>
+								<Grid item xs={12} sm={12} md={7}>
+									<Paper 
+										className={classes.titleCard}
+										elevation={1}
+									>
+										<div  style={styles.titlePaperTop}>
+											<FormControl>
+												<InputLabel style={{display:"none"}} htmlFor="colour-match-input">Colour picker</InputLabel>
+												<TextField
+													disable="true"
+													InputProps={{
+														startAdornment: <InputAdornment position="start"><div className={classes.titleColourSelect}>#</div></InputAdornment>,
+														style: styles.titleColourSelect,
+														id: "colour-match-input",
+														"aria-describedby": "chroma-colour-picker-helper-text"
+													}}
+													type="text"
+													name="colour"
+													variant="standard" 
+													defaultValue={selectedColour}
+													onChange={handleChangeColour} 
+												/>
+												<FormHelperText style={{display:"none"}} id="chroma-colour-picker-helper-text">Enter a 6 digit hex code to choose a colour</FormHelperText>
+											</FormControl>
+										</div>
+										<div className={classes.titlePaperBottom}>Chroma</div>
+									</Paper>
+								</Grid>
+							</Grid>
+							<Grid 
 								container 
 								item
-								direction="column"
+								direction="row"
 								justifyContent="flex-start"
 							>
-								<div style={styles.fadeInRight} key={selectedColour}>
-									<Grid
-										container
-										item
-										direction="row"
-										justifyContent="flex-start"
-										alignItems="center"
-										spacing={2}
-									>
-										{similarColours.map((colour) => ( 
-											<Grid key={colour.colour} item xs={12} sm={6} md={3}>
-												<div className={classes.pictureCard} id={`chroma-match-mix-item-${colour.mixData.id}`}>
-													<Link
-														to={{ pathname: `/Mix/${colour.mixData.id}` }}
-														style={{ textDecoration: "none", margin: "auto" }}
-													>
-														<PictureCard
-															colourName={`${colour.mixData.colourName}`}
-															artistName={`${colour.mixData.artist}`}
-															colourHex={`${colour.mixData.colourHex}`}
-															date={`${colour.mixData.date}`}
-															image={colour.mixData.imageUrl}
-															mini={true}
-															colourFirst={true}
-														/>
-													</Link>             
-												</div>
-											</Grid>
-										))}	
-									</Grid>	
-								</div>
+								<Grid
+									container 
+									item
+									direction="column"
+									justifyContent="flex-start"
+								>
+									<div style={styles.fadeInRight} key={selectedColour}>
+										<Grid
+											container
+											item
+											direction="row"
+											justifyContent="flex-start"
+											alignItems="center"
+											spacing={2}
+										>
+											{similarColours.map((colour) => ( 
+												<Grid key={colour.colour} item xs={12} sm={6} md={3}>
+													<div className={classes.pictureCard} id={`chroma-match-mix-item-${colour.mixData.id}`}>
+														<Link
+															to={{ pathname: `/Mix/${colour.mixData.id}` }}
+															style={{ textDecoration: "none", margin: "auto" }}
+														>
+															<PictureCard
+																colourName={`${colour.mixData.colourName}`}
+																artistName={`${colour.mixData.artist}`}
+																colourHex={`${colour.mixData.colourHex}`}
+																date={`${colour.mixData.date}`}
+																image={colour.mixData.imageUrl}
+																mini={true}
+																colourFirst={true}
+															/>
+														</Link>             
+													</div>
+												</Grid>
+											))}	
+										</Grid>	
+									</div>
+								</Grid>
 							</Grid>
 						</Grid>
-					</Grid>
-				</div>
+					</div>
+				</main>
 			</StyleRoot>
 			<Footer/>
 		</div>

@@ -92,20 +92,22 @@ export default function Mix() {
 							back={mixStates.previousMixData}
 							forward={mixStates.nextMixData}
 						/>
-						<Grid container direction="row" justifyContent="center" alignItems="center">
-							<Grid item md={6} xs={12}>
-								<MixBoxMobile
-									artistName={mixStates.mixMetadata.artist}
-									colourName={mixStates.mixMetadata.colourName}
-									colourHex={mixStates.mixMetadata.colourHex}
-									date={mixStates.mixMetadata.date}
-									description={mixStates.mixMetadata.description}
-									mixUrl={mixStates.mixMetadata.link}
-									links={mixStates.mixMetadata.links}
-									embedId={mixStates.mixMetadata.embedId}
-								/>
+						<main>
+							<Grid container direction="row" justifyContent="center" alignItems="center">
+								<Grid item md={6} xs={12}>
+									<MixBoxMobile
+										artistName={mixStates.mixMetadata.artist}
+										colourName={mixStates.mixMetadata.colourName}
+										colourHex={mixStates.mixMetadata.colourHex}
+										date={mixStates.mixMetadata.date}
+										description={mixStates.mixMetadata.description}
+										mixUrl={mixStates.mixMetadata.link}
+										links={mixStates.mixMetadata.links}
+										embedId={mixStates.mixMetadata.embedId}
+									/>
+								</Grid>
 							</Grid>
-						</Grid>
+						</main>
 						<BackButton/>
 					</div>
 				</StyleRoot>
