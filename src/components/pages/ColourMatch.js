@@ -36,11 +36,9 @@ export default function ColourMatch(){
 		//generate grid
 		let grid = gridData(10,12)
 		for(let i = 0; i < colourPalette.length; i++){
-			console.log(`creating column for colour ${colourPalette[i]}`)
 			grid = colourGradientColumn(grid, i, colourPalette[i])
 		}
 		setGrid(grid)
-		console.log(grid)
 		
 		//get mix data from public folder
 		fetch("/data/mixData.json")
@@ -61,7 +59,6 @@ export default function ColourMatch(){
 
 	useEffect(() => { //retrieve list of similar colours and set title text colour
 		let validHex = hexyjs.isHex(`${colour}`)
-		console.log(colour)
 		if(validHex && mixData.data){
 			let textColour = getTextShade(colour)
 			setSelectedColour(colour)

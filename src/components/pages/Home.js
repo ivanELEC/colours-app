@@ -18,7 +18,6 @@ export default function Home() {
 
 	useEffect(() => {
 		//get mix data from public folder
-		console.log("Fetching mix data")
 		fetch("/data/mixData.json")
 			.then((res) => res.json())
 			.then((data) => setMixData(data))
@@ -30,7 +29,6 @@ export default function Home() {
 
 	useEffect(() => {
 		//sort retrieved mix data in descending date
-		console.log("Sorting mix data")
 		try {
 			let dataIn = sortJsonArray(mixData.data, "datecode")
 			setSortedMixData(dataIn)
