@@ -4,7 +4,6 @@ import { Switch, Route, BrowserRouter as Router } from "react-router-dom"
 import "./index.css"
 import Mix from "./components/pages/Mix"
 import App from "./App"
-import Footer from "./components/navigation/Footer"
 //load fonts
 import "./fonts/HelveticaNeueCyr-Bold.ttf"
 import "./fonts/HelveticaNeueCyr-Light.ttf"

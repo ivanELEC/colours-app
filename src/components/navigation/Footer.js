@@ -136,7 +136,7 @@ export default function Footer() {
 						<div id="modal-help-description" className={classes.helpModalText} >
 							<div className={classes.helpModalSubTitle}> How to find Mixes </div>
 							<p>Each mix card clicks through to a page to read more information about a mix and listen to it</p>
-							<p>You can see all mixes by navigating to the Menu and clicking "See All Mixes"</p>
+							<p>You can see all mixes by navigating to the Menu and clicking <q>See All Mixes</q></p>
 							<p>The colour grid and colour selector allow you to choose a colour that filters down to mixes of a similar hue</p>
 							<p>You can either click a colour on the colour grid, or type in a hex code (6 characters) in the colour selector text field</p>
 							<div className={classes.helpModalSubTitle}> Hex Codes </div>
