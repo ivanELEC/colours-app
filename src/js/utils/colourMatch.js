@@ -56,7 +56,7 @@ export function getSimilarColours(colourList, inputColour, maxDifference=100, ma
 function findMixData(data, colourHex){
 	data = data.data
 	let selectedData = data.filter((mix) => {
-		return mix.colourHex == `#${colourHex}`
+		return mix.colourHex === `#${colourHex}`
 	})
 	
 	if(selectedData){

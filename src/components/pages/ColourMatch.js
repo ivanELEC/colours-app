@@ -81,9 +81,9 @@ export default function ColourMatch(){
 		var inputElement = event.target
 		var elementId = inputElement.id
 		if(inputElement){
-			if(elementId == "colour-match-input"){
+			if(elementId === "colour-match-input"){
 				if(inputElement.value){
-					if(inputElement.value.length == 6){
+					if(inputElement.value.length === 6){
 						setOldColour(colour) //set old colour so that when page re-renders we can use it to transition to the new one 
 						setColour(inputElement.value)
 						setSeeAll(false)

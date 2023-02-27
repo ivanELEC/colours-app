@@ -36,7 +36,7 @@ export default function Footer() {
 
 	const seeAllMixes = () => { //reloads ColourMatch if already on ColourMatch, else goes to ColourMatch
 		let currentRoute = location.pathname
-		if(currentRoute == "/"){
+		if(currentRoute === "/"){
 			history.go(0)
 		}
 		else{

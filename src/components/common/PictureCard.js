@@ -13,7 +13,7 @@ export default function PictureCard(props) {
 	var minHeight = 300
 	var minWidth = 275
 
-	if(props.mini == true){
+	if(props.mini){
 		maxHeightHeader = 150
 		minHeight = 170
 		minWidth = 220

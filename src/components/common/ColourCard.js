@@ -20,7 +20,7 @@ export default function ColourCard(props) {
 	var minHeight = 480
 	var minWidth = 275
 
-	if(props.mini == true){
+	if(true){
 		minHeightHeader = 100
 		minHeight = 170
 		minWidth = 220

@@ -27,10 +27,10 @@ export default function ColourDifference() {
 		var inputElement = event.target
 		var elementId = inputElement.id
 		if(inputElement){
-			if(elementId == "colour-1-input"){
+			if(elementId === "colour-1-input"){
 				setColour1(inputElement.value)
 			}
-			else if(elementId == "colour-2-input"){
+			else if(elementId === "colour-2-input"){
 				setColour2(inputElement.value)
 			}
 		}

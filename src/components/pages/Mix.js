@@ -30,7 +30,7 @@ export default function Mix() {
 				//select current mix from array
 				let mixArray = data.data
 				let mixMetadata = mixArray.filter((mix) => {
-					return mix.id == id
+					return mix.id === id
 				})[0]
 
 				//sort retrieved mix data in descending date
