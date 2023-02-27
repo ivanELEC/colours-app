@@ -16,7 +16,7 @@ export default function BackButton() {
 	const classes = useStyles()
 	
 	return (
-		<div style={{ "margin": "auto", "width": "50%", "text-align": "center" }}>
+		<div style={{ margin: "auto", width: "50%", textAlign: "center" }}>
 			<img
 				alt="back button"
 				onClick={() => history.push("/")}
