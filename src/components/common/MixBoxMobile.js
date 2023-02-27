@@ -86,7 +86,7 @@ export default function MixBoxMobile(props) {
 						alignItems="flex-start"
 					>
 						{props.links.map((link) => (
-							<Grid item xs={4} key={link}>
+							<Grid item xs={4} key={link.url}>
 								<Link
 									href={link.url}
 									target="_blank"
