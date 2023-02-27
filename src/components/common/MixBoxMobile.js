@@ -4,10 +4,23 @@ import { makeStyles } from "@mui/styles"
 import Paper from "@mui/material/Paper"
 import Grid from "@mui/material/Grid"
 import Link from "@mui/material/Link"
+import Modal from  "@mui/material/Modal"
+import Box from  "@mui/material/Box"
 import ImageIcon from "@mui/icons-material/Image"
 import SoundcloudPlayer from "./SoundcloudPlayer"
 
 export default function MixBoxMobile(props) {
+	//hooks
+	const [openImage, setOpenImage] = React.useState(false)
+	
+
+	//effects
+
+	//functions
+	const handleOpenImage = () => setOpenImage(true)
+	const handleCloseImage = () => setOpenImage(false)
+
+	//styles
 	const useStyles = makeStyles({
 		title: {
 			fontFamily: "HelveticaBold",
@@ -35,12 +48,41 @@ export default function MixBoxMobile(props) {
 			position:"relative", 
 			bottom: "100%",
 			left: "97%"
+		},
+		imageModal:{
+			position: "absolute",
+			top: "50%",
+			left: "50%",
+			transform: "translate(-50%, -50%)",
+			width: 500,
+			maxWidth: "75%",
+			maxHeight: "60%",
+			overflow: "auto",
+			backgroundColor: "#ffffff",
+			borderWidth: 0,
+			boxShadow: 24,
+			padding: 25
+		}, 
+		imagePosition: {
+			margin: "auto", 
+			width: "100%",
+			padding:5
 		}
 	})
 
 	const classes = useStyles()
 	return (
 		<div className={classes.root}>
+			<Modal
+				open={openImage}
+				onClose={handleCloseImage}
+				aria-labelledby="modal-image-title"
+				aria-describedby="modal-image-description"
+			>
+				<Box className={classes.imageModal}>
+					<img className={classes.imagePosition} src={props.imageUrl} alt={props.description} />
+				</Box>
+			</Modal>
 			<Paper className={classes.content}>
 				<Grid
 					container
@@ -103,7 +145,7 @@ export default function MixBoxMobile(props) {
 						))}
 					</Grid>
 				</Grid>
-				< ImageIcon className={classes.cardImageExpand} />
+				< ImageIcon onClick={handleOpenImage} className={classes.cardImageExpand} />
 			</Paper>
 		</div>
 	)
@@ -117,4 +159,5 @@ MixBoxMobile.propTypes = {
 	date: PropTypes.string,
 	links: PropTypes.array,
 	description: PropTypes.string,
+	imageUrl: PropTypes.string
 }

@@ -102,6 +102,7 @@ export default function Mix() {
 										date={mixStates.mixMetadata.date}
 										description={mixStates.mixMetadata.description}
 										mixUrl={mixStates.mixMetadata.link}
+										imageUrl={mixStates.mixMetadata.imageUrl}
 										links={mixStates.mixMetadata.links}
 										embedId={mixStates.mixMetadata.embedId}
 									/>
