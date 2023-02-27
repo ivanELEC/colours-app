@@ -48,7 +48,7 @@ export default function ColourMatch(){
 				console.log("Failed to fetch mix data", err)
 				throw new Error(err)
 			})
-	}, [])
+	}, [colourPalette])
 
 	useEffect(() => { //flatten mixData to list of allocated colours
 		if(mixData){
@@ -74,7 +74,7 @@ export default function ColourMatch(){
 				setSimilarColours(sortedColours)
 			}
 		}
-	}, [colourList, colour, mixData])
+	}, [colourList, colour, mixData, seeAll])
 
 	//functions 
 	const handleChangeColour = (event) => {///saves colour hex to hook value depending on colourNo
