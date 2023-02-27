@@ -1,10 +1,10 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { makeStyles } from "@mui/styles"
-import Card from "@mui/material/Card"
-import CardContent from "@mui/material/CardContent"
+import Paper from "@mui/material/Paper"
 import Grid from "@mui/material/Grid"
 import Link from "@mui/material/Link"
+import ImageIcon from "@mui/icons-material/Image"
 import SoundcloudPlayer from "./SoundcloudPlayer"
 
 export default function MixBoxMobile(props) {
@@ -24,19 +24,24 @@ export default function MixBoxMobile(props) {
 		content: {
 			background: "#ffffff",
 			margin: 3,
+			padding: 20
 		},
 		root: {
 			minWidth: 250,
 			minHeight: 480,
-			padding: 0,
 			margin: 25,
 		},
+		cardImageExpand: {
+			position:"relative", 
+			bottom: "100%",
+			left: "97%"
+		}
 	})
 
 	const classes = useStyles()
 	return (
-		<Card className={classes.root}>
-			<CardContent className={classes.content}>
+		<div className={classes.root}>
+			<Paper className={classes.content}>
 				<Grid
 					container
 					direction="column"
@@ -98,8 +103,9 @@ export default function MixBoxMobile(props) {
 						))}
 					</Grid>
 				</Grid>
-			</CardContent>
-		</Card>
+				< ImageIcon className={classes.cardImageExpand} />
+			</Paper>
+		</div>
 	)
 }
 
