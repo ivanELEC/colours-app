@@ -1,11 +1,11 @@
 export function gridData(rows=10, columns=10, width=50, height=50) {
-	var data = new Array()
+	var data = []
 	var xpos = 1 //starting xpos and ypos at 1 so the stroke will show when we make the grid below
 	var ypos = 1
 
 	// iterate for rows	
 	for (var row = 0; row < rows; row++) {
-		data.push( new Array() )
+		data.push([])
 		
 		// iterate for cells/columns inside rows
 		for (var column = 0; column < columns; column++) {
