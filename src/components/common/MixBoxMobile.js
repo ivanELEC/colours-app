@@ -45,7 +45,7 @@ export default function MixBoxMobile(props) {
 				>
 					<Grid item xs={6}>
 						<div className={classes.title}>
-							<p>{props.artistName} - <span style={{textDecoration: `underline wavy ${props.colourHex}`}}>{props.colourName}</span></p>
+							<p>{props.artistName} - <span style={{textDecoration: `underline wavy ${props.colourHex}`, textUnderlineOffset: "0.3em"}}>{props.colourName}</span></p>
 						</div>
 						<div className={classes.subtitle}>{props.colourHex}</div>
 						<div className={classes.subtitle}>{props.date}</div>
