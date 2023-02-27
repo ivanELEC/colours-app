@@ -47,7 +47,10 @@ export default function MixBoxMobile(props) {
 		cardImageExpand: {
 			position:"relative", 
 			bottom: "100%",
-			left: "97%"
+			left: "97%",
+			"& :hover": {
+				color: "#444444"
+			}
 		},
 		imageModal:{
 			position: "absolute",
