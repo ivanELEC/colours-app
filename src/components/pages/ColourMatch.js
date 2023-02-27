@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import { useTheme } from "@mui/material/styles"
 import { makeStyles } from "@mui/styles"
 import useMediaQuery from "@mui/material/useMediaQuery"
-import { Link } from "react-router-dom"
 import { gridData } from "../../js/utils/grid"
 import {Grid, Paper, TextField, InputAdornment }  from "@mui/material"
 import PictureCard from "../common/PictureCard"
@@ -276,22 +275,19 @@ export default function ColourMatch(){
                     >
 						{similarColours.map((colour) => ( 
 							<Grid key={colour.colour} item xs={12} sm={6} md={3}>
-							<div className={classes.pictureCard} id={`chroma-match-mix-item-${colour.mixData.id}`}>
-								<Link
-								to={{ pathname: `/Mix/${colour.mixData.id}` }}
-								style={{ textDecoration: "none", margin: "auto" }}
-								>
-								<PictureCard
-									colourName={`${colour.mixData.colourName}`}
-									artistName={`${colour.mixData.artist}`}
-									colourHex={`${colour.mixData.colourHex}`}
-									date={`${colour.mixData.date}`}
-									image={colour.mixData.imageUrl}
-									mini={true}
-									colourFirst={true}
-								/>
-								</Link>             
-							</div>
+								<div className={classes.pictureCard} id={`chroma-match-mix-item-${colour.mixData.id}`}>
+									<PictureCard
+										colourName={`${colour.mixData.colourName}`}
+										artistName={`${colour.mixData.artist}`}
+										colourHex={`${colour.mixData.colourHex}`}
+										date={`${colour.mixData.date}`}
+										embedId={`${colour.mixData.embedId}`}
+										image={colour.mixData.imageUrl}
+										link={`/Mix/${colour.mixData.id}`}
+										mini={true}
+										colourFirst={true}
+									/>
+								</div>
 							</Grid>
                     	))}	
                     </Grid>	
@@ -301,7 +297,7 @@ export default function ColourMatch(){
             </Grid>
           </div>
       </StyleRoot>
-      <Footer/>
+      <Footer />
     </div>
 	)
 }

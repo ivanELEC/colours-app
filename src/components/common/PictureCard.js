@@ -1,12 +1,100 @@
-import React from "react"
+import React, { useState, useEffect, createRef } from "react"
 import PropTypes from "prop-types"
 import Card from "./Card"
+import VolumeUpIcon from "@mui/icons-material/VolumeUp"
+import VolumeOffIcon from "@mui/icons-material/VolumeOff"
+import { Link } from "react-router-dom"
 import { makeStyles } from "@mui/styles"
+import loadscript from 'load-script'
+
 
 /*
 A simple card with an image, a title and some content
 */
 export default function PictureCard(props) {
+	//string that stores url for mix
+	const srcString =
+		"https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/" +
+		props.embedId +
+		"&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+
+	// state hooks
+	const [isPlaying, setIsPlaying] = useState(false)
+	const [player, setPlayer] = useState(false)
+	const [autoPlay, setAutoPlay] = useState(true)
+	const [displayVolumeOn, setDisplayVolumeOn] = useState("none")
+	const [displayVolumeOff, setDisplayVolumeOff] = useState("block")
+
+
+	const iframeRef = createRef()
+
+	// initialization - load soundcloud widget API and set SC event listeners
+
+	useEffect(() => {
+		if(!autoPlay){
+			setDisplayVolumeOff("none")
+			setDisplayVolumeOn("none")
+		}
+		// use load-script module to load SC Widget API
+		loadscript('https://w.soundcloud.com/player/api.js', () => {
+
+		// initialize player and store reference in state
+		const player = window.SC.Widget(iframeRef.current)
+		setPlayer( player )
+
+		const { PLAY, PLAY_PROGRESS, PAUSE, READY, FINISH, ERROR } = window.SC.Widget.Events
+
+		player.bind( READY, function(){
+			player.bind( PLAY, () => {
+				// update state to playing
+				setIsPlaying(true)
+			})
+	
+			player.bind( PAUSE, () => {
+				// update state if player has paused - must double check isPaused since false positives
+				player.isPaused( (playerIsPaused) => {
+					if (playerIsPaused){
+						setIsPlaying(false)
+					} 
+				})
+			})
+		})
+	})}, [])
+
+	// adjust playback in SC player to match isPlaying state
+	useEffect(() => {
+		if (player){
+			if(autoPlay){
+				player.isPaused( (playerIsPaused) => {
+					if (isPlaying && playerIsPaused) {
+						player.play()
+					} 
+					else if(!isPlaying && !playerIsPaused){
+						player.pause()
+					}
+				})
+			}
+		
+		}
+		else{
+			return // player loaded async - make sure available
+		} 		
+	},[isPlaying])
+
+	const audioToggle = () => {	
+		if(isPlaying){
+			setDisplayVolumeOn("none")
+			setDisplayVolumeOff("block")
+			setIsPlaying(false)
+		}
+		else{
+			setDisplayVolumeOn("block")
+			setDisplayVolumeOff("none")
+			setIsPlaying(true)
+		}
+	}
+
+	//styles
 	//variables for size of component - reduces if mini = true
 	var maxHeightHeader = 280
 	var minHeightContent = 140
@@ -64,6 +152,11 @@ export default function PictureCard(props) {
 			padding: 10,
 			margin: "auto", 
 		},
+		soundIcon: {
+			position: "relative", 
+			bottom: "90%", 
+			left: "90%"
+		},
 		mediaContainer: {
 			position: "relative",
 			"&:hover": {
@@ -91,20 +184,38 @@ export default function PictureCard(props) {
 	const classes = useStyles()
 
 	return (
-		<div className={classes.root}>
-			<Card>
-				<div className={classes.mediaContainer}>
-					<div className={classes.media} />
-					<div className={classes.mediaOverlay} />
-				</div>
-				<div className={classes.content}>
-					<div className={classes.title}>{props.artistName}</div>
-					<p />
-					<div>{props.colourName}</div>
-					<div>{props.colourHex}</div>
-					<div>{props.date}</div>
-				</div>
-			</Card>
+		<div
+		 	className={classes.root}  
+		>
+			<div>
+				<Card>
+					<Link
+						to={{ pathname: `${props.link}` }}
+						style={{ textDecoration: "none", margin: "auto" }}
+					>
+						<div className={classes.mediaContainer}>
+							<div className={classes.media} />
+							<div className={classes.mediaOverlay} />
+						</div>
+					</Link>
+					<div className={classes.content}>
+						<div className={classes.title}>{props.artistName}</div>
+						<p />
+						<div>{props.colourName}</div>
+						<div>{props.colourHex}</div>
+						<div>{props.date}</div>
+						<VolumeUpIcon onClick={audioToggle} style={{display: displayVolumeOn}} className={classes.soundIcon}/>
+						<VolumeOffIcon onClick={audioToggle} style={{display: displayVolumeOff}} className={classes.soundIcon}/>
+					</div>
+				</Card>
+			</div>
+			<iframe 
+				ref={iframeRef}
+				id={`sc-iframe-${props.artistName}-${props.colourName}`} 
+				style={{display: "none"}}
+				allow="autoplay"
+				src={srcString}
+			></iframe>
 		</div>
 	)
 }
