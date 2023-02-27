@@ -4,7 +4,7 @@ import { makeStyles } from "@mui/styles"
 import useMediaQuery from "@mui/material/useMediaQuery"
 import { Link } from "react-router-dom"
 import { gridData } from "../../js/utils/grid"
-import {Grid, Paper, TextField, InputAdornment }  from "@mui/material"
+import {Grid, Paper, TextField, InputAdornment, InputLabel, FormHelperText, FormControl }  from "@mui/material"
 import PictureCard from "../common/PictureCard"
 import Footer from "../navigation/Footer"
 import { getAllocatedColours, getSimilarColours, colourGradientColumn, getTextShade } from "../../js/utils/colourMatch"
@@ -234,17 +234,24 @@ export default function ColourMatch(){
 									elevation={1}
 								>
 									<div  style={styles.titlePaperTop}>
-										<TextField
-											disable="true"
-											InputProps={{
-												startAdornment: <InputAdornment position="start"><div className={classes.titleColourSelect}>#</div></InputAdornment>,
-												style: styles.titleColourSelect
-											}}
-											id="colour-match-input"
-											variant="standard" 
-											defaultValue={selectedColour}
-											onChange={handleChangeColour} 
-										/>
+										<FormControl>
+											<InputLabel style={{display:"none"}} htmlFor="colour-match-input">Colour picker</InputLabel>
+											<TextField
+												disable="true"
+												InputProps={{
+													startAdornment: <InputAdornment position="start"><div className={classes.titleColourSelect}>#</div></InputAdornment>,
+													style: styles.titleColourSelect,
+													id: "colour-match-input",
+													"aria-describedby": "chroma-colour-picker-helper-text"
+												}}
+												type="text"
+												name="colour"
+												variant="standard" 
+												defaultValue={selectedColour}
+												onChange={handleChangeColour} 
+											/>
+											<FormHelperText style={{display:"none"}} id="chroma-colour-picker-helper-text">Enter a 6 digit hex code to choose a colour</FormHelperText>
+										</FormControl>
 									</div>
 									<div className={classes.titlePaperBottom}>Chroma</div>
 								</Paper>
