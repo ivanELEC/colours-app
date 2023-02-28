@@ -99,12 +99,12 @@ export default function Footer() {
 		},
 		helpModalSubTitle: {
 			fontFamily: "HelveticaBold",
-			fontSize: "2vh",
+			fontSize: "2.5vh",
 			paddingBottom: 5
 		},
 		helpModalText:{
 			fontFamily: "HelveticaLight",
-			fontSize: "1.7vh",
+			fontSize: "2.2vh",
 			paddingBottom: 3
 		}
 	})
