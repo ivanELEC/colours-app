@@ -87,7 +87,7 @@ export function colourGradientColumn(gridData, column, colourHex){
 	 to a scale of one colour, going from the colour (colourHex) and lightening by an equal 
 	 lightness factor in each row*/
 	var colour = Color(colourHex, "hex")
-	var lightenFactor = 1/(gridData.length * 1.1)
+	var lightenFactor = 1/(gridData.length * 1.27)
 	for(let i = 0; i<gridData.length; i++){
 		gridData[i][column].colourHex = colour.hex()
 		colour = colour.lighten(lightenFactor)
