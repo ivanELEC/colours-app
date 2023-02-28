@@ -4,7 +4,7 @@ import { makeStyles } from "@mui/styles"
 import useMediaQuery from "@mui/material/useMediaQuery"
 import { Link } from "react-router-dom"
 import { gridData } from "../../js/utils/grid"
-import { visuallyHidden } from '@mui/utils';
+import { visuallyHidden } from "@mui/utils"
 import {Grid, Paper, TextField, InputAdornment, InputLabel, FormHelperText, FormControl }  from "@mui/material"
 import PictureCard from "../common/PictureCard"
 import Footer from "../navigation/Footer"
