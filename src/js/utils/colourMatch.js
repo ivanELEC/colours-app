@@ -1,4 +1,4 @@
-var cd = require("color-difference")
+import hexRgb from "hex-rgb"
 var tinycolor = require("tinycolor2")
 const Color = require("color")
 
@@ -24,7 +24,7 @@ export function getSimilarColours(colourList, inputColour, maxDifference=100, ma
 	let sortedColours = []
 
 	sortedColours = colourList.map((colour)=>{
-		let colourDiff = cd.compare(colour, inputColour)
+		let colourDiff = getEuclideanDistance(colour, inputColour)
 		let colourHex = `#${colour}`
 		let textShade = getTextShade(colourHex)
 		let data = null
@@ -94,4 +94,27 @@ export function colourGradientColumn(gridData, column, colourHex){
 	}
 
 	return gridData
+}
+
+export function getEuclideanDistance(colour1, colour2){
+	if (colour1===colour2) {
+		return 0
+	}
+
+	colour1 = hexRgb(colour1)
+	colour2 = hexRgb(colour2)
+	
+	
+	function squaredDelta(v1, v2) {
+		return Math.pow(v1 - v2, 2)
+	}
+	
+	var sum = 0
+	sum += squaredDelta(colour1.red,   colour2.red)
+	sum += squaredDelta(colour1.green, colour2.green)
+	sum += squaredDelta(colour1.blue,  colour2.blue)
+
+	var conversionIndex = 19.5075
+
+	return Math.sqrt(sum / conversionIndex)
 }

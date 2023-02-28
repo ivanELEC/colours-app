@@ -10,7 +10,7 @@
 		"@mui/styled-engine-sc": "^5.11.9",
 		"@mui/styles": "^5.11.9",
 		"color": "^4.2.3",
-		"color-difference": "^0.3.4",
+		"hex-rgb": "^5.0.0",
 		"hexyjs": "^2.1.4",
 		"json-query": "^2.2.2",
 		"node-fetch": "^2.6.5",

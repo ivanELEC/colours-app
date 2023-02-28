@@ -3,7 +3,7 @@ import { makeStyles } from "@mui/styles"
 import {Grid, TextField, Button, Typography}  from "@mui/material"
 import ColourCard from "../common/ColourCard"
 import PropTypes from "prop-types"
-var cd = require("color-difference")
+import { getEuclideanDistance } from "../../js/utils/colourMatch"
 
 export default function ColourDifference() {
 
@@ -37,7 +37,7 @@ export default function ColourDifference() {
 	}
 
 	const calculateDiff = () => { //calculate the difference between the 2 colours
-		let diff = cd.compare(colour1, colour2)
+		let diff = getEuclideanDistance(colour1, colour2)
 		setDiffVal(diff)
 	}
 

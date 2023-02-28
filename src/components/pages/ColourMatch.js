@@ -17,7 +17,7 @@ const Color = require("color")
 
 export default function ColourMatch(){
 	//constants
-	const maxDiff = 50
+	const maxDiff = 25
 	
 	//state hooks
 	const [colour, setColour] = useState("ffffff")
