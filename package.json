@@ -28,7 +28,7 @@
 	"devDependencies": {
 		"eslint-plugin-react": "^7.32.1",
 		"nodemon": "^2.0.14",
-		"react-scripts": "3.4.1"
+		"react-scripts": "^5.0.1"
 	},
 	"scripts": {
 		"start": "react-scripts start",
