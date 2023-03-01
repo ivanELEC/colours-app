@@ -187,7 +187,7 @@ export default function Footer() {
 										aria-expanded={openMenu ? "true" : undefined}
 										onClick={handleClickMenu}
 										color="neutral"
-										sx={{fontFamily:  "HelveticaBold", fontSize: "2vh" }}
+										sx={{fontFamily:  "HelveticaBold", fontSize: "2vh", paddingRight: 10}}
 									>
 										Menu
 									</Button>
