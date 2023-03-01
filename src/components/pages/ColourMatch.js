@@ -30,7 +30,7 @@ export default function ColourMatch(){
 	const [grid, setGrid] = useState(false)  
 	const [seeAll, setSeeAll ] = useState(true)
 
-	const colourPalette = ["#E42406", "#EC6E08", "#EC9508", "#ECF701","#CFFF00", "#2DC84D", "#14C7D1", "#147BD1", "#2700FF", "#443BBD", "#753BBD", "#BD3B89"]
+	const colourPalette = ["#CF1A11", "#EC6E08", "#EC9508", "#ECF701","#CFFF00", "#2DC84D", "#14C7D1", "#147BD1", "#2700FF", "#443BBD", "#753BBD", "#BD3B89"]
 	
 	//effects 
 	useEffect(() => {
