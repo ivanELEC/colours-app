@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { makeStyles  } from "@mui/styles"
 import { Grid, Menu, MenuItem, Button, Modal, Box } from "@mui/material"
@@ -8,15 +8,23 @@ import { useHistory, useLocation } from "react-router-dom"
 export default function Footer() {
 	const history = useHistory()
 	const location = useLocation()
+	const currentRoute = location.pathname
 
 	//hooks
-	const [anchorEl, setAnchorEl] = React.useState(null)
-	const [anchorPosCoordinates, setAnchorPosCoordinates] = React.useState({top:0, left:0})
+	const [anchorEl, setAnchorEl] = useState(null)
+	const [anchorPosCoordinates, setAnchorPosCoordinates] = useState({top:0, left:0})
+	const [showHomepageOptions, setShowHomepageOptions] = useState(false)
 	const [openHelp, setOpen] = React.useState(false)
 
 	const openMenu = Boolean(anchorEl)
 
-  
+	//effects
+	useEffect(() => { //if we are at home, show extra options in menu
+		if(currentRoute === "/"){
+			setShowHomepageOptions(true)
+		}
+	},[])
+
 	//functions
 	const handleClickMenu = (event) => {
 		let targetCoordinates = {
@@ -35,13 +43,13 @@ export default function Footer() {
 	const handleCloseHelp = () => setOpen(false)
 
 	const seeAllMixes = () => { //reloads ColourMatch if already on ColourMatch, else goes to ColourMatch
-		let currentRoute = location.pathname
 		if(currentRoute === "/"){
 			history.go(0)
 		}
 		else{
 			history.push("/")
 		}
+
 	}
 
 	const contactUs = () => {
@@ -50,6 +58,10 @@ export default function Footer() {
 
 	const help = () => {
 		handleOpenHelp()
+	}
+
+	const invertColourMatch = () => {
+
 	}
 
 	//styling
@@ -203,6 +215,16 @@ export default function Footer() {
 									<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={seeAllMixes}>See All Mixes</MenuItem>
 									<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={help}>Help</MenuItem>
 									<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={contactUs}>Contact Us</MenuItem>
+									{
+										showHomepageOptions?
+											(
+												<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={invertColourMatch}>Invert Colour Matching</MenuItem>
+											)
+											:
+											(
+												<div></div>
+											)
+									}
 								</Menu>
 							</Grid>
 						</Grid>
