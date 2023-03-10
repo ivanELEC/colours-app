@@ -19,6 +19,7 @@
 		"radium": "^0.26.2",
 		"react": "^17.0.0",
 		"react-animations": "^1.0.0",
+		"react-cookie": "^4.1.1",
 		"react-dom": "^17.0.0",
 		"react-router-dom": "^5.3.0",
 		"sort-json-array": "^0.1.7",

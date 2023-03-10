@@ -3,6 +3,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { makeStyles  } from "@mui/styles"
 import { Grid, Menu, MenuItem, Button, Modal, Box, Checkbox, FormControlLabel } from "@mui/material"
 import { useHistory, useLocation } from "react-router-dom"
+import { Cookies } from "react-cookie"
 
 
 export default function Footer() {
@@ -14,16 +15,32 @@ export default function Footer() {
 	const [anchorEl, setAnchorEl] = useState(null)
 	const [anchorPosCoordinates, setAnchorPosCoordinates] = useState({top:0, left:0})
 	const [showHomepageOptions, setShowHomepageOptions] = useState(false)
-	const [openHelp, setOpen] = React.useState(false)
+	const [openHelp, setOpen] = useState(false)
+	const [invertColours, setInvertColours] = useState("false")
+	//cookies
+	const cookies = new Cookies()
 
 	const openMenu = Boolean(anchorEl)
 
 	//effects
-	useEffect(() => { //if we are at home, show extra options in menu
-		if(currentRoute === "/"){
+	useEffect(() => { 
+		//if we are at home, show extra options in menu
+		if(currentRoute === "/"){ 
 			setShowHomepageOptions(true)
 		}
+		//default invertColour to value of cookie
+		if(cookies.get("InvertColours")){
+			let invertToggleState = cookies.get("InvertColours")
+			setInvertColours(invertToggleState)
+		}
+		else{
+			cookies.set("InvertColours", invertColours)
+		}
 	},[])
+
+	useEffect(() => {
+		handleCookies()
+	},[invertColours])
 
 	//functions
 	const handleClickMenu = (event) => {
@@ -41,6 +58,12 @@ export default function Footer() {
 
 	const handleOpenHelp = () => setOpen(true)
 	const handleCloseHelp = () => setOpen(false)
+
+	const handleCookies = () => {
+		cookies.set("InvertColours", invertColours)
+		console.log(invertColours)
+		console.log(cookies.InvertColours)
+	}
 
 	const seeAllMixes = () => { //reloads ColourMatch if already on ColourMatch, else goes to ColourMatch
 		if(currentRoute === "/"){
@@ -61,7 +84,14 @@ export default function Footer() {
 	}
 
 	const invertColourMatch = () => {
-
+		if(invertColours === "true"){
+			console.log("toggling invertColours from true to false")
+			setInvertColours("false")
+		}
+		else{
+			console.log("toggling invertColours from false to true")
+			setInvertColours("true")
+		}
 	}
 
 	//styling
@@ -218,11 +248,11 @@ export default function Footer() {
 									{
 										showHomepageOptions?
 											(
-												<MenuItem onClick={invertColourMatch}>
+												<MenuItem>
 													<FormControlLabel 
 														label={<div style={{fontFamily: "HelveticaLight" }}>Invert Colour Matching</div>}
 														labelPlacement="start"
-														control={<Checkbox color="neutral" />}
+														control={<Checkbox onClick={invertColourMatch} color="neutral" />}
 														sx={{marginLeft:0, marginRight: 0}}
 													/>
 												</MenuItem>

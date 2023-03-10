@@ -1,6 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom"
+import { CookiesProvider } from "react-cookie"
 import "./index.css"
 import Mix from "./components/pages/Mix"
 import App from "./App"
@@ -17,4 +18,9 @@ const routing = (
 	</div>
 )
 
-ReactDOM.render(routing, document.getElementById("root"))
+ReactDOM.render(
+	<CookiesProvider>
+		{routing}
+	</CookiesProvider>, 
+	document.getElementById("root")
+)
