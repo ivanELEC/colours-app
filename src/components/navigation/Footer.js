@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { makeStyles  } from "@mui/styles"
-import { Grid, Menu, MenuItem, Button, Modal, Box } from "@mui/material"
+import { Grid, Menu, MenuItem, Button, Modal, Box, Checkbox, FormControlLabel } from "@mui/material"
 import { useHistory, useLocation } from "react-router-dom"
 
 
@@ -218,7 +218,14 @@ export default function Footer() {
 									{
 										showHomepageOptions?
 											(
-												<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={invertColourMatch}>Invert Colour Matching</MenuItem>
+												<MenuItem onClick={invertColourMatch}>
+													<FormControlLabel 
+														label={<div style={{fontFamily: "HelveticaLight" }}>Invert Colour Matching</div>}
+														labelPlacement="start"
+														control={<Checkbox color="neutral" />}
+														sx={{marginLeft:0, marginRight: 0}}
+													/>
+												</MenuItem>
 											)
 											:
 											(
