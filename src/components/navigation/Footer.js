@@ -236,7 +236,7 @@ export default function Footer() {
 																color="neutral"
 																checked={state.invertColours}
 																onChange={invertColourMatch}
-															 />
+															/>
 														}
 														sx={{marginLeft:0, marginRight: 0}}
 													/>
