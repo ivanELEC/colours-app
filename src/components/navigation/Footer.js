@@ -3,6 +3,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { makeStyles  } from "@mui/styles"
 import { Grid, Menu, MenuItem, Button, Modal, Box, Checkbox, FormControlLabel } from "@mui/material"
 import { useHistory, useLocation } from "react-router-dom"
+import { useGlobalState } from "../../js/utils/globalState"
 
 export default function Footer() {
 	const history = useHistory()
@@ -14,7 +15,8 @@ export default function Footer() {
 	const [anchorPosCoordinates, setAnchorPosCoordinates] = useState({top:0, left:0})
 	const [showHomepageOptions, setShowHomepageOptions] = useState(false)
 	const [openHelp, setOpen] = useState(false)
-	const [invertColours, setInvertColours] = useState("false")
+	//custom hook for global states
+	const [state, dispatch] = useGlobalState()
 
 	const openMenu = Boolean(anchorEl)
 
@@ -62,14 +64,13 @@ export default function Footer() {
 	}
 
 	const invertColourMatch = () => {
-		if(invertColours === "true"){
-			console.log("toggling invertColours from true to false")
-			setInvertColours("false")
+		if(state.invertColours){
+			dispatch({ invertColours: false })
 		}
 		else{
-			console.log("toggling invertColours from false to true")
-			setInvertColours("true")
+			dispatch({ invertColours: true })
 		}
+		console.log(state.invertColours)
 	}
 
 	//styling
@@ -230,7 +231,13 @@ export default function Footer() {
 													<FormControlLabel 
 														label={<div style={{fontFamily: "HelveticaLight" }}>Invert Colour Matching</div>}
 														labelPlacement="start"
-														control={<Checkbox onClick={invertColourMatch} color="neutral" />}
+														control={
+															<Checkbox 
+																color="neutral"
+																selected={state.invertColours}
+																onChange={invertColourMatch}
+															 />
+														}
 														sx={{marginLeft:0, marginRight: 0}}
 													/>
 												</MenuItem>

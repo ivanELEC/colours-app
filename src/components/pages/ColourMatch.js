@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: 0 */
 import React, { useEffect, useState } from "react"
 import { useTheme } from "@mui/material/styles"
 import { makeStyles } from "@mui/styles"
@@ -12,6 +13,7 @@ import { getAllocatedColours, getSimilarColours, colourGradientColumn, getTextSh
 import ColourGrid from "../common/ColourGrid"
 import Radium, { StyleRoot } from "radium"
 import { fadeInRight } from "react-animations"
+import { useGlobalState } from "../../js/utils/globalState"
 const hexyjs = require("hexyjs")
 const Color = require("color")
 
@@ -29,6 +31,7 @@ export default function ColourMatch(){
 	const [similarColours, setSimilarColours]  = useState([])
 	const [grid, setGrid] = useState(false)  
 	const [seeAll, setSeeAll ] = useState(true)
+	const [state, dispatch] = useGlobalState()
 
 	const colourPalette = ["#CF1A11", "#EC6E08", "#EC9508", "#ECF701","#CFFF00", "#2DC84D", "#14C7D1", "#147BD1", "#2700FF", "#443BBD", "#753BBD", "#BD3B89"]
 	
@@ -67,15 +70,15 @@ export default function ColourMatch(){
 			if(colourList.length > 0){
 				let sortedColours = []
 				if(seeAll){
-					sortedColours = getSimilarColours(colourList, colour, 100, 100000, mixData, true)
+					sortedColours = getSimilarColours(colourList, colour, 100, 100000, mixData, false, true)
 				}
 				else{
-					sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 10, mixData)
+					sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 8, mixData, state.invertColours)
 				}
 				setSimilarColours(sortedColours)
 			}
 		}
-	}, [colourList, colour, mixData, seeAll])
+	}, [colourList, colour, mixData, seeAll, state])
 
 	//functions 
 	const handleChangeColour = (event) => {///saves colour hex to hook value depending on colourNo

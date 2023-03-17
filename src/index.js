@@ -1,5 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import { GlobalStateProvider } from "./js/utils/globalState"
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom"
 import "./index.css"
 import Mix from "./components/pages/Mix"
@@ -18,6 +19,8 @@ const routing = (
 )
 
 ReactDOM.render(
-	routing,
+	<GlobalStateProvider>
+		{routing}
+	</GlobalStateProvider>,
 	document.getElementById("root")
 )

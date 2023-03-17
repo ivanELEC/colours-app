@@ -12,7 +12,7 @@ export function getAllocatedColours(mixData){//flatten and output a list of colo
 	return colours
 }
 
-export function getSimilarColours(colourList, inputColour, maxDifference=100, maxColours=5, mixData=null, sortByDate=false){
+export function getSimilarColours(colourList, inputColour, maxDifference=100, maxColours=5, mixData=null,invert=false, sortByDate=false){
 /*
 	Returns a list of colours similar to inputColour from an input colourList
 	maxDifference is the max difference in scale the colours picked can be (max is 1)
@@ -38,6 +38,10 @@ export function getSimilarColours(colourList, inputColour, maxDifference=100, ma
 		return parseFloat(a.colourDiff) - parseFloat(b.colourDiff)
 	})
 
+	if(invert){
+		sortedColours.reverse()
+	}
+
 	if(sortByDate){
 		sortedColours.sort((a,b) => {
 			return parseFloat(a.mixData.datecode) - parseFloat(b.mixData.datecode)
@@ -47,7 +51,13 @@ export function getSimilarColours(colourList, inputColour, maxDifference=100, ma
 	selectedColours = sortedColours.splice(0,maxColours)
 
 	selectedColours = selectedColours.filter((element) => {
-		return parseFloat(element.colourDiff) <= maxDifference
+		if(invert){
+			return parseFloat(element.colourDiff) > (90 - maxDifference)
+		}
+		else{
+			return parseFloat(element.colourDiff) <= maxDifference
+		}
+		
 	})
 
 	return selectedColours
