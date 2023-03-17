@@ -234,7 +234,7 @@ export default function Footer() {
 														control={
 															<Checkbox 
 																color="neutral"
-																selected={state.invertColours}
+																checked={state.invertColours}
 																onChange={invertColourMatch}
 															 />
 														}
