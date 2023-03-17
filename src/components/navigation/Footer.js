@@ -3,8 +3,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { makeStyles  } from "@mui/styles"
 import { Grid, Menu, MenuItem, Button, Modal, Box, Checkbox, FormControlLabel } from "@mui/material"
 import { useHistory, useLocation } from "react-router-dom"
-import { Cookies } from "react-cookie"
-
 
 export default function Footer() {
 	const history = useHistory()
@@ -17,8 +15,6 @@ export default function Footer() {
 	const [showHomepageOptions, setShowHomepageOptions] = useState(false)
 	const [openHelp, setOpen] = useState(false)
 	const [invertColours, setInvertColours] = useState("false")
-	//cookies
-	const cookies = new Cookies()
 
 	const openMenu = Boolean(anchorEl)
 
@@ -28,19 +24,7 @@ export default function Footer() {
 		if(currentRoute === "/"){ 
 			setShowHomepageOptions(true)
 		}
-		//default invertColour to value of cookie
-		if(cookies.get("InvertColours")){
-			let invertToggleState = cookies.get("InvertColours")
-			setInvertColours(invertToggleState)
-		}
-		else{
-			cookies.set("InvertColours", invertColours)
-		}
 	},[])
-
-	useEffect(() => {
-		handleCookies()
-	},[invertColours])
 
 	//functions
 	const handleClickMenu = (event) => {
@@ -58,12 +42,6 @@ export default function Footer() {
 
 	const handleOpenHelp = () => setOpen(true)
 	const handleCloseHelp = () => setOpen(false)
-
-	const handleCookies = () => {
-		cookies.set("InvertColours", invertColours)
-		console.log(invertColours)
-		console.log(cookies.InvertColours)
-	}
 
 	const seeAllMixes = () => { //reloads ColourMatch if already on ColourMatch, else goes to ColourMatch
 		if(currentRoute === "/"){
