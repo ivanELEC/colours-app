@@ -4,15 +4,11 @@ import { makeStyles } from "@mui/styles"
 import { Grid, Paper } from "@mui/material"
 
 export default function ColourRow(props) {
-	//state hooks
-
-	//effects
-
-	//functions
-	
-	//styles
+	//constants and variables
 	var minHeight = 20
 	var minWidth = 20
+
+	//styles
 	if(props.mini){
 		minHeight = 40
 		minWidth = 40

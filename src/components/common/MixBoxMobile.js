@@ -12,9 +12,6 @@ import SoundcloudPlayer from "./SoundcloudPlayer"
 export default function MixBoxMobile(props) {
 	//hooks
 	const [openImage, setOpenImage] = React.useState(false)
-	
-
-	//effects
 
 	//functions
 	const handleOpenImage = () => setOpenImage(true)

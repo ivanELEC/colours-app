@@ -15,11 +15,12 @@ mini: true/false - if true, use smaller version of component
 */
 
 export default function ColourCard(props) {
-	//variables for size of component - reduces if mini = true
+	//constants and variables
 	var minHeightHeader = 300
 	var minHeight = 480
 	var minWidth = 275
 
+	//styles
 	if(props.mini){
 		minHeightHeader = 100
 		minHeight = 170

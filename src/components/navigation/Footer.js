@@ -7,6 +7,7 @@ import { useHistory, useLocation } from "react-router-dom"
 import { useGlobalState } from "../../js/utils/globalState"
 
 export default function Footer() {
+	//constants and variables
 	const history = useHistory()
 	const location = useLocation()
 	const currentRoute = location.pathname

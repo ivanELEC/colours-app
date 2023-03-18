@@ -8,6 +8,7 @@ import { Card, CardContent } from "@mui/material"
 import { getTextShade } from "../../js/utils/colourMatch"
 
 export default function MixNavBar(props) {
+	//styles
 	const useStyles = makeStyles({
 		root: {},
 		paper: {

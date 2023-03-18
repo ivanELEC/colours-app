@@ -5,17 +5,12 @@ import { Grid } from "@mui/material"
 import ColourRow from "./ColourRow"
 
 export default function ColourGrid(props) {
-	//state hooks
-
-	//effects
-
-	//functions
-	
-	//styles
+	//constants/variables
 	const minWidth = 300
 	var minGridWidth = minWidth
 	var overflowMode = "hidden"
 	
+	//styles
 	if(props.mini){
 		overflowMode = "auto"
 		minGridWidth = minWidth * 2.7

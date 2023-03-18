@@ -7,6 +7,7 @@ Basic white card with shadow
 */
 
 export default function Card(props) {
+	//styles
 	const useStyles = makeStyles({
 		root: {
 			maxWidth: 350,
