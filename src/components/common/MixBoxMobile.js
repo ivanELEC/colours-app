@@ -83,7 +83,7 @@ export default function MixBoxMobile(props) {
 		},
 		root: {
 			minWidth: 250,
-			minHeight: 480,
+			minHeight: 330,
 			margin: 25,
 			"&::selection":{
 				background: `${highlightColour}`,
