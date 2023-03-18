@@ -194,7 +194,15 @@ export default function ColourMatch(){
 		},	
 		titlePaperBottom: {
 			color: "black",
-			paddingTop: "1em"
+			paddingTop: "1em",
+			"&::selection":{
+				background: `#${selectedColour}`,
+				color: `${titleTextColour}`
+			},
+			"&::-moz-selection":{
+				background:`#${selectedColour}`,
+				color: `${titleTextColour}`
+			}	
 		}
 	})
 	
