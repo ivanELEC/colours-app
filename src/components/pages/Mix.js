@@ -92,23 +92,25 @@ export default function Mix() {
 							back={mixStates.previousMixData}
 							forward={mixStates.nextMixData}
 						/>
-						<main id="maincontent">
-							<Grid container direction="row" justifyContent="center" alignItems="center">
-								<Grid item md={6} xs={12}>
-									<MixBoxMobile
-										artistName={mixStates.mixMetadata.artist}
-										colourName={mixStates.mixMetadata.colourName}
-										colourHex={mixStates.mixMetadata.colourHex}
-										date={mixStates.mixMetadata.date}
-										description={mixStates.mixMetadata.description}
-										mixUrl={mixStates.mixMetadata.link}
-										imageUrl={mixStates.mixMetadata.imageUrl}
-										links={mixStates.mixMetadata.links}
-										embedId={mixStates.mixMetadata.embedId}
-									/>
+						<div>
+							<main id="maincontent">
+								<Grid container direction="row" justifyContent="center" alignItems="center">
+									<Grid item md={6} xs={12}>
+										<MixBoxMobile
+											artistName={mixStates.mixMetadata.artist}
+											colourName={mixStates.mixMetadata.colourName}
+											colourHex={mixStates.mixMetadata.colourHex}
+											date={mixStates.mixMetadata.date}
+											description={mixStates.mixMetadata.description}
+											mixUrl={mixStates.mixMetadata.link}
+											imageUrl={mixStates.mixMetadata.imageUrl}
+											links={mixStates.mixMetadata.links}
+											embedId={mixStates.mixMetadata.embedId}
+										/>
+									</Grid>
 								</Grid>
-							</Grid>
-						</main>
+							</main>
+						</div>
 						<BackButton/>
 					</div>
 				</StyleRoot>

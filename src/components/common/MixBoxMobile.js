@@ -1,4 +1,4 @@
-import React from "react"
+import {React, useState, useEffect} from "react"
 import PropTypes from "prop-types"
 import { makeStyles } from "@mui/styles"
 import Paper from "@mui/material/Paper"
@@ -7,11 +7,20 @@ import Link from "@mui/material/Link"
 import Modal from  "@mui/material/Modal"
 import Box from  "@mui/material/Box"
 import ImageIcon from "@mui/icons-material/Image"
+import { getTextShade } from "../../js/utils/colourMatch"
 import SoundcloudPlayer from "./SoundcloudPlayer"
 
 export default function MixBoxMobile(props) {
 	//hooks
-	const [openImage, setOpenImage] = React.useState(false)
+	const [openImage, setOpenImage] = useState(false)
+	const [titleTextColour, setTitleTextColour] = useState("ffffff")
+	const [highlightColour, setHighlightColour] = useState("1d9bf0")
+
+	useEffect(() => { //set text colour for highlighted text
+		let textColour = getTextShade(props.colourHex)
+		setHighlightColour(props.colourHex)
+		setTitleTextColour(textColour)
+	}, [])
 
 	//functions
 	const handleOpenImage = () => setOpenImage(true)
@@ -24,22 +33,66 @@ export default function MixBoxMobile(props) {
 			"font-size": 25,
 			margin: 3,
 			maxWidth: "100%",
+			"&::selection":{
+				background: `${highlightColour}`,
+				color: `${titleTextColour}`
+			},
+			"&::-moz-selection":{
+				background:`${highlightColour}`,
+				color: `${titleTextColour}`
+			}	
+		},
+		titleSpan: {
+			textDecoration: `underline wavy ${props.colourHex}`,
+			textUnderlineOffset: "0.3em",
+			"&::selection":{
+				background: `${highlightColour}`,
+				color: `${titleTextColour}`
+			},
+			"&::-moz-selection":{
+				background:`${highlightColour}`,
+				color: `${titleTextColour}`
+			}	
 		},
 		subtitle: {
 			fontFamily: "HelveticaLight",
 			"font-size": 16,
 			margin: 3,
 			maxWidth: "100%",
+			"&::selection":{
+				background: `${highlightColour}`,
+				color: `${titleTextColour}`
+			},
+			"&::-moz-selection":{
+				background:`${highlightColour}`,
+				color: `${titleTextColour}`
+			}	
 		},
 		content: {
 			background: "#ffffff",
 			margin: 3,
-			padding: 20
+			padding: 20,
+			"&::selection":{
+				background: `${highlightColour}`,
+				color: `${titleTextColour}`
+			},
+			"&::-moz-selection":{
+				background:`${highlightColour}`,
+				color: `${titleTextColour}`
+			}	
 		},
 		root: {
 			minWidth: 250,
 			minHeight: 480,
 			margin: 25,
+			"&::selection":{
+				background: `${highlightColour}`,
+				color: `${titleTextColour}`
+			},
+			"&::-moz-selection":{
+				background:`${highlightColour}`,
+				color: `${titleTextColour}`
+			}	
 		},
 		cardImageExpand: {
 			position:"relative", 
@@ -47,7 +100,15 @@ export default function MixBoxMobile(props) {
 			left: "97%",
 			"& :hover": {
 				color: "#444444"
-			}
+			},
+			"&::selection":{
+				background: `${highlightColour}`,
+				color: `${titleTextColour}`
+			},
+			"&::-moz-selection":{
+				background:`${highlightColour}`,
+				color: `${titleTextColour}`
+			}	
 		},
 		imageModal:{
 			position: "absolute",
@@ -61,7 +122,15 @@ export default function MixBoxMobile(props) {
 			backgroundColor: "#ffffff",
 			borderWidth: 0,
 			boxShadow: 24,
-			padding: 25
+			padding: 25,
+			"&::selection":{
+				background: `${highlightColour}`,
+				color: `${titleTextColour}`
+			},
+			"&::-moz-selection":{
+				background:`${highlightColour}`,
+				color: `${titleTextColour}`
+			}	
 		}, 
 		imagePosition: {
 			margin: "auto", 
@@ -91,8 +160,8 @@ export default function MixBoxMobile(props) {
 					alignItems="flex-start"
 				>
 					<Grid item xs={6}>
-						<div className={classes.title}>
-							<p>{props.artistName} - <span style={{textDecoration: `underline wavy ${props.colourHex}`, textUnderlineOffset: "0.3em"}}>{props.colourName}</span></p>
+						<div>
+							<p className={classes.title}>{props.artistName} - <span className={classes.titleSpan}>{props.colourName}</span></p>
 						</div>
 						<div className={classes.subtitle}>{props.colourHex}</div>
 						<div className={classes.subtitle}>{props.date}</div>
