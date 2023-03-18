@@ -20,7 +20,7 @@ export default function MixBoxMobile(props) {
 		let textColour = getTextShade(props.colourHex)
 		setHighlightColour(props.colourHex)
 		setTitleTextColour(textColour)
-	}, [])
+	}, [props])
 
 	//functions
 	const handleOpenImage = () => setOpenImage(true)
