@@ -6,6 +6,11 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	overflow-x: hidden;
+	cursor: url("https://firebasestorage.googleapis.com/v0/b/colours-project.appspot.com/o/images%2Fchroma_cursor.png?alt=media&token=c7e25934-5aef-4254-971d-86f089d76818"), default !important;
+}
+
+a {
+	cursor:  url("https://firebasestorage.googleapis.com/v0/b/colours-project.appspot.com/o/images%2Fchroma_cursor.png?alt=media&token=c7e25934-5aef-4254-971d-86f089d76818"), pointer !important;
 }
 
 code {
@@ -42,3 +47,4 @@ code {
   ::-webkit-scrollbar-corner {
 	background: transparent;
   }
+
