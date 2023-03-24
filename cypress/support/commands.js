@@ -45,9 +45,13 @@ Cypress.Commands.add("a11yLog", (violations) => {
 })
 
 Cypress.Commands.add("customA11yCheck", (selector, logCallback) => {
-  const options = {
+  const failOptions = {
     includedImpacts: ["critical", "serious"]
   }
+  const warningOptions = {
+    includedImpacts: ["moderate", "minor"]
+  }
   cy.injectAxe()
-  cy.checkA11y(selector, options, logCallback)
+  cy.checkA11y(selector, warningOptions, null, true)
+  cy.checkA11y(selector, failOptions, logCallback)
 })
