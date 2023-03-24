@@ -143,19 +143,18 @@ export default function Footer() {
 								Akash Chohan + Ivan Yohuno, Est. 2020
 							</div>
 						</Grid>
-						<Grid item xs={2} md={8}></Grid>
+						<Grid item xs={2} md={4}></Grid>
 						<Grid
 							item
 							xs={3}
 							md={1}
 							container
 							direction="row"
-							justifyContent="space-between"
+							justifyContent="space-evenly"
 							alignItems="center"
 						>
-							<Grid item xs={5} />
-							<Grid item xs={7} sx={{paddingRight: 15}}>
-								<menu id="menu">
+							<menu id="menu">
+								<Grid item xs={7} sx={{paddingRight: 10}}>
 									<Button
 										id="footer-menu-button"
 										aria-controls={openMenu ? "footer-menu" : undefined}
@@ -163,47 +162,47 @@ export default function Footer() {
 										aria-expanded={openMenu ? "true" : undefined}
 										onClick={handleClickMenu}
 										color="neutral"
-										sx={{fontFamily:  "HelveticaBold", fontSize: "2vh", paddingRight: 10}}
+										sx={{fontFamily:  "HelveticaBold", fontSize: "2vh", textAlign: "center"}}
 									>
-										Menu
+                    Menu
 									</Button>
-								</menu>
-								<Menu
-									id="footer-menu"
-									aria-labelledby="footer-menu-button"
-									anchorEl={anchorEl}
-									open={openMenu}
-									onClose={handleCloseMenu}
-									anchorPosition={{ top: anchorPosCoordinates.top, left: anchorPosCoordinates.left }}
-								>
-									<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={seeAllMixes}>See All Mixes</MenuItem>
-									<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={help}>Help</MenuItem>
-									<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={contactUs}>Contact Us</MenuItem>
-									{
-										showHomepageOptions?
-											(
-												<MenuItem>
-													<FormControlLabel 
-														label={<div style={{fontFamily: "HelveticaLight" }}>Invert Colour Matching</div>}
-														labelPlacement="start"
-														control={
-															<Checkbox 
-																color="neutral"
-																checked={state.invertColours}
-																onChange={invertColourMatch}
-															/>
-														}
-														sx={{marginLeft:0, marginRight: 0}}
-													/>
-												</MenuItem>
-											)
-											:
-											(
-												<div></div>
-											)
-									}
-								</Menu>
-							</Grid>
+									<Menu
+										id="footer-menu"
+										aria-labelledby="footer-menu-button"
+										anchorEl={anchorEl}
+										open={openMenu}
+										onClose={handleCloseMenu}
+										anchorPosition={{ top: anchorPosCoordinates.top, left: anchorPosCoordinates.left }}
+									>
+										<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={seeAllMixes}>See All Mixes</MenuItem>
+										<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={help}>Help</MenuItem>
+										<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={contactUs}>Contact Us</MenuItem>
+										{
+											showHomepageOptions?
+												(
+													<MenuItem>
+														<FormControlLabel 
+															label={<div style={{fontFamily: "HelveticaLight" }}>Invert Colour Matching</div>}
+															labelPlacement="start"
+															control={
+																<Checkbox 
+																	color="neutral"
+																	checked={state.invertColours}
+																	onChange={invertColourMatch}
+																/>
+															}
+															sx={{marginLeft:0, marginRight: 0}}
+														/>
+													</MenuItem>
+												)
+												:
+												(
+													<div></div>
+												)
+										}
+									</Menu>
+								</Grid>
+							</menu>
 						</Grid>
 					</Grid>
 				</div>
