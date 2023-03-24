@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { makeStyles } from "@material-ui/core/styles"
-import Grid from "@material-ui/core/Grid"
+import { makeStyles } from "@mui/styles"
+import Grid from "@mui/material/Grid"
 import { fadeInDown } from "react-animations"
 import Radium, { StyleRoot } from "radium"
 import PictureCard from "../common/PictureCard"
-import { useWinstonLogger } from "winston-react"
+import Footer from "../navigation/Footer"
 const sortJsonArray = require("sort-json-array")
 
 export default function Home() {
-	//init logger
-	const logger = useWinstonLogger()
-
 	//state hooks
 	const [mixData, setMixData] = useState(false)
 	const [sortedMixData, setSortedMixData] = useState(false)
@@ -21,33 +18,36 @@ export default function Home() {
 
 	useEffect(() => {
 		//get mix data from public folder
-		logger.info("Fetching mix data")
 		fetch("/data/mixData.json")
 			.then((res) => res.json())
 			.then((data) => setMixData(data))
 			.catch((err) => {
-				logger.error("Failed to fetch mix data", err)
+				console.log("Failed to fetch mix data", err)
 				throw new Error(err)
 			})
 	}, [])
 
 	useEffect(() => {
 		//sort retrieved mix data in descending date
-		logger.info("Sorting mix data")
 		try {
 			let dataIn = sortJsonArray(mixData.data, "datecode")
 			setSortedMixData(dataIn)
 			setDataLoaded(true)
 		} catch (err) {
-			logger.error("Failed to sort mix data", err)
+			console.log("Failed to sort mix data", err)
 		}
 	}, [mixData])
 
-	//sort mix data by descending date
+	//styles
+	const styles = {
+		fadeInDown: {
+			animation: "x 1.3s",
+			animationName: Radium.keyframes(fadeInDown, "fadeInDown"),
+		}
+	}
+
 	const useStyles = makeStyles({
 		root: {
-			animation: "x 1s",
-			animationName: Radium.keyframes(fadeInDown, "fadeInDown"),
 			alignItems: "center",
 		},
 		card: {
@@ -64,7 +64,7 @@ export default function Home() {
 		<div>
 			{dataLoaded ? (
 				<StyleRoot>
-					<div className={classes.root}>
+					<div className={classes.root} style={styles.fadeInDown}>
 						<Grid
 							container
 							direction="row"
@@ -89,6 +89,8 @@ export default function Home() {
 												colourHex={mix.colourHex}
 												date={mix.date}
 												image={mix.imageUrl}
+												mini={false}
+												colourFirst={false}
 											/>
 										</div>
 									</Link>
@@ -100,6 +102,7 @@ export default function Home() {
 			) : (
 				<div></div>
 			)}
+			<Footer/>
 		</div>
 	)
 }

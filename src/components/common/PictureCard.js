@@ -1,22 +1,69 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Card from "./Card"
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@mui/styles"
 
 /*
 A simple card with an image, a title and some content
 */
 export default function PictureCard(props) {
+	//variables for size of component - reduces if mini = true
+	var maxHeightHeader = 280
+	var minHeightContent = 140
+	var minHeight = 300
+	var minWidth = 275
+
+	//styles
+	if(props.mini){
+		maxHeightHeader = 150
+		minHeight = 170
+		minWidth = 220
+		minHeightContent = 110
+	}
+
+	var mediaOverlayStyles = {
+		position: "absolute",
+		top: 0,
+		bottom: 0,
+		left: 0,
+		right: 0,
+		height: "100%",
+		width: "100%",
+		opacity: 0,
+		transition: "1.7s ease",
+		backgroundColor: `${props.colourHex}`,
+		maxHeight: maxHeightHeader,
+		minHeight: minHeight
+	}
+
+	var mediaStyles = {
+		minHeight: minHeight,
+		backgroundImage: `url("${props.image}")`,
+		backgroundSize: "cover",
+		backgroundRepeat: "no-repeat",
+		backgroundPosition: "center",
+		backgroundColor: `${props.colourHex}`,
+	}
+
+	if(props.colourFirst){
+		mediaOverlayStyles.backgroundImage = `url("${props.image}")`
+		mediaOverlayStyles.backgroundSize =  "cover"
+		mediaOverlayStyles.backgroundRepeat = "no-repeat"
+		mediaOverlayStyles.backgroundPosition = "center"
+		delete mediaStyles.backgroundImage
+	}
+
 	const useStyles = makeStyles({
 		root: {
-			minWidth: 230,
-			minHeight: 480,
+			minWidth: minWidth,
+			minHeight: minHeight,
 			maxWidth: 400,
 			borderRadius: 4,
 			fontFamily: "HelveticaLight",
 			fontSize: 16,
 			color: "black",
 			padding: 10,
+			margin: "auto", 
 		},
 		mediaContainer: {
 			position: "relative",
@@ -27,30 +74,13 @@ export default function PictureCard(props) {
 				},
 			},
 		},
-		mediaOverlay: {
-			position: "absolute",
-			top: 0,
-			bottom: 0,
-			left: 0,
-			right: 0,
-			height: "100%",
-			width: "100%",
-			opacity: 0,
-			transition: ".5s ease",
-			backgroundColor: `${props.colourHex}`,
-		},
-		media: {
-			minHeight: 300,
-			backgroundImage: `url("${props.image}")`,
-			backgroundSize: "cover",
-			backgroundRepeat: "no-repeat",
-			backgroundPosition: "center",
-			backgroundColor: `${props.colourHex}`,
-		},
+		mediaOverlay: mediaOverlayStyles,
+		media: mediaStyles,
 		content: {
 			background: "#ffffff",
-			padding: 3,
+			padding: 10,
 			margin: 3,
+			minHeight: minHeightContent
 		},
 		title: {
 			fontFamily: "HelveticaBold",
@@ -86,4 +116,6 @@ PictureCard.propTypes = {
 	colourName: PropTypes.string,
 	artistName: PropTypes.string,
 	date: PropTypes.string,
+	mini: PropTypes.bool,
+	colourFirst: PropTypes.bool
 }

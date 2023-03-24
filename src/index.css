@@ -5,6 +5,20 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+	cursor: url("https://firebasestorage.googleapis.com/v0/b/colours-project.appspot.com/o/images%2Fchroma_cursor.png?alt=media&token=c7e25934-5aef-4254-971d-86f089d76818"), default !important;
+}
+
+a {
+	cursor:  url("https://firebasestorage.googleapis.com/v0/b/colours-project.appspot.com/o/images%2Fchroma_cursor.png?alt=media&token=c7e25934-5aef-4254-971d-86f089d76818"), pointer !important;
+}
+
+ul {
+	cursor:  url("https://firebasestorage.googleapis.com/v0/b/colours-project.appspot.com/o/images%2Fchroma_cursor.png?alt=media&token=c7e25934-5aef-4254-971d-86f089d76818"), pointer !important;
+}
+
+li {
+	cursor:  url("https://firebasestorage.googleapis.com/v0/b/colours-project.appspot.com/o/images%2Fchroma_cursor.png?alt=media&token=c7e25934-5aef-4254-971d-86f089d76818"), pointer !important;
 }
 
 code {
@@ -18,3 +32,27 @@ code {
 	font-family: "HelveticaLight";
 	src: local("HelveticaLight"), url(./fonts/HelveticaNeueCyr-Light.ttf) format("truetype");
 }
+
+::-webkit-scrollbar {
+	width: 15px;
+	height: 15px;
+  }
+  ::-webkit-scrollbar-button {
+	width: 0px;
+	height: 0px;
+	padding: 2px
+  }
+  ::-webkit-scrollbar-thumb {
+	background: #000000;
+	border: 4px solid #ffffff;
+	border-radius: 50px;
+  }
+  ::-webkit-scrollbar-track {
+	background: transparent;
+	border: 0px none #ffffff;
+	border-radius: 52px;
+  }
+  ::-webkit-scrollbar-corner {
+	background: transparent;
+  }
+

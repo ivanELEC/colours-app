@@ -1,7 +1,6 @@
 {
 	"env": {
 		"browser": true,
-		"es2021": true,
 		"node": true
 	},
 	"root": true,
@@ -12,13 +11,13 @@
 			"jsx": true,
 			"modules": true
 		},
-		"ecmaVersion": "latest",
+		"ecmaVersion": 11,
 		"sourceType": "module"
 	},
 	"plugins": ["react"],
 	"rules": {
 		"indent": ["error", "tab"],
-		"linebreak-style": ["error", "windows"],
+		"linebreak-style": 0,
 		"quotes": ["error", "double"],
 		"semi": ["error", "never"]
 	},

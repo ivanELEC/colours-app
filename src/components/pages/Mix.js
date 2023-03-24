@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react"
-import { useParams, Link } from "react-router-dom"
-import { makeStyles } from "@material-ui/core/styles"
-import Grid from "@material-ui/core/Grid"
+import { useParams } from "react-router-dom"
+import Grid from "@mui/material/Grid"
 import MixBoxMobile from "../common/MixBoxMobile"
 import MixNavBar from "../navigation/MixNavBar"
+import Footer from "../navigation/Footer"
 import BackButton from "../common/BackButton"
-import Image from "material-ui-image"
 import { fadeInDown } from "react-animations"
 import Radium, { StyleRoot } from "radium"
 
-var sortJsonArray = require("sort-json-array")
+let sortJsonArray = require("sort-json-array")
 
 export default function Mix() {
 	//state hooks
@@ -31,16 +30,17 @@ export default function Mix() {
 				//select current mix from array
 				let mixArray = data.data
 				let mixMetadata = mixArray.filter((mix) => {
-					return mix.id == id
+					return mix.id === id
 				})[0]
 
 				//sort retrieved mix data in descending date
 				let sortedMixData = sortJsonArray(data.data, "date")
 
 				//find index of current mix
+				let currentMixIndex = null
 				for (let i = 0; i < sortedMixData.length; i++) {
 					if (sortedMixData[i].id === id) {
-						var currentMixIndex = i
+						currentMixIndex = i
 					}
 				}
 
@@ -61,27 +61,13 @@ export default function Mix() {
 			})
 	}, [id])
 
-	useEffect(() => {
-		console.log("Mix Metadata", mixStates.mixMetadata)
-	}, [mixStates])
-
 	//styles
 	const styles = {
 		fadeInDown: {
-			animation: "x 1s",
+			animation: "x 1.3s",
 			animationName: Radium.keyframes(fadeInDown, "fadeInDown")
 		}
 	}
-
-	const useStyles = makeStyles({
-		root: {},
-		icon: {
-			maxHeight: 75,
-			maxWidth: 75
-		}
-	})
-
-	const classes = useStyles()
 
 	//functions
 	/*function which returns contents of array element if it exists and null if it doesn't
@@ -106,37 +92,32 @@ export default function Mix() {
 							back={mixStates.previousMixData}
 							forward={mixStates.nextMixData}
 						/>
-						<Grid container direction="row" justifyContent="center" alignItems="center">
-							<Grid item md={6} xs={12}>
-								<MixBoxMobile
-									artistName={mixStates.mixMetadata.artist}
-									colourName={mixStates.mixMetadata.colourName}
-									colourHex={mixStates.mixMetadata.colourHex}
-									date={mixStates.mixMetadata.date}
-									description={mixStates.mixMetadata.description}
-									mixUrl={mixStates.mixMetadata.link}
-									links={mixStates.mixMetadata.links}
-									embedId={mixStates.mixMetadata.embedId}
-								/>
-							</Grid>
-						</Grid>
-						<Grid
-							container
-							direction="row"
-							justifyContent="center"
-							alignItems="center"
-							spacing={0}>
-							<Grid item xs={4} md={5} />
-							<Grid item xs={2}>
-								<BackButton/>
-							</Grid>
-							<Grid item xs={5} />
-						</Grid>
+						<div>
+							<main id="maincontent">
+								<Grid container direction="row" justifyContent="center" alignItems="center">
+									<Grid item md={6} xs={12}>
+										<MixBoxMobile
+											artistName={mixStates.mixMetadata.artist}
+											colourName={mixStates.mixMetadata.colourName}
+											colourHex={mixStates.mixMetadata.colourHex}
+											date={mixStates.mixMetadata.date}
+											description={mixStates.mixMetadata.description}
+											mixUrl={mixStates.mixMetadata.link}
+											imageUrl={mixStates.mixMetadata.imageUrl}
+											links={mixStates.mixMetadata.links}
+											embedId={mixStates.mixMetadata.embedId}
+										/>
+									</Grid>
+								</Grid>
+							</main>
+						</div>
+						<BackButton/>
 					</div>
 				</StyleRoot>
 			) : (
 				<div></div>
 			)}
+			<Footer/>
 		</div>
 	)
 }

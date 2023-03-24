@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { makeStyles } from "@material-ui/core/styles"
-import { Card, CardContent, CardHeader, CardMedia } from "@material-ui/core"
+import { makeStyles } from "@mui/styles"
+import { Card, CardContent, CardHeader, CardMedia } from "@mui/material"
 
 /*
 This colour card component is used for the homepage of the application
@@ -15,15 +15,16 @@ mini: true/false - if true, use smaller version of component
 */
 
 export default function ColourCard(props) {
-	//variables for size of component - reduces if mini = true
+	//constants and variables
 	var minHeightHeader = 300
 	var minHeight = 480
 	var minWidth = 275
 
-	if(props.mini == true){
+	//styles
+	if(props.mini){
 		minHeightHeader = 100
 		minHeight = 170
-		minWidth = 90
+		minWidth = 220
 	}
 
 	const useStyles = makeStyles({
@@ -50,7 +51,7 @@ export default function ColourCard(props) {
 			minHeight: minHeight,
 			maxWidth: 350,
 			padding: 0,
-			margin: 25,
+			margin: "auto", 
 		},
 	})
 
