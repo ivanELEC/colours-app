@@ -58,7 +58,7 @@ export default function Card() {
 				<p>Hex codes are split into 3 elements which are 2 symbols in length each.</p>
 				<p>First element represents RED, second element represents GREEN and the third element represents BLUE.</p>
 				<p>Each symbol is a <a href="https://www.mathsisfun.com/hexadecimals.html"> hexadecmial number.</a></p>
-				<p>For example #<span style={{textDecoration: "underline wavy red", color: "red"}}>aa</span><span style={{textDecoration: "underline wavy green", color: "green"}}>21</span><span style={{textDecoration: "underline wavy blue", colour: "blue"}}>df</span> mixes:</p>
+				<p>For example #<span style={{textDecoration: "underline wavy red", color: "#bf0502"}}>aa</span><span style={{textDecoration: "underline wavy green", color: "green"}}>21</span><span style={{textDecoration: "underline wavy blue", colour: "blue"}}>df</span> mixes:</p>
 				<p>A red value of 170, a green value of 33 and a blue value of 223, which produces a <span style={{backgroundColor: "#aa21df", color: "#ffffff", textDecoration: "underline white"}}>blue-ish purple colour.</span></p>
 			</div>
 		</Box>

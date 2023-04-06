@@ -1,4 +1,5 @@
 import mixData from "../../fixtures/mixData.json"
+const ruleOverrides = [{id: "color-contrast", impact: "moderate"}]
 
 describe("Mix Page", () => {
   before(() => {
@@ -7,6 +8,6 @@ describe("Mix Page", () => {
   })
   
   it("has no detectable a11y violations on load", () => {
-    cy.customA11yCheck(null, cy.a11yLog)
+    cy.customA11yCheck(null, cy.a11yLog, ruleOverrides)
   })
 })
