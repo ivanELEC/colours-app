@@ -125,7 +125,9 @@ export default function Footer() {
 					aria-labelledby="modal-help-title"
 					aria-describedby="modal-help-description"
 				>
-					<HelpInfo/>
+					<div>
+						<HelpInfo/>
+					</div>
 				</Modal>
 				<div className={classes.spacing} />
 				<div className={classes.phantom} />
