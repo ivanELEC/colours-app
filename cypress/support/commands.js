@@ -44,7 +44,7 @@ Cypress.Commands.add("a11yLog", (violations) => {
   cy.task("table", violationData)
 })
 
-Cypress.Commands.add("customA11yCheck", (selector, logCallback) => {
+Cypress.Commands.add("customA11yCheck", (selector, logCallback, ruleOverrides=[]) => {
   const failOptions = {
     includedImpacts: ["critical", "serious"]
   }
@@ -52,6 +52,9 @@ Cypress.Commands.add("customA11yCheck", (selector, logCallback) => {
     includedImpacts: ["moderate", "minor"]
   }
   cy.injectAxe()
+  cy.configureAxe({
+    rules:ruleOverrides
+  })
   cy.checkA11y(selector, warningOptions, null, true)
-  cy.checkA11y(selector, failOptions, logCallback)
+  cy.checkA11y(selector, failOptions, logCallback,)
 })
