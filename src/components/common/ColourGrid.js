@@ -42,7 +42,12 @@ export default function ColourGrid(props) {
 				> 
 					{props.grid.map((colourRow) => (
 						<Grid item xs={12} key={props.grid.indexOf(colourRow)}>
-							<ColourRow mini={props.mini} onSelectCell={props.onSelectCell} rowData={colourRow}/>
+							<div data-cy={`chroma-grid-row-${props.grid.indexOf(colourRow)}`}>
+								<ColourRow 
+									mini={props.mini}
+									onSelectCell={props.onSelectCell}
+									rowData={colourRow}/>
+							</div>
 						</Grid>
 					))}
 				</Grid>

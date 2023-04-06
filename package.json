@@ -10,6 +10,7 @@
 		"@mui/styled-engine-sc": "^5.11.9",
 		"@mui/styles": "^5.11.9",
 		"axe-core": "^4.6.3",
+		"chai-colors": "^1.0.1",
 		"color": "^4.2.3",
 		"cypress-axe": "^1.4.0",
 		"hex-rgb": "^5.0.0",

@@ -175,13 +175,13 @@ export default function Footer() {
 										onClose={handleCloseMenu}
 										anchorPosition={{ top: anchorPosCoordinates.top, left: anchorPosCoordinates.left }}
 									>
-										<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={seeAllMixes}>See All Mixes</MenuItem>
-										<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={help}>Help</MenuItem>
-										<MenuItem sx={{fontFamily: "HelveticaLight" }} onClick={contactUs}>Contact Us</MenuItem>
+										<MenuItem id="menu-item-see-all" sx={{fontFamily: "HelveticaLight" }} onClick={seeAllMixes}>See All Mixes</MenuItem>
+										<MenuItem id="menu-item-help" sx={{fontFamily: "HelveticaLight" }} onClick={help}>Help</MenuItem>
+										<MenuItem id="menu-item-contact" sx={{fontFamily: "HelveticaLight" }} onClick={contactUs}>Contact Us</MenuItem>
 										{
 											showHomepageOptions?
 												(
-													<MenuItem>
+													<MenuItem id="menu-item-invert">
 														<FormControlLabel 
 															label={<div style={{fontFamily: "HelveticaLight" }}>Invert Colour Matching</div>}
 															labelPlacement="start"

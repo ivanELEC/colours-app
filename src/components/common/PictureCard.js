@@ -96,7 +96,7 @@ export default function PictureCard(props) {
 			<Card>
 				<div className={classes.mediaContainer}>
 					<div className={classes.media} />
-					<div className={classes.mediaOverlay} />
+					<div data-cy="chroma-colour-overlay" className={classes.mediaOverlay} />
 				</div>
 				<div className={classes.content}>
 					<div className={classes.title}>{props.artistName}</div>
