@@ -33,7 +33,6 @@ describe("Invert Matching Colours", () => {
   })
 
   it("inverts selected colour on click", () => {
-    //not a good selector, potentially need to 
     cy.get("[data-cy='chroma-grid-row-0']")
       .within(() => {
         cy.get(".MuiPaper-root").eq(11)
@@ -49,5 +48,13 @@ describe("Invert Matching Colours", () => {
     cy.get("[data-cy='chroma-colour-overlay']")
       .should("have.css", "background-color")
       .should("be.colored", "#00ff00")
+  })
+
+  it("doesn't show invert option outside of homepage", () => {
+    cy.visit("/Mix/WonjaFairbrother-Moss")
+    cy.get("#footer-menu-button")
+      .click()
+    cy.get("#menu-item-invert")
+      .should("not.exist")
   })
 })
