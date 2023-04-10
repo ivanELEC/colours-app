@@ -5,13 +5,13 @@ export function searchMixes(colourList, mixData, searchType, searchTerm){
 	
 	let filteredMixData = formattedMixData.filter((mix) => {
 		if(searchType == "mix name"){
-			return mix.mixData.colourName.match(`${searchTerm}+`) !== null
+			return mix.mixData.colourName.toLowerCase().match(`${searchTerm.toLowerCase()}+`) !== null
 		}
 		else if(searchType == "artist"){
-			return mix.mixData.artist.match(`${searchTerm}+`) !== null
+			return mix.mixData.artist.toLowerCase().match(`${searchTerm.toLowerCase()}+`) !== null
 		}
 		else if(searchType == "description"){
-			return mix.mixData.description.match(`${searchTerm}+`) !== null
+			return mix.mixData.description.toLowerCase().match(`${searchTerm.toLowerCase()}+`) !== null
 		}
 	})
 
