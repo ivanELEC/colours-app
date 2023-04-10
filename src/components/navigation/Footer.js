@@ -72,7 +72,6 @@ export default function Footer() {
 		else{
 			dispatch({ invertColours: true })
 		}
-		console.log(state.invertColours)
 	}
 
 	//styling

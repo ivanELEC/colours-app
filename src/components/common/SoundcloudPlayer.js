@@ -13,7 +13,6 @@ export default function SoundcloudPlayer(props) {
 		"&color=%23" +
 		colourHex +
 		"&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-	console.log(srcString)
 	return (
 		<div>
 			<iframe

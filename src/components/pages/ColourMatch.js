@@ -5,6 +5,7 @@ import { makeStyles } from "@mui/styles"
 import useMediaQuery from "@mui/material/useMediaQuery"
 import { Link } from "react-router-dom"
 import { gridData } from "../../js/utils/grid"
+import { searchMixes } from "../../js/utils/searchMixes"
 import { visuallyHidden } from "@mui/utils"
 import {Grid, Paper, TextField, InputAdornment, InputLabel, FormHelperText, FormControl, Menu, MenuItem }  from "@mui/material"
 import PictureCard from "../common/PictureCard"
@@ -28,10 +29,11 @@ export default function ColourMatch(){
 	const [mixData, setMixData] = useState(false)
 	const [colourList, setColourList] = useState([])
 	const [titleTextColour, setTitleTextColour] = useState("38383b")
-	const [similarColours, setSimilarColours]  = useState([])
+	const [searchResults, setSearchResults]  = useState([])
 	const [grid, setGrid] = useState(false)  
 	const [seeAll, setSeeAll ] = useState(true)
 	const [searchBy, setSearchBy] = useState("colour hex")
+	const [searchTerm, setSearchTerm] = useState(null)
 	const [searchAnchorEl, setSearchAnchorEl] = useState(null)
 	const [state, dispatch] = useGlobalState()
 
@@ -64,23 +66,32 @@ export default function ColourMatch(){
 	}, [mixData])
 
 	useEffect(() => { //retrieve list of similar colours and set title text colour
-		let validHex = hexyjs.isHex(`${colour}`)
-		if(validHex && mixData.data){
-			let textColour = getTextShade(colour)
-			setSelectedColour(colour)
-			setTitleTextColour(textColour)
-			if(colourList.length > 0){
-				let sortedColours = []
-				if(seeAll){
-					sortedColours = getSimilarColours(colourList, colour, 100, 100000, mixData, false, true)
+		if(searchBy == "colour hex"){
+			let validHex = hexyjs.isHex(`${colour}`)
+			if(validHex && mixData.data){
+				let textColour = getTextShade(colour)
+				setSelectedColour(colour)
+				setTitleTextColour(textColour)
+				if(colourList.length > 0){
+					let sortedColours = []
+					if(seeAll){
+						sortedColours = getSimilarColours(colourList, colour, 100, 100000, mixData, false, true)
+					}
+					else{
+						sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 8, mixData, state.invertColours)
+					}
+					setSearchResults(sortedColours)
 				}
-				else{
-					sortedColours = getSimilarColours(colourList, colour, parseFloat(maxDiff), 8, mixData, state.invertColours)
-				}
-				setSimilarColours(sortedColours)
 			}
 		}
 	}, [colourList, colour, mixData, seeAll, state])
+
+	useEffect(() => {
+		if(searchBy != "colour hex"){
+			let selectedMixes = searchMixes(colourList, mixData, searchBy, searchTerm)
+			setSearchResults(selectedMixes)
+		}
+	}, [searchTerm])
 
 	//functions 
 	const handleChangeColour = (event) => {///saves colour hex to hook value depending on colourNo
@@ -115,34 +126,54 @@ export default function ColourMatch(){
 		}
 	}
 
+	const handleChangeSearch = () => {
+		var inputElement = document.getElementById("colour-match-input")
+		if(inputElement){
+			if(inputElement.value){
+				if(inputElement.value.length > 1){
+					setSearchTerm(inputElement.value)
+					setSeeAll(false)
+				}
+			}
+		}
+	}
+
 	const openSearch = Boolean(searchAnchorEl)
 	
 	const handleSearchClick = (event) => {
 		setSearchAnchorEl(event.currentTarget)
 	}
 
-	const handleSearchClose = () => {
+	const handleSearchClose = (event) => {
+		setSearchAnchorEl(null)
+	}
+	
+	const handleSearchReset = (event) => {
+		var inputElement = document.getElementById("colour-match-input")
+		if(inputElement){
+			inputElement.value = ""
+		}
 		setSearchAnchorEl(null)
 	}
 	
 	const setSearchColourHex = () => {
 		setSearchBy("colour hex")
-		setSearchAnchorEl(null)
+		handleSearchReset()
 	}
 
-	const setSearchColourName = () => {
-		setSearchBy("colour name")
-		setSearchAnchorEl(null)
+	const setSearchMixName = () => {
+		setSearchBy("mix name")
+		handleSearchReset()
 	}
 
 	const setSearchArtist = () => {
 		setSearchBy("artist")
-		setSearchAnchorEl(null)
+		handleSearchReset()
 	}
 
 	const setSearchDescription = () => {
 		setSearchBy("description")
-		setSearchAnchorEl(null)
+		handleSearchReset()
 	}
 
 	//--styles--
@@ -301,20 +332,40 @@ export default function ColourMatch(){
 										<div  style={styles.titlePaperTop}>
 											<FormControl>
 												<InputLabel sx={visuallyHidden} htmlFor="colour-match-input">Colour picker</InputLabel>
-												<TextField
-													disable="true"
-													InputProps={{
-														startAdornment: <InputAdornment position="start"><div className={classes.titleColourSelect}>#</div></InputAdornment>,
-														style: styles.titleColourSelect,
-														id: "colour-match-input",
-														"aria-describedby": "chroma-colour-picker-helper-text"
-													}}
-													type="text"
-													name="colour"
-													variant="standard" 
-													defaultValue={selectedColour}
-													onChange={handleChangeColour} 
-												/>
+												{(searchBy=="colour hex")?
+													(
+														<TextField
+															disable="true"
+															InputProps={{
+																startAdornment: <InputAdornment position="start"><div className={classes.titleColourSelect}>#</div></InputAdornment>,
+																style: styles.titleColourSelect,
+																id: "colour-match-input",
+																"aria-describedby": "chroma-colour-picker-helper-text"
+															}}
+															type="text"
+															name="colour"
+															variant="standard" 
+															defaultValue={selectedColour}
+															onChange={handleChangeColour} 
+														/>
+													):
+													(
+														<TextField
+															disable="true"
+															InputProps={{
+																startAdornment: <InputAdornment position="start"><div className={classes.titleColourSelect}></div></InputAdornment>,
+																style: styles.titleColourSelect,
+																id: "colour-match-input",
+																"aria-describedby": "chroma-colour-picker-helper-text"
+															}}
+															type="text"
+															name="colour"
+															variant="standard" 
+															defaultValue=""
+															onChange={handleChangeSearch} 
+														/>	
+													)
+												}
 												<FormHelperText sx={visuallyHidden} id="chroma-colour-picker-helper-text">Enter a 6 digit hex code to choose a colour</FormHelperText>
 											</FormControl>
 										</div>
@@ -337,7 +388,7 @@ export default function ColourMatch(){
 											onClose={handleSearchClose}
 										>
 											<MenuItem sx={{fontFamily: "HelveticaLight"}} onClick={setSearchColourHex}>colour hex</MenuItem>
-											<MenuItem sx={{fontFamily: "HelveticaLight"}} onClick={setSearchColourName}>colour name</MenuItem>
+											<MenuItem sx={{fontFamily: "HelveticaLight"}} onClick={setSearchMixName}>mix name</MenuItem>
 											<MenuItem sx={{fontFamily: "HelveticaLight"}} onClick={setSearchArtist}>artist</MenuItem>
 											<MenuItem sx={{fontFamily: "HelveticaLight"}} onClick={setSearchDescription}>description</MenuItem>
 										</Menu>
@@ -366,7 +417,7 @@ export default function ColourMatch(){
 											alignItems="center"
 											spacing={2}
 										>
-											{similarColours.map((colour) => ( 
+											{searchResults.map((colour) => ( 
 												<Grid key={colour.colour} item xs={12} sm={6} md={3}>
 													<div className={classes.pictureCard} id={`chroma-match-mix-item-${colour.mixData.id}`}>
 														<Link
