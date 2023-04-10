@@ -6,7 +6,7 @@ import useMediaQuery from "@mui/material/useMediaQuery"
 import { Link } from "react-router-dom"
 import { gridData } from "../../js/utils/grid"
 import { visuallyHidden } from "@mui/utils"
-import {Grid, Paper, TextField, InputAdornment, InputLabel, FormHelperText, FormControl }  from "@mui/material"
+import {Grid, Paper, TextField, InputAdornment, InputLabel, FormHelperText, FormControl, Menu, MenuItem }  from "@mui/material"
 import PictureCard from "../common/PictureCard"
 import Footer from "../navigation/Footer"
 import { getAllocatedColours, getSimilarColours, colourGradientColumn, getTextShade } from "../../js/utils/colourMatch"
@@ -31,6 +31,8 @@ export default function ColourMatch(){
 	const [similarColours, setSimilarColours]  = useState([])
 	const [grid, setGrid] = useState(false)  
 	const [seeAll, setSeeAll ] = useState(true)
+	const [searchBy, setSearchBy] = useState("colour hex")
+	const [searchAnchorEl, setSearchAnchorEl] = useState(null)
 	const [state, dispatch] = useGlobalState()
 
 	const colourPalette = ["#CF1A11", "#EC6E08", "#EC9508", "#ECF701","#CFFF00", "#2DC84D", "#14C7D1", "#147BD1", "#2700FF", "#443BBD", "#753BBD", "#BD3B89"]
@@ -113,6 +115,36 @@ export default function ColourMatch(){
 		}
 	}
 
+	const openSearch = Boolean(searchAnchorEl)
+	
+	const handleSearchClick = (event) => {
+		setSearchAnchorEl(event.currentTarget)
+	}
+
+	const handleSearchClose = () => {
+		setSearchAnchorEl(null)
+	}
+	
+	const setSearchColourHex = () => {
+		setSearchBy("colour hex")
+		setSearchAnchorEl(null)
+	}
+
+	const setSearchColourName = () => {
+		setSearchBy("colour name")
+		setSearchAnchorEl(null)
+	}
+
+	const setSearchArtist = () => {
+		setSearchBy("artist")
+		setSearchAnchorEl(null)
+	}
+
+	const setSearchDescription = () => {
+		setSearchBy("description")
+		setSearchAnchorEl(null)
+	}
+
 	//--styles--
 	//for animations
 	let colourTransitionKeyframes = Radium.keyframes({
@@ -129,7 +161,7 @@ export default function ColourMatch(){
 			animation: "2s forwards",
 			animationName: colourTransitionKeyframes,
 			backgroundColour: `#${selectedColour}`,
-			minHeight: "40%",
+			minHeight: "25%",
 			paddingLeft : 20,
 			paddingRight: 20
 		},
@@ -191,6 +223,14 @@ export default function ColourMatch(){
 			fontFamily: "HelveticaLight",
 			color: titleTextColour,
 			borderColor: titleTextColour
+		},
+		titlePaperSubtitle: {
+			paddingTop: 10,
+			fontSize: "2.5vh",
+			fontFamily: "HelveticaLight",
+			"&:hover":{
+				fontWeight: "bold"
+			}
 		},	
 		titlePaperBottom: {
 			color: "black",
@@ -278,6 +318,29 @@ export default function ColourMatch(){
 												<FormHelperText sx={visuallyHidden} id="chroma-colour-picker-helper-text">Enter a 6 digit hex code to choose a colour</FormHelperText>
 											</FormControl>
 										</div>
+										<div 
+											id="chroma-search-button"
+											className={classes.titlePaperSubtitle}
+											onClick={handleSearchClick}
+										>
+											Search by {searchBy}
+										</div>
+										<Menu
+											id="chroma-search-menu"
+											MenuListProps={{
+												"aria-labelledby": "chroma-search-button",
+											}}
+											anchorEl={searchAnchorEl}
+											anchorOrigin={{vertical: "bottom", horizontal: "center"}}
+											transformOrigin={{vertical: 0, horizontal: 60}}
+											open={openSearch}
+											onClose={handleSearchClose}
+										>
+											<MenuItem sx={{fontFamily: "HelveticaLight"}} onClick={setSearchColourHex}>colour hex</MenuItem>
+											<MenuItem sx={{fontFamily: "HelveticaLight"}} onClick={setSearchColourName}>colour name</MenuItem>
+											<MenuItem sx={{fontFamily: "HelveticaLight"}} onClick={setSearchArtist}>artist</MenuItem>
+											<MenuItem sx={{fontFamily: "HelveticaLight"}} onClick={setSearchDescription}>description</MenuItem>
+										</Menu>
 										<div className={classes.titlePaperBottom}>Chroma</div>
 									</Paper>
 								</Grid>
