@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: Checkout GitCode
         uses: actions/checkout@v2
-      - name: Run application
-        run: npm start
       - name: Run Cypress Test
         uses: cypress-io/github-action@v5
         with:
