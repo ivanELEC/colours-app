@@ -106,6 +106,7 @@ export default function Mix() {
 											imageUrl={mixStates.mixMetadata.imageUrl}
 											links={mixStates.mixMetadata.links}
 											embedId={mixStates.mixMetadata.embedId}
+											altText={mixStates.mixMetadata.altText}
 										/>
 									</Grid>
 								</Grid>

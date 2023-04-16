@@ -149,7 +149,7 @@ export default function MixBoxMobile(props) {
 				aria-describedby="modal-image-description"
 			>
 				<Box className={classes.imageModal}>
-					<img className={classes.imagePosition} src={props.imageUrl} alt={props.description} />
+					<img className={classes.imagePosition} src={props.imageUrl} alt={props.altText} />
 				</Box>
 			</Modal>
 			<Paper className={classes.content}>
@@ -159,7 +159,7 @@ export default function MixBoxMobile(props) {
 					justifyContent="flex-start"
 					alignItems="flex-start"
 				>
-					<Grid item xs={6}>
+					<Grid id="chroma-mix-headings" item xs={6}>
 						<div>
 							<p className={classes.title}>{props.artistName} - <span className={classes.titleSpan}>{props.colourName}</span></p>
 						</div>
@@ -191,7 +191,7 @@ export default function MixBoxMobile(props) {
 					</Grid>
 					<p></p>
 					<Grid item xs={12}>
-						<div className={classes.subtitle}>{props.description}</div>
+						<div id="chroma-mix-details" className={classes.subtitle}>{props.description}</div>
 					</Grid>
 					<Grid
 						item
@@ -214,13 +214,14 @@ export default function MixBoxMobile(props) {
 						))}
 					</Grid>
 				</Grid>
-				< ImageIcon onClick={handleOpenImage} className={classes.cardImageExpand} />
+				< ImageIcon id="chroma-mix-img-link" onClick={handleOpenImage} className={classes.cardImageExpand} />
 			</Paper>
 		</div>
 	)
 }
 
 MixBoxMobile.propTypes = {
+	altText: PropTypes.string,
 	embedId: PropTypes.string,
 	colourHex: PropTypes.string,
 	colourName: PropTypes.string,

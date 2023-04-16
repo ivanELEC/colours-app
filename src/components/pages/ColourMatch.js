@@ -425,6 +425,7 @@ export default function ColourMatch(){
 															style={{ textDecoration: "none", margin: "auto" }}
 														>
 															<PictureCard
+																imgAltText={`${colour.mixData.altText}`}
 																colourName={`${colour.mixData.colourName}`}
 																artistName={`${colour.mixData.artist}`}
 																colourHex={`${colour.mixData.colourHex}`}
