@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        run: npm ci && cpm ru
+        run: npm ci && npm run build
         uses: actions/checkout@v2
       - name: Cypress run
         uses: cypress-io/github-action@v3
