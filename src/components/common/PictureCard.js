@@ -7,11 +7,16 @@ import { makeStyles } from "@mui/styles"
 A simple card with an image, a title and some content
 */
 export default function PictureCard(props) {
-	//variables for size of component - reduces if mini = true
+	
+	//variables 
 	var maxHeightHeader = 280
 	var minHeightContent = 140
 	var minHeight = 300
 	var minWidth = 275
+	var imgAltText = "No alt text is available for this image"
+	if(props.altText){
+		imgAltText = props.altText
+	}
 
 	//styles
 	if(props.mini){
@@ -94,7 +99,7 @@ export default function PictureCard(props) {
 	return (
 		<div className={classes.root}>
 			<Card>
-				<div className={classes.mediaContainer} role="img" aria-label={props.altText}>
+				<div className={classes.mediaContainer} role="img" aria-label={imgAltText}>
 					<div className={classes.media} />
 					<div data-cy="chroma-colour-overlay" className={classes.mediaOverlay} />
 				</div>
