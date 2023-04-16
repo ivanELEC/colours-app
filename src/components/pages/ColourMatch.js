@@ -88,10 +88,15 @@ export default function ColourMatch(){
 
 	useEffect(() => {
 		if(searchBy != "colour hex"){
+			//for ensuring paper card maintains functionality for colours
+			let textColour = getTextShade(colour)
+			setSelectedColour(colour)
+			setTitleTextColour(textColour)
+			//for search term based search
 			let selectedMixes = searchMixes(colourList, mixData, searchBy, searchTerm)
 			setSearchResults(selectedMixes)
 		}
-	}, [searchTerm])
+	}, [searchTerm, colour])
 
 	//functions 
 	const handleChangeColour = (event) => {///saves colour hex to hook value depending on colourNo
@@ -261,7 +266,8 @@ export default function ColourMatch(){
 			fontFamily: "HelveticaLight",
 			"&:hover":{
 				fontWeight: "bold"
-			}
+			},
+			color: "#000000"
 		},	
 		titlePaperBottom: {
 			color: "black",
