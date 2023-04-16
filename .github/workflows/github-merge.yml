@@ -12,18 +12,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout GitCode
         uses: actions/checkout@v2
+      - name: Run Cypress Test
+        uses: cypress-io/github-action@v4
         with:
-          persist-credentials: false
-      - name: Cypress run
-        uses: cypress-io/github-action@v3
-        with:
-          project: ./site
+          command: npx cypress run
           browser: chrome
-          build: npm ci && npm run build
-          start: npm start
-          wait-on: "http://localhost:3000"
   build_and_preview:
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
