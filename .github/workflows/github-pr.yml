@@ -8,9 +8,10 @@ env:
 jobs:
   test:
     runs-on: ubuntu-latest
-    steps:
+   steps:
       - name: Checkout GitCode
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - run: npm ci && npm run build
       - name: Run Cypress Test
         uses: cypress-io/github-action@v4
         with:
