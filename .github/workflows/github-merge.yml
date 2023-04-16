@@ -9,8 +9,9 @@ name: Deploy to Firebase Hosting on merge
 jobs:
   cypress-run:
     steps:
-      uses: cypress-io/github-action@v5
+     - uses: cypress-io/github-action@v5
   build_and_deploy:
+    needs: cypress-run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
