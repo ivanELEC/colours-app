@@ -149,7 +149,7 @@ export default function MixBoxMobile(props) {
 				aria-describedby="modal-image-description"
 			>
 				<Box className={classes.imageModal}>
-					<img className={classes.imagePosition} src={props.imageUrl} alt={props.description} />
+					<img className={classes.imagePosition} src={props.imageUrl} alt={props.altText} />
 				</Box>
 			</Modal>
 			<Paper className={classes.content}>
@@ -221,6 +221,7 @@ export default function MixBoxMobile(props) {
 }
 
 MixBoxMobile.propTypes = {
+	altText: PropTypes.string,
 	embedId: PropTypes.string,
 	colourHex: PropTypes.string,
 	colourName: PropTypes.string,

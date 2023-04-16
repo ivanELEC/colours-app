@@ -84,6 +84,7 @@ export default function Home() {
 											className={classes.card}
 										>
 											<PictureCard
+												imgAltText={mix.altText}
 												artistName={mix.artist}
 												colourName={mix.colourName}
 												colourHex={mix.colourHex}

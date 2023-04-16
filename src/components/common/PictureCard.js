@@ -94,7 +94,7 @@ export default function PictureCard(props) {
 	return (
 		<div className={classes.root}>
 			<Card>
-				<div className={classes.mediaContainer}>
+				<div className={classes.mediaContainer} role="img" aria-label={props.imgAltText}>
 					<div className={classes.media} />
 					<div data-cy="chroma-colour-overlay" className={classes.mediaOverlay} />
 				</div>
@@ -111,6 +111,7 @@ export default function PictureCard(props) {
 }
 
 PictureCard.propTypes = {
+	imgAltText: PropTypes.string,
 	image: PropTypes.string,
 	colourHex: PropTypes.string,
 	colourName: PropTypes.string,
