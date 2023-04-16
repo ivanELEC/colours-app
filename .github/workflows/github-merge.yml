@@ -7,11 +7,6 @@ name: Deploy to Firebase Hosting on merge
     branches:
       - master
 jobs:
-  cypress-run:
-    runs-on: ubuntu-latest
-    steps:
-     - uses: cypress-io/github-action@v5
-     - run: npm ci && npm test
   build_and_deploy:
     needs: cypress-run
     runs-on: ubuntu-latest
@@ -24,3 +19,17 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COLOURS_PROJECT }}'
           channelId: live
           projectId: colours-project
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        run: npm ci && cpm ru
+        uses: actions/checkout@v2
+      - name: Cypress run
+        uses: cypress-io/github-action@v3
+        with:
+          project: ./site
+          browser: chrome
+          build: npm ci && npm run build
+          start: npm start
+          wait-on: "http://localhost:3000"
