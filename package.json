@@ -37,7 +37,7 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "CI=false && react-scripts build",
-		"test:all": "run-s test:chrome test:firefox test:electron test:edge",
+		"test": "npx cypress run",
 		"eject": "react-scripts eject",
 		"lint": "eslint --fix src/**/*.js"
 	},
