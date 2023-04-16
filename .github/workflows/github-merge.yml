@@ -19,7 +19,7 @@ jobs:
         with:
           working-directory: client
           start: npm start
-          command: npx cypress run
+          command: npm ci && npx cypress run
           browser: chrome
           wait-on: 'http://localhost:3000'
   build_and_preview:
