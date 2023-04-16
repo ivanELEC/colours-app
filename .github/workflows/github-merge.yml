@@ -8,6 +8,7 @@ name: Deploy to Firebase Hosting on merge
       - master
 jobs:
   cypress-run:
+    runs-on: ubuntu-latest
     steps:
      - uses: cypress-io/github-action@v5
      - run: npm ci && npm test
