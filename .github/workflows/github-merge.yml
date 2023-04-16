@@ -6,8 +6,24 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - master
+env:
+  ROOT_URL: http://localhost:3000
 jobs:
-  build_and_deploy:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout GitCode
+        uses: actions/checkout@v2
+      - name: Run Cypress Test
+        uses: cypress-io/github-action@v5
+        with:
+          install-command: npm ci          
+          start: npm start
+          command: npx cypress run
+          browser: chrome
+          wait-on: 'http://localhost:3000'
+  build_and_preview:
+    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,5 +32,4 @@ jobs:
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COLOURS_PROJECT }}'
-          channelId: live
           projectId: colours-project
