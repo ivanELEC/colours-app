@@ -50,6 +50,7 @@ export default function Card() {
 				<div className={classes.subtitle}> How to find Mixes </div>
 				<p>Each mix card clicks through to a page to read more information about a mix and listen to it.</p>
 				<p>You can see all mixes by navigating to the Menu and clicking <q>See All Mixes.</q></p>
+				<p>You can also click on the <q>Search by..</q> option select to search for mixes by Artist Name, Mix Name and Description</p>
 				<p>The colour grid and colour selector allow you to choose a colour that filters down to mixes of a similar hue.</p>
 				<p>You can either click a colour on the colour grid, or type in a hex code (6 characters) in the colour selector text field.</p>
 				<p>Colour differences are calculated using <a href="https://observablehq.com/@luciyer/euclidian-distance-in-rgb-color-space">Euclidean distance</a></p>
