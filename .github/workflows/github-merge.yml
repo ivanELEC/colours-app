@@ -6,6 +6,8 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - master
+env:
+  ROOT_URL: http://localhost:3000
 jobs:
   test:
     runs-on: ubuntu-latest
