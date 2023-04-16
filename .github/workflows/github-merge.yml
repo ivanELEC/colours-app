@@ -18,8 +18,8 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           working-directory: client
-          start: npm start
-          command: npm ci && npx cypress run
+          start: npm ci && npm start
+          command: npx cypress run
           browser: chrome
           wait-on: 'http://localhost:3000'
   build_and_preview:
