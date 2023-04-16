@@ -5,13 +5,29 @@ export function searchMixes(colourList, mixData, searchType, searchTerm){
 	
 	let filteredMixData = formattedMixData.filter((mix) => {
 		if(searchType == "mix name"){
-			return mix.mixData.colourName.toLowerCase().match(`${searchTerm.toLowerCase()}+`) !== null
+			if(searchTerm){
+				return mix.mixData.colourName.toLowerCase().match(`${searchTerm.toLowerCase()}+`) !== null
+			}
+			else{
+				return 1 === 0
+			}
+			
 		}
 		else if(searchType == "artist"){
-			return mix.mixData.artist.toLowerCase().match(`${searchTerm.toLowerCase()}+`) !== null
+			if(searchTerm){
+				return mix.mixData.artist.toLowerCase().match(`${searchTerm.toLowerCase()}+`) !== null
+			}
+			else{
+				return 1 === 0
+			}
 		}
 		else if(searchType == "description"){
-			return mix.mixData.description.toLowerCase().match(`${searchTerm.toLowerCase()}+`) !== null
+			if(searchTerm){
+				return mix.mixData.description.toLowerCase().match(`${searchTerm.toLowerCase()}+`) !== null
+			}
+			else{
+				return 1 === 0 
+			}
 		}
 	})
 
