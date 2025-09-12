@@ -32,7 +32,6 @@ jobs:
           browser: chrome
           wait-on: 'http://localhost:3000'
   build_and_preview:
-    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
     env:
       REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
@@ -51,3 +50,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COLOURS_PROJECT }}'
           projectId: colours-project
+          channelId: live
