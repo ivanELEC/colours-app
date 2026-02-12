@@ -12,7 +12,7 @@
 		"axe-core": "^4.6.3",
 		"chai-colors": "^1.0.1",
 		"color": "^4.2.3",
-		"cypress-axe": "^1.4.0",
+		"cypress-axe": "^1.7.0",
 		"dotenv": "^16.6.1",
 		"firebase": "^12.2.1",
 		"hex-rgb": "^5.0.0",
@@ -31,7 +31,7 @@
 		"tinycolor2": "^1.4.2"
 	},
 	"devDependencies": {
-		"cypress": "^12.8.1",
+		"cypress": "^15.10.0",
 		"eslint-plugin-react": "^7.32.1",
 		"nodemon": "^2.0.14",
 		"react-scripts": "^5.0.1"
