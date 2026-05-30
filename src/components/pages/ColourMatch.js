@@ -133,14 +133,14 @@ export default function ColourMatch(){
 
 	const handleChangeSearch = () => {
 		var inputElement = document.getElementById("colour-match-input")
-		if(inputElement){
-			if(inputElement.value){
-				if(inputElement.value.length > 1){
-					setSearchTerm(inputElement.value)
-					setSeeAll(false)
-				}
-			}
+		if(inputElement?.value?.length > 0){
+			setSearchTerm(inputElement.value)
+			setSeeAll(false)
 		}
+		else{
+			setSearchTerm(null)
+			setSeeAll(true)
+		}	
 	}
 
 	const openSearch = Boolean(searchAnchorEl)
