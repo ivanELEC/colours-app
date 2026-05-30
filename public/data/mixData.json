@@ -1,237 +1,346 @@
 {
-    "data":[
+    "data": [
         {
-            "id":"WonjaFairbrother-Moss",
-            "embedId":"800317915",
-            "artist":"Wonja",
-            "date":"16/04/2020",
-            "datecode":"20200416",
-            "colourName":"Moss",
-            "colourHex":"#e8937b",
-            "link":"https://soundcloud.com/chromamixes/moss",
-            "description":"\"This mix is based on a set I played last year at a small party on a weekday night to an almost empty room, which seems so absurd now, but the feeling of solitude and intensity that I had playing that set is what I hope comes across in the mix, because I think it's what a lot of us are feeling in lockdown.\"",
-            "imageUrl":"https://images2.imgbox.com/26/91/eCgiRZyC_o.jpg",
-            "altText":"Green moss and leaves sprouting with vibrant fiery orange flowers",
-            "links":[
-                {"name":"Twitter","url":"https://twitter.com/wonja"},
-                {"name":"Soundcloud","url":"https://soundcloud.com/wonj"}
+            "id": "WonjaFairbrother-Moss",
+            "embedId": "800317915",
+            "artist": "Wonja",
+            "date": "16/04/2020",
+            "datecode": "20200416",
+            "colourName": "Moss",
+            "colourHex": "#e8937b",
+            "link": "https://soundcloud.com/chromamixes/moss",
+            "description": "\"This mix is based on a set I played last year at a small party on a weekday night to an almost empty room, which seems so absurd now, but the feeling of solitude and intensity that I had playing that set is what I hope comes across in the mix, because I think it's what a lot of us are feeling in lockdown.\"",
+            "imageUrl": "https://i.postimg.cc/8CHDxfWS/artworks-j5onu-ORml-Cc-G7EJ9-RR6K7g-t500x500.jpg",
+            "altText": "Green moss and leaves sprouting with vibrant fiery orange flowers",
+            "links": [
+                {
+                    "name": "Twitter",
+                    "url": "https://twitter.com/wonja"
+                },
+                {
+                    "name": "Soundcloud",
+                    "url": "https://soundcloud.com/wonj"
+                }
             ]
         },
         {
-            "id":"SPECIALGUEST-Cherry",
-            "embedId":"800381320",
-            "artist":"SPECIAL GUEST",
-            "date":"16/04/2020",
-            "datecode":"20200416",
-            "colourName":"Cherry",
-            "colourHex":"#78000d",
-            "link":"https://soundcloud.com/chromamixes/special-guest-cherry",
-            "description":"\"Bisous ðŸ’‹\"",
-            "imageUrl":"https://images2.imgbox.com/bd/c0/JJ5aJzyD_o.jpg",
-            "links":[
-                {"name":"Instagram","url":"https://www.instagram.com/invite_special/"},
-                {"name":"Soundcloud","url":"https://soundcloud.com/invite_special"}
+            "id": "SPECIALGUEST-Cherry",
+            "embedId": "800381320",
+            "artist": "SPECIAL GUEST",
+            "date": "16/04/2020",
+            "datecode": "20200416",
+            "colourName": "Cherry",
+            "colourHex": "#78000d",
+            "link": "https://soundcloud.com/chromamixes/special-guest-cherry",
+            "description": "\"Bisous ðŸ’‹\"",
+            "imageUrl": "https://i.postimg.cc/k5c9LR8G/artworks-zz-KSZM42m-Ptr-HPoj-AL3p-Pg-t500x500.jpg",
+            "links": [
+                {
+                    "name": "Instagram",
+                    "url": "https://www.instagram.com/invite_special/"
+                },
+                {
+                    "name": "Soundcloud",
+                    "url": "https://soundcloud.com/invite_special"
+                }
             ]
         },
         {
-            "id":"samb_rules-okay",
-            "embedId":"803750512",
-            "artist":"samb_rules",
-            "date":"21/04/2020",
-            "datecode":"20200421",
-            "colourName":"okay",
-            "colourHex":"#1945fe",
-            "link":"https://soundcloud.com/chromamixes/samb_rules-in-an-angry-fishes-mouth-still-okay",
-            "description":"\"i wanted/tried to make something that summed up trying to stay okay and positive while things around you arent great as neatly as this picture of a smiling Ice Climber in a nasty fishes mouth does.\"",
-            "imageUrl":"https://images2.imgbox.com/da/7a/i1FkRaJD_o.jpg",
-            "links":[
-                {"name":"Soundcloud","url":"https://www.instagram.com/samb_rules"},
-                {"name":"Twitter","url":"https://twitter.com/samb_rules"},
-                {"name":"Instagram","url":"https://instagram.com/samb_rules"}
+            "id": "samb_rules-okay",
+            "embedId": "803750512",
+            "artist": "samb_rules",
+            "date": "21/04/2020",
+            "datecode": "20200421",
+            "colourName": "okay",
+            "colourHex": "#1945fe",
+            "link": "https://soundcloud.com/chromamixes/samb_rules-in-an-angry-fishes-mouth-still-okay",
+            "description": "\"i wanted/tried to make something that summed up trying to stay okay and positive while things around you arent great as neatly as this picture of a smiling Ice Climber in a nasty fishes mouth does.\"",
+            "imageUrl": "https://i.postimg.cc/MGDxgfRw/artworks-JMp970zyp1GNOw-X6-ZNCZw-A-t500x500.jpg",
+            "links": [
+                {
+                    "name": "Soundcloud",
+                    "url": "https://www.instagram.com/samb_rules"
+                },
+                {
+                    "name": "Twitter",
+                    "url": "https://twitter.com/samb_rules"
+                },
+                {
+                    "name": "Instagram",
+                    "url": "https://instagram.com/samb_rules"
+                }
             ]
         },
         {
-            "id":"Samia-Jannah",
-            "embedId":"803746645",
-            "artist":"Samia",
-            "date":"21/04/2020",
-            "datecode":"20200421",
-            "colourName":"Jannah",
-            "colourHex":"#f2a438",
-            "link":"https://soundcloud.com/chromamixes/samia_jannah/",
-            "description":"\"Jannah means paradise garden. Making music is my peaceful place. Especially at such a cruel time, with so many people losing loved ones.\"",
-            "imageUrl":"https://images2.imgbox.com/70/26/XyNxNbbq_o.jpg",
-            "links":[
-                {"name":"Soundcloud","url":"https://www.soundcloud.com/samiaja"},
-                {"name":"Instagram","url":"https://instagram.com/samiajessieahmed"}
+            "id": "Samia-Jannah",
+            "embedId": "803746645",
+            "artist": "Samia",
+            "date": "21/04/2020",
+            "datecode": "20200421",
+            "colourName": "Jannah",
+            "colourHex": "#f2a438",
+            "link": "https://soundcloud.com/chromamixes/samia_jannah/",
+            "description": "\"Jannah means paradise garden. Making music is my peaceful place. Especially at such a cruel time, with so many people losing loved ones.\"",
+            "imageUrl": "https://i.postimg.cc/LsTRGgf9/artworks-PORA7zyxvej-DRB76-SN6Xdg-t500x500.jpg",
+            "links": [
+                {
+                    "name": "Soundcloud",
+                    "url": "https://www.soundcloud.com/samiaja"
+                },
+                {
+                    "name": "Instagram",
+                    "url": "https://instagram.com/samiajessieahmed"
+                }
             ]
         },
         {
-            "id":"IvyBarkakati-Royal_Purple",
-            "embedId":"811491757",
-            "artist":"Ivy Barkakati",
-            "date":"01/05/2020",
-            "datecode":"20200501",
-            "colourName":"Royal Purple",
-            "colourHex":"#6b3fa0",
-            "link":"https://soundcloud.com/chromamixes/ivy-barkakati-royal-purple",
-            "description":"\"Royal purple is my favorite shade of my favorite color. I'm particularly drawn to its depth, soothing and sensual. This mix embodies those same qualities.\"",
-            "imageUrl":"https://images2.imgbox.com/6e/0e/zncWEUIi_o.jpg",
-            "links":[
-                {"name":"Soundcloud","url":"https://soundcloud.com/ivdb"},
-                {"name":"Casa da Crega","url":"http://dublab.es/casa-da-crega"}
+            "id": "IvyBarkakati-Royal_Purple",
+            "embedId": "811491757",
+            "artist": "Ivy Barkakati",
+            "date": "01/05/2020",
+            "datecode": "20200501",
+            "colourName": "Royal Purple",
+            "colourHex": "#6b3fa0",
+            "link": "https://soundcloud.com/chromamixes/ivy-barkakati-royal-purple",
+            "description": "\"Royal purple is my favorite shade of my favorite color. I'm particularly drawn to its depth, soothing and sensual. This mix embodies those same qualities.\"",
+            "imageUrl": "https://i.postimg.cc/MGDxgfRp/artworks-yz-YNW8NRy0KIOum-H-5mb-EHQ-t500x500.jpg",
+            "links": [
+                {
+                    "name": "Soundcloud",
+                    "url": "https://soundcloud.com/ivdb"
+                },
+                {
+                    "name": "Casa da Crega",
+                    "url": "http://dublab.es/casa-da-crega"
+                }
             ]
         },
         {
-            "id":"JoeHerrick-Red_Orange",
-            "embedId":"811488022",
-            "artist":"Joe Herrick",
-            "date":"01/05/2020",
-            "datecode":"20200501",
-            "colourName":"Red Orange",
-            "colourHex":"#f92c2f",
-            "link":"https://soundcloud.com/chromamixes/joe-herrick-red-orange",
-            "description":"\"A sunset car journey from Chicago to Detroit.\"",
-            "imageUrl":"https://images2.imgbox.com/0f/c6/DBRsdvBh_o.jpg",
-            "links":[
-                {"name":"Soundcloud","url":"https://soundcloud.com/joeisnot"},
-                {"name":"Email","url":"mailto:joeherrickisnot@gmail.com"}
+            "id": "JoeHerrick-Red_Orange",
+            "embedId": "811488022",
+            "artist": "Joe Herrick",
+            "date": "01/05/2020",
+            "datecode": "20200501",
+            "colourName": "Red Orange",
+            "colourHex": "#f92c2f",
+            "link": "https://soundcloud.com/chromamixes/joe-herrick-red-orange",
+            "description": "\"A sunset car journey from Chicago to Detroit.\"",
+            "imageUrl": "https://i.postimg.cc/yNPB239Y/artworks-y-Rv-WK5EMP4a-Zr-Cx-J-np-Eyz-Q-t500x500.jpg",
+            "links": [
+                {
+                    "name": "Soundcloud",
+                    "url": "https://soundcloud.com/joeisnot"
+                },
+                {
+                    "name": "Email",
+                    "url": "mailto:joeherrickisnot@gmail.com"
+                }
             ]
         },
         {
-            "id":"DJRish-LÃ­oma",
-            "embedId":"821276305",
-            "artist":"DJ Rish",
-            "date":"15/05/2020",
-            "datecode":"20200515",
-            "colourName":"LÃ­oma",
-            "colourHex":"#00ff00",
-            "link":"https://soundcloud.com/dj_rish",
-            "description":"\"Club nostalgia\"",
-            "imageUrl":"https://images2.imgbox.com/19/0e/5mgXWV7Z_o.jpg",
-            "links":[
-                {"name":"Soundcloud","url":"soundcloud.com/dj_rish"}
+            "id": "DJRish-LÃ­oma",
+            "embedId": "821276305",
+            "artist": "DJ Rish",
+            "date": "15/05/2020",
+            "datecode": "20200515",
+            "colourName": "LÃ­oma",
+            "colourHex": "#00ff00",
+            "link": "https://soundcloud.com/dj_rish",
+            "description": "\"Club nostalgia\"",
+            "imageUrl": "https://i.postimg.cc/9fpVswT5/artworks-j3QVt-Qfy-Sm-ANr1nq-TADl9g-t500x500.jpg",
+            "links": [
+                {
+                    "name": "Soundcloud",
+                    "url": "soundcloud.com/dj_rish"
+                }
             ]
         },
         {
-            "id":"DJPitch-FennsVol1",
-            "embedId":"852531997",
-            "artist":"DJ Pitch",
-            "date":"15/07/2020",
-            "datecode":"20200715",
-            "colourName":"Fenns Vol. 1",
-            "colourHex":"#ffe094",
-            "link":"https://soundcloud.com/chromamixes/dj-pitch-fenns-vol1",
-            "description":"\"Fenns Vol.1 is the first in a series of more personal mixes that I've been trying to put together for the last couple of years but have only recently found the space to complete. Dwelling on music from my past that i've rediscovered,  music that takes me back to periods of my life as well as new music that i'm excited by, with the aim of adding further context to my work as a producer and label owner.\"",
-            "imageUrl":"https://images2.imgbox.com/ff/28/a98gFuoU_o.jpg",
-            "links":[
-                {"name":"Instagram","url":"https://www.instagram.com/dj_pitch/"},
-                {"name":"Twitter","url":"https://twitter.com/dee_jay_pitch"}
+            "id": "DJPitch-FennsVol1",
+            "embedId": "852531997",
+            "artist": "DJ Pitch",
+            "date": "15/07/2020",
+            "datecode": "20200715",
+            "colourName": "Fenns Vol. 1",
+            "colourHex": "#ffe094",
+            "link": "https://soundcloud.com/chromamixes/dj-pitch-fenns-vol1",
+            "description": "\"Fenns Vol.1 is the first in a series of more personal mixes that I've been trying to put together for the last couple of years but have only recently found the space to complete. Dwelling on music from my past that i've rediscovered,  music that takes me back to periods of my life as well as new music that i'm excited by, with the aim of adding further context to my work as a producer and label owner.\"",
+            "imageUrl": "https://i.postimg.cc/xdRYBNH0/artworks-OQN7K96Ei9j-TPr-EZ-c-Rm84w-t500x500.jpg",
+            "links": [
+                {
+                    "name": "Instagram",
+                    "url": "https://www.instagram.com/dj_pitch/"
+                },
+                {
+                    "name": "Twitter",
+                    "url": "https://twitter.com/dee_jay_pitch"
+                }
             ]
         },
         {
-            "id":"PaolaLaf-SouthEast",
-            "embedId":"852529567",
-            "artist":"Paola Laf",
-            "date":"15/07/2020",
-            "datecode":"20200715",
-            "colourName":"South-East",
-            "colourHex":"#e77ee7",
-            "link":"https://soundcloud.com/chromamixes/paola-laf-south-east",
-            "description":"\"This mix is made of tracks I've been listening to during the past 3 months in the midst of a global pandemic. It's got some dark and melancholic undertones which I associate with a shade of lilac. It includes two popular K-pop songs and therefore I didn't feel confident about it as a whole. Not because I don't like these songs but for fear of what others may think. Making this mix made me think a lot about what \"good music\" and what \"bad music\" is, what's \"cool\" and what's \"not cool\", what's \"underground\" and what's \"mainstream\", what's \"niche\" and what's \"popular\", what's \"high culture\" and what's \"low culture\". It made me question these parameters according to which we tend to judge music and pick what we like and don't like. It made me wonder if those other artists whose music I picked would be annoyed to be in a mix next to a K-pop song. Nevertheless I think these tracks work well together, sonically and also thematically. I hope you will enjoy it.\"",
-            "imageUrl":"https://images2.imgbox.com/8d/6e/cST4GFxr_o.jpg",
-            "links":[]
+            "id": "PaolaLaf-SouthEast",
+            "embedId": "852529567",
+            "artist": "Paola Laf",
+            "date": "15/07/2020",
+            "datecode": "20200715",
+            "colourName": "South-East",
+            "colourHex": "#e77ee7",
+            "link": "https://soundcloud.com/chromamixes/paola-laf-south-east",
+            "description": "\"This mix is made of tracks I've been listening to during the past 3 months in the midst of a global pandemic. It's got some dark and melancholic undertones which I associate with a shade of lilac. It includes two popular K-pop songs and therefore I didn't feel confident about it as a whole. Not because I don't like these songs but for fear of what others may think. Making this mix made me think a lot about what \"good music\" and what \"bad music\" is, what's \"cool\" and what's \"not cool\", what's \"underground\" and what's \"mainstream\", what's \"niche\" and what's \"popular\", what's \"high culture\" and what's \"low culture\". It made me question these parameters according to which we tend to judge music and pick what we like and don't like. It made me wonder if those other artists whose music I picked would be annoyed to be in a mix next to a K-pop song. Nevertheless I think these tracks work well together, sonically and also thematically. I hope you will enjoy it.\"",
+            "imageUrl": "https://i.postimg.cc/g0dmMHwk/artworks-A73u-Ei-Dr-NO7Ea-DX4-LSm-Fx-A-t500x500.jpg",
+            "links": []
         },
         {
-            "id":"Gribs-CGI",
-            "embedId":"907803772",
-            "artist":"Gribs",
-            "date":"09/10/2020",
-            "datecode":"20200910",
-            "colourName":"CGI",
-            "colourHex":"#2c31d9",
-            "link":"https://soundcloud.com/chromamixes/gribs-cgi",
-            "description":"",
-            "imageUrl":"https://images2.imgbox.com/46/84/EAZQN4Qr_o.jpg",
-            "links":[{"name":"Soundcloud","url":"https://soundcloud.com/gribsss"}]
+            "id": "Gribs-CGI",
+            "embedId": "907803772",
+            "artist": "Gribs",
+            "date": "09/10/2020",
+            "datecode": "20200910",
+            "colourName": "CGI",
+            "colourHex": "#2c31d9",
+            "link": "https://soundcloud.com/chromamixes/gribs-cgi",
+            "description": "",
+            "imageUrl": "https://i.postimg.cc/9fpVswTX/artworks-u-Tj-Pe-Om6d-BBVF3HM-96Kxnw-t500x500.jpg",
+            "links": [
+                {
+                    "name": "Soundcloud",
+                    "url": "https://soundcloud.com/gribsss"
+                }
+            ]
         },
         {
-            "id":"BFTT-neon",
-            "embedId":"907803913",
-            "artist":"BFTT",
-            "date":"09/10/2020",
-            "datecode":"20200910",
-            "colourName":"neon",
-            "colourHex":"#ffff43",
-            "link":"https://soundcloud.com/chromamixes/bftt-neon",
-            "description":"\"That moment of heavenly clarity in the rave when you look around + all the people you love are well and truly inside having really fucking great time.\"",
-            "imageUrl":"https://images2.imgbox.com/6b/a7/JeyHfmoS_o.jpg",
-            "links":[{"name":"Soundcloud","url":"https://soundcloud.com/bftt"},{"name":"Twitter","url":"https://twitter.com/bfttyco"},{"name":"Instagram","url":"https://www.instagram.com/bfttyco"}]
+            "id": "BFTT-neon",
+            "embedId": "907803913",
+            "artist": "BFTT",
+            "date": "09/10/2020",
+            "datecode": "20200910",
+            "colourName": "neon",
+            "colourHex": "#ffff43",
+            "link": "https://soundcloud.com/chromamixes/bftt-neon",
+            "description": "\"That moment of heavenly clarity in the rave when you look around + all the people you love are well and truly inside having really fucking great time.\"",
+            "imageUrl": "https://i.postimg.cc/yNPB239q/artworks-BVBhtg-ZX4Lg-Y7d-Cq-EM3tlw-t500x500.jpg",
+            "links": [
+                {
+                    "name": "Soundcloud",
+                    "url": "https://soundcloud.com/bftt"
+                },
+                {
+                    "name": "Twitter",
+                    "url": "https://twitter.com/bfttyco"
+                },
+                {
+                    "name": "Instagram",
+                    "url": "https://www.instagram.com/bfttyco"
+                }
+            ]
         },
         {
-            "id":"TomuDJ-ItsCovidHouse",
-            "embedId":"916668824",
-            "artist":"Tomu DJ",
-            "date":"23/10/2020",
-            "datecode":"20201023",
-            "colourName":"It's Covid House",
-            "colourHex":"#cbb3f5",
-            "link":"https://soundcloud.com/chromamixes/tomu-its-covid-house",
-            "description":"\"Recorded during Covid, in my house\"",
-            "imageUrl":"https://images2.imgbox.com/27/02/5lz6c9kl_o.jpg",
-            "links":[{"name":"Soundcloud","url":"https://soundcloud.com/tomu-dj"},{"name":"Instagram","url":"https://www.instagram.com/tomudj"},{"name":"Twitter","url":"https://www.twitter.com/tomudj"}]
+            "id": "TomuDJ-ItsCovidHouse",
+            "embedId": "916668824",
+            "artist": "Tomu DJ",
+            "date": "23/10/2020",
+            "datecode": "20201023",
+            "colourName": "It's Covid House",
+            "colourHex": "#cbb3f5",
+            "link": "https://soundcloud.com/chromamixes/tomu-its-covid-house",
+            "description": "\"Recorded during Covid, in my house\"",
+            "imageUrl": "https://i.postimg.cc/s2cybGS3/artworks-l-S8MH1d94At-A2Nf-Q-u-RJ5Mw-t500x500.jpg",
+            "links": [
+                {
+                    "name": "Soundcloud",
+                    "url": "https://soundcloud.com/tomu-dj"
+                },
+                {
+                    "name": "Instagram",
+                    "url": "https://www.instagram.com/tomudj"
+                },
+                {
+                    "name": "Twitter",
+                    "url": "https://www.twitter.com/tomudj"
+                }
+            ]
         },
         {
-            "id":"malik-healing",
-            "embedId":"916669900",
-            "artist":"malik",
-            "date":"23/10/2020",
-            "datecode":"20201023",
-            "colourName":"healing",
-            "colourHex":"#31c9b2",
-            "link":"https://soundcloud.com/chromamixes/malik-healing",
-            "description":"\"hope you're somewhere safe and smiling\"",
-            "imageUrl":"https://images2.imgbox.com/4e/c1/UPUqSbxi_o.jpg",
-            "links":[]
+            "id": "malik-healing",
+            "embedId": "916669900",
+            "artist": "malik",
+            "date": "23/10/2020",
+            "datecode": "20201023",
+            "colourName": "healing",
+            "colourHex": "#31c9b2",
+            "link": "https://soundcloud.com/chromamixes/malik-healing",
+            "description": "\"hope you're somewhere safe and smiling\"",
+            "imageUrl": "https://i.postimg.cc/g0dmMHwz/artworks-3Gl-Pnztxjgc5Cun-Q-dpui9Q-t500x500.jpg",
+            "links": []
         },
-	{
-            "id":"Daniel58-JustForMe",
-            "embedId":"924501103",
-            "artist":"Daniel 58",
-            "date":"06/11/2020",
-            "datecode":"20201106",
-            "colourName":"Just For Me",
-            "colourHex":"#ff5223",
-            "link":"https://soundcloud.com/chromamixes/daniel-58-just-for-me",
-            "description":"\"This mix is a collection of songs I've been listening to for the past half year or so that I wanted to put together as a mix I could listen to instead of the individual tracks. The tempos, rhythms and productions also have strong influences on my own music I've been making lately, which I think you can hear in the ones included in the mix.\"",
-            "imageUrl":"https://images2.imgbox.com/b7/3f/6GJ1wVCr_o.jpg",
-            "links":[{"name":"Soundcloud","url":"https://soundcloud.com/58daniel"},{"name":"Twitter","url":"https://twitter.com/daniel58vevo"},{"name":"Bandcamp","url":"https://bandcamp.com/daniel58"}]
+        {
+            "id": "Daniel58-JustForMe",
+            "embedId": "924501103",
+            "artist": "Daniel 58",
+            "date": "06/11/2020",
+            "datecode": "20201106",
+            "colourName": "Just For Me",
+            "colourHex": "#ff5223",
+            "link": "https://soundcloud.com/chromamixes/daniel-58-just-for-me",
+            "description": "\"This mix is a collection of songs I've been listening to for the past half year or so that I wanted to put together as a mix I could listen to instead of the individual tracks. The tempos, rhythms and productions also have strong influences on my own music I've been making lately, which I think you can hear in the ones included in the mix.\"",
+            "imageUrl": "https://i.postimg.cc/JhqmSHJt/daniel58.jpg",
+            "links": [
+                {
+                    "name": "Soundcloud",
+                    "url": "https://soundcloud.com/58daniel"
+                },
+                {
+                    "name": "Twitter",
+                    "url": "https://twitter.com/daniel58vevo"
+                },
+                {
+                    "name": "Bandcamp",
+                    "url": "https://bandcamp.com/daniel58"
+                }
+            ]
         },
-	{
-            "id":"sad_rave-hologramsummeragain",
-            "embedId":"924499090",
-            "artist":"sad_rave",
-            "date":"06/11/2020",
-            "datecode":"20201106",
-            "colourName":"hologram summer again",
-            "colourHex":"#76904b",
-            "link":"https://soundcloud.com/chromamixes/sad_rave-hologram-summer-again",
-            "description":"\"a playlist for the missed summer\"",
-            "imageUrl":"https://images2.imgbox.com/8e/a8/pHTBWPa1_o.jpg",
-            "links":[]
+        {
+            "id": "sad_rave-hologramsummeragain",
+            "embedId": "924499090",
+            "artist": "sad_rave",
+            "date": "06/11/2020",
+            "datecode": "20201106",
+            "colourName": "hologram summer again",
+            "colourHex": "#76904b",
+            "link": "https://soundcloud.com/chromamixes/sad_rave-hologram-summer-again",
+            "description": "\"a playlist for the missed summer\"",
+            "imageUrl": "https://i.postimg.cc/1zHPbV6t/artworks-zxq9Fnw-LQIYKezui-lz905Q-t500x500.jpg",
+            "links": []
         },
-	{
-            "id":"Docterre-ForestGreen",
-            "embedId":"932999647",
-            "artist":"Docterre",
-            "date":"20/11/2020",
-            "datecode":"20201120",
-            "colourName":"Forest Green",
-            "colourHex":"#007a51",
-            "link":"https://soundcloud.com/chromamixes/docterre-forest-green",
-            "description":"\"A love letter to the forests and parks of towns and cities. A walk in the woods leading into the collective euphoria of the park (inspired by Woodhouse Ridge and Meanwood Park). Music to soothe and to bring life.\"",
-            "imageUrl":"https://images2.imgbox.com/9e/10/CmP5eURX_o.jpg",
-            "links":[{"name":"Website","url":"https://docterre.uwu.ai/"},{"name":"Soundcloud","url":"https://soundcloud.com/docterre"},{"name":"Twitter","url":"https://www.twitter.com/docterre/"},{"name":"Instagram","url":"https://www.instagram.com/docterre/"}]
+        {
+            "id": "Docterre-ForestGreen",
+            "embedId": "932999647",
+            "artist": "Docterre",
+            "date": "20/11/2020",
+            "datecode": "20201120",
+            "colourName": "Forest Green",
+            "colourHex": "#007a51",
+            "link": "https://soundcloud.com/chromamixes/docterre-forest-green",
+            "description": "\"A love letter to the forests and parks of towns and cities. A walk in the woods leading into the collective euphoria of the park (inspired by Woodhouse Ridge and Meanwood Park). Music to soothe and to bring life.\"",
+            "imageUrl": "https://i.postimg.cc/KYNFC3Lh/artworks-gsqc-Wy-Mk-NCTRj-OQB-f-F9j7Q-t500x500.jpg",
+            "links": [
+                {
+                    "name": "Website",
+                    "url": "https://docterre.uwu.ai/"
+                },
+                {
+                    "name": "Soundcloud",
+                    "url": "https://soundcloud.com/docterre"
+                },
+                {
+                    "name": "Twitter",
+                    "url": "https://www.twitter.com/docterre/"
+                },
+                {
+                    "name": "Instagram",
+                    "url": "https://www.instagram.com/docterre/"
+                }
+            ]
         }
     ]
-} 
+}
